@@ -1,13 +1,15 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
+import "./Navbar.css"
 export default function Navbar() {
     return (
-        <div>
+        <>
             <header>
                 <div className="container">
                     <div className="logo-brand">
-                        <img src="/images/logo5.png" alt="logo" height="30" width="30" />
-                        <NavLink to={"/"}>EduNexus</NavLink>
+                        <img src="/images/logo.png" alt="logo" height="40" width="40" />
+
+                        <NavLink to={"/"}> ServeSurplus</NavLink>
                     </div>
                     <nav>
                         <ul>
@@ -37,6 +39,6 @@ export default function Navbar() {
                 </div>
             </header>
 
-        </div>
+        </>
     )
 }

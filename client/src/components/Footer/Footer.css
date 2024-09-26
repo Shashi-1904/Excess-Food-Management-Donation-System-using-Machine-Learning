@@ -1,0 +1,31 @@
+/* Footer Styles */
+.footer {
+  background-color: #127808;
+  /* Dark Slate */
+  color: #ecf0f1;
+  /* Light Grey */
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  bottom: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+
+}
+
+.footer a {
+  color: black;
+  /* Blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.5rem;
+}
+
+.footer a:hover {
+  color: #2980b9;
+  /* Darker Blue */
+}
