@@ -13,12 +13,14 @@ export default function Navbar() {
                     </div>
                     <nav>
                         <ul>
-                            <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/">Donate Food</NavLink></li>
-                            <li><NavLink to="/">About Us</NavLink></li>
-                            <li><NavLink to="/">Contact</NavLink></li>
-                            <li><NavLink to="/">Register</NavLink></li>
-                            <li><NavLink to="/">Login</NavLink></li>
+                            <li><NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Home</NavLink></li>
+                            <li><NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Donate Food</NavLink></li>
+                            <li>
+                                <NavLink to="/about" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>About</NavLink>
+                            </li>
+                            <li><NavLink to="/contact" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Contact</NavLink></li>
+                            <li><NavLink to="/register" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Register</NavLink></li>
+                            <li><NavLink to="/login" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>Login</NavLink></li>
                             {/* {isLoggedIn ? (
                   <>
                   <li><NavLink to="/logout">Logout</NavLink></li>

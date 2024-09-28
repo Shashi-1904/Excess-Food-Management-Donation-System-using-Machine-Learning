@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     phoneNumber: {
         type: String,
+        required: true,
     },
     role: {
         type: String,
@@ -41,27 +42,23 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-//Middleware function for securing passward before saving 
-userSchema.pre('save', async function () {
-
+// Middleware function for hashing password before saving
+userSchema.pre('save', async function (next) {
     const user = this;
-    if (!user.isModified("passward")) {
-        next();
+    if (!user.isModified("password")) {
+        return next();
     }
     try {
         const saltround = await bcrypt.genSalt(10);
-        const hash_passward = await bcrypt.hash(user.passward, saltround);
-        user.passward = hash_passward
-
-
+        const hash_password = await bcrypt.hash(user.password, saltround);
+        user.password = hash_password;
+        next();
     } catch (error) {
         next(error);
-
     }
-
 });
 
-//json web token genration
+// JSON Web Token generation
 userSchema.methods.generateToken = async function () {
     try {
         return jwt.sign({
@@ -74,21 +71,18 @@ userSchema.methods.generateToken = async function () {
             {
                 expiresIn: "30d"
             }
-
-        )
+        );
     } catch (error) {
         console.log(error);
     }
-}
+};
 
+// Compare password
+userSchema.methods.comparePassword = async function (password) {
+    return bcrypt.compare(password, this.password); // Compare plain password with hashed password
+};
 
-
-//compare passward
-userSchema.methods.comparePassward = async function (passward) {
-    return bcrypt.compare(passward, this.passward)
-}
-
-//create collection
-const User = new mongoose.model("User", userSchema);
+// Create collection
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

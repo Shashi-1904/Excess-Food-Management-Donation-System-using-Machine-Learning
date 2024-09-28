@@ -210,7 +210,8 @@ a.active {
     }
 
     & input,
-    & textarea {
+    & textarea,
+    & select {
       width: 100%;
       padding: 0.8rem 1.2rem;
       border: 0.1rem solid #bdc3c7;
@@ -222,7 +223,8 @@ a.active {
     }
 
     & input:focus,
-    & textarea:focus {
+    & textarea:focus,
+    & select:focus {
       outline: none;
       border-color: #3498db;
       box-shadow: 0 0 4px rgba(52, 152, 219, 0.5);
@@ -233,5 +235,114 @@ a.active {
       color: #7f8c8d;
     }
 
+    & .eye-icon {
+      position: absolute;
+      right: 1.5rem;
+      /* Adjust as needed */
+      font-size: 1.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #7f8c8d;
+      transition: color 0.3s ease;
+    }
+
+    & .eye-icon:hover {
+      color: #3498db;
+      /* Highlight when hovered */
+    }
+
+    & input[type="password"],
+    & input[type="text"] {
+      position: relative;
+      padding-right: 3rem;
+      /* Make space for the icon */
+    }
+
   }
+}
+
+/* error page  */
+#error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#error-page .content {
+  max-width: 70rem;
+  text-align: center;
+}
+
+.content h2.header {
+  font-size: 18vw;
+  line-height: 1em;
+  animation: animate 10s ease-in-out infinite;
+  background: -webkit-repeating-linear-gradient(-60deg,
+      #71b7e6,
+      var(--btn-color),
+      #b98acc,
+      #ee8176,
+      #b98acc,
+      var(--btn-color),
+      #9b59b6);
+  background-size: 500%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+  position: relative;
+  -webkit-animation: animate 10s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 100% 0;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  75% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.content h4 {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.content .btns {
+  margin: 25px 0;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.content .btns a {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  border: 2px solid var(--btn-color);
+  color: var(--btn-color);
+  font-weight: 500;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.content .btns a:hover {
+  background: var(--btn-color);
+  color: #fff;
 }
