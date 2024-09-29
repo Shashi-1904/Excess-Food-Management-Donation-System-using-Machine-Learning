@@ -94,7 +94,7 @@ const Register = () => {
                     <div className="section-registeration">
                         <div className="container grid grid-two-cols">
                             <div className="registeration-image">
-                                <img src="./images/register.png" alt="Registeration" width="950" height='570' />
+                                <img src="./images/register.png" alt="Registeration" width="950" height='500' />
                             </div>
                             {/* Registration Form */}
                             <div className="registeration-form section-form">

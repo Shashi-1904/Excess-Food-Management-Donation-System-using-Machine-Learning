@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from '../store/auth';
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -132,8 +132,13 @@ export default function Login() {
 
 
                                     <button type='submit' className='btn btn-submit'>Login Now</button>
+                                    <p id="not-registered" className="mt-3">
+                                        Not registered yet?{' '}
+                                        <Link to="/register" className="text-link">Register here</Link>
+                                    </p>
 
                                 </form>
+
                             </div>
                         </div>
                     </div>

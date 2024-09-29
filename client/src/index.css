@@ -346,3 +346,22 @@ a.active {
   background: var(--btn-color);
   color: #fff;
 }
+
+/* For not registerd link */
+#not-registered {
+  text-align: center;
+  margin-top: 0px;
+  font-size: 16px;
+  color: #333;
+}
+
+
+.text-link {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.text-link:hover {
+  color: #265e0a;
+}

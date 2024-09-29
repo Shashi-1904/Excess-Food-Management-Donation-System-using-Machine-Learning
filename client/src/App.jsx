@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Contact from './pages/Contact'
 import { About } from "./pages/About"
 import Error from './pages/Error'
+import DonateFood from './pages/Doners/DonateFood'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/donatefood' element={<DonateFood />} />
           <Route path='*' element={<Error />} />
         </Routes>
         <Footer />
