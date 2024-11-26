@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+import ProtectedRoute from "./components/ProtectedRoute";
 import Homepage from './pages/Homepage'
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
@@ -9,6 +10,7 @@ import Contact from './pages/Contact'
 import { About } from "./pages/About"
 import Error from './pages/Error'
 import DonateFood from './pages/Doners/DonateFood'
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
 
@@ -25,6 +27,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/donatefood' element={<DonateFood />} />
           <Route path='*' element={<Error />} />
+          <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
