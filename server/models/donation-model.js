@@ -8,22 +8,22 @@ const foodDonationSchema = new mongoose.Schema({
     foodType: {
         type: String,
         required: true,
-        enum: ['veg', 'non-veg']  // Ensures only these two values are allowed
+        enum: ['veg', 'non-veg']
     },
     category: {
         type: String,
         required: true,
-        enum: ['raw', 'cooked', 'packed']  // Restricts the input to these categories
+        enum: ['raw', 'cooked', 'packed']
     },
     quantity: {
         type: Number,
         required: true,
-        min: 1  // Ensures quantity is a positive number
+        min: 1
     },
     expiry: {
         type: Number,
         required: true,
-        min: 1  // Expiry in hours must be positive
+        min: 1
     },
     email: {
         type: String,
@@ -36,11 +36,21 @@ const foodDonationSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
+    },
+    status: {
+        type: String,
+        required: true,
+        enum: ['pending', 'assigned', 'completed'],
+        default: 'pending'
+    },
+    assignedTo: {
+        type: String,
+        default: null
     }
 });
 
-// Create the Mongoose model
+
 const FoodDonation = mongoose.model('FoodDonation', foodDonationSchema);
 
-// Export the model
+
 module.exports = FoodDonation;

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 
 export default function Navbar() {
-    const { isLoggedIn, LogoutUser } = useAuth();
+    const { isLoggedIn, LogoutUser, user } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -60,14 +60,17 @@ export default function Navbar() {
                             {/* Conditionally rendered links based on isLoggedIn */}
                             {isLoggedIn ? (
                                 <>
-                                    <li>
-                                        <NavLink
-                                            to="/admin"
-                                            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-                                        >
-                                            Admin
-                                        </NavLink>
-                                    </li>
+                                    {/* Ensure user is not null before accessing role */}
+                                    {user && user.role === 'admin' && ( // Check if the user is an admin
+                                        <li>
+                                            <NavLink
+                                                to="/admin"
+                                                className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                            >
+                                                Admin
+                                            </NavLink>
+                                        </li>
+                                    )}
                                     <li>
                                         <button onClick={handleLogout} className="nav-link logout-button">
                                             Logout

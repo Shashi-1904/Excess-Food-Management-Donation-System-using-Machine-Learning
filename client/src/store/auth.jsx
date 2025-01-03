@@ -1,32 +1,39 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Spinner from "../components/Spinner/Spinner";
+// Import useNavigate for redirection
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    // Getting token
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUser] = useState(null); // Initialize as null
     const [isLoading, setIsLoading] = useState(true);
-    const authorizationToken = `Bearer ${token}`;
+    const authorizationToken = token ? `Bearer ${token}` : null; // Only set if token exists
     const API = import.meta.env.VITE_URI_API;
+    // Initialize useNavigate for redirecting
 
+    // Store token in localStorage
     const storetokenInLS = (serverToken) => {
         setToken(serverToken);
         return localStorage.setItem("token", serverToken);
     };
 
-    // checking logged in
-    let isLoggedIn = !!token;
-
-    // tackling logout functionality
+    // Handle logout by clearing token and removing it from localStorage
     const LogoutUser = () => {
         setToken("");
-        return localStorage.removeItem("token");
+        localStorage.removeItem("token");
+        navigate("/login"); // Redirect to login page on logout
     };
 
     // JWT Authentication to get data of currently logged in user
     const userAuthentication = async () => {
+        if (!token) {
+            // If no token exists, skip the API call or redirect to login
+            setIsLoading(false); // Stop loading as there's no need to fetch data
+            setUser(null); // No user data
+            return;
+        }
+
         try {
             setIsLoading(true); // Start loading
             const response = await fetch(`${API}/api/auth/user`, {
@@ -52,10 +59,10 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         userAuthentication();
-    }, []); // Run once on mount
+    }, [token]); // Re-run when token changes (including after login/logout)
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, storetokenInLS, LogoutUser, user, authorizationToken, isLoading, API }}>
+        <AuthContext.Provider value={{ isLoggedIn: !!token, storetokenInLS, LogoutUser, user, authorizationToken, isLoading, API }}>
             {isLoading ? <Spinner /> : children} {/* Show Spinner until data is fetched */}
         </AuthContext.Provider>
     );
