@@ -37,7 +37,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body;  // Ensure you're using 'password'
+        const { email, password } = req.body; // Ensure you're using 'password'
 
         // Check if user exists
         const userExists = await User.findOne({ email });
@@ -46,12 +46,13 @@ const login = async (req, res) => {
         }
 
         // Compare passwords
-        const isPasswordValid = await userExists.comparePassword(password);  // Use 'password'
+        const isPasswordValid = await userExists.comparePassword(password); // Use 'password'
         if (isPasswordValid) {
             return res.status(200).json({
                 message: "Login Successful!!!",
                 token: await userExists.generateToken(),
-                userId: userExists._id.toString()
+                userId: userExists._id.toString(),
+                role: userExists.role // Include the user's role in the response
             });
         } else {
             return res.status(401).json({ message: "Invalid username or password" });
@@ -60,7 +61,8 @@ const login = async (req, res) => {
         console.error("Login Error:", error);
         res.status(500).json({ message: "Internal server error" });
     }
-}
+};
+
 
 
 // user logic to send user data

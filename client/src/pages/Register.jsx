@@ -203,7 +203,7 @@ const Register = () => {
                                         </select>
                                     </div>
 
-                                    <button type='submit' className='btn btn-submit'>Register Now</button>
+                                    <button type='submit' className="btn btn-lg btn-success">Register Now</button>
 
                                 </form>
                             </div>

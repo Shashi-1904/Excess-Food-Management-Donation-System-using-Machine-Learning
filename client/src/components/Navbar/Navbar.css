@@ -1,6 +1,6 @@
 .container {
     max-width: 100%;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,21 +9,20 @@
 
 ul {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-
 img {
-    margin-right: 3px;
+    margin-right: 10px;
     max-width: 100%;
 }
 
 header {
-    border-bottom: 0.2rem solid rgb(228, 218, 218);
-    padding: 0rem 0;
+    border-bottom: 2px solid rgb(228, 218, 218);
+    padding: 0.5rem 0;
 }
 
 .logo-brand {
@@ -37,6 +36,35 @@ header {
     background: none;
     border: none;
     font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Navigation Link Styles */
+.nav-link {
+    margin: 0;
+    position: relative;
+    padding: 15px 15px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #333;
+    background: none;
+    text-decoration: none;
+    /* Ensure no text decoration by default */
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: rgb(87, 155, 91);
+    transform: scale(1.05);
+
+}
+
+.nav-link.active {
+    color: rgb(52, 211, 47);
+    text-decoration: 3px solid underline;
+
+
 }
 
 /* Media Queries */
@@ -59,24 +87,10 @@ header {
     .menu-toggle {
         display: block;
     }
-}
 
-.nav-link {
-    margin: 0;
-    position: relative;
-    padding: 0.5rem 1.0rem;
-    border-radius: 20px;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.nav-link:hover {
-    cursor: pointer;
-    background: black;
-    color: white;
-}
-
-.nav-link.active {
-    background: black;
-    color: white;
-
+    .nav-link {
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+    }
 }

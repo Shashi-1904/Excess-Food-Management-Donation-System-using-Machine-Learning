@@ -8,3 +8,6 @@
 # Environment variables
 /client/.env
 /server/.env
+
+# External Files
+Commands.txt

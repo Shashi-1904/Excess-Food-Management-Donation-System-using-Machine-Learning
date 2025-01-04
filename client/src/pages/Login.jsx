@@ -3,7 +3,7 @@ import { useAuth } from '../store/auth';
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import Spinner from '../components/Spinner/Spinner'; // Import Spinner component
+import Spinner from '../components/Spinner/Spinner';
 
 export default function Login() {
     const [user, setUser] = useState({
@@ -29,7 +29,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true); // Set loading to true when login is in progress
+        // setLoading(true); 
 
         try {
             const response = await fetch(URL, {
@@ -43,40 +43,35 @@ export default function Login() {
             const res_data = await response.json();
 
             if (response.ok) {
+                toast.success("Login Successful");
                 storetokenInLS(res_data.token);
                 setUser({
                     email: "",
                     password: ""
                 });
 
-                toast.success("Login Successful");
+
                 navigate("/");
 
-                // // Wait for 5 seconds before navigating to homepage
-                // setTimeout(() => {
-                //     setLoading(false); // Stop the spinner
-                //     // Navigate to homepage
-                //     window.location.reload();
-                // }, 5000);
 
             } else if (response.status === 422) {
                 const errorDetails = res_data.errors.map(error => `${error.field}: ${error.message}`);
                 errorDetails.forEach(err => toast.error(err));
                 setLoading(false);
             } else {
-                setLoading(false); // Stop loading if error occurs
+                setLoading(false);
                 toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
 
             }
 
         } catch (error) {
             console.log("login error", error);
-            setLoading(false); // Stop loading on error
+            setLoading(false);
         }
     };
 
     const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword); // Toggle password visibility
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -127,14 +122,14 @@ export default function Login() {
                                         </span>
                                     </div>
 
-                                    <button type='submit' className='btn btn-submit'>Login Now</button>
+                                    <button type='submit' className="btn btn-lg btn-success">Login Now</button>
                                     <p id="not-registered" className="mt-3">
                                         Not registered yet?{' '}
                                         <Link to="/register" className="text-link">Register here</Link>
                                     </p>
                                 </form>
 
-                                {loading && <Spinner />} {/* Show spinner while loading */}
+                                {loading && <Spinner />}
                             </div>
                         </div>
                     </div>

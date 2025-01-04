@@ -10,7 +10,10 @@ const ProtectedRoute = ({ allowedRoles }) => {
     if (isLoading) return <Spinner />;
 
     if (!user || !allowedRoles.includes(user.role)) {
+
         return <Navigate to="/" />;
+
+
     }
 
     return <Outlet />;

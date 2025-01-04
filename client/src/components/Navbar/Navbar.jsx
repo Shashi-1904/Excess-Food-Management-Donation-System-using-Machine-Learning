@@ -2,15 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../store/auth';
 import { useNavigate } from 'react-router-dom';
+import { Toast } from 'react-bootstrap';
 import "./Navbar.css";
 
 export default function Navbar() {
     const { isLoggedIn, LogoutUser, user } = useAuth();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleLogout = () => {
         LogoutUser();
-        navigate('/'); // Redirect to homepage
     };
 
     return (
@@ -71,10 +71,22 @@ export default function Navbar() {
                                             </NavLink>
                                         </li>
                                     )}
+
+                                    {user && user.role === 'volunteer' && ( // Check if the user is a volunteer
+                                        <li>
+                                            <NavLink
+                                                to="/volunteer"
+                                                className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                            >
+                                                Volunteer Dashboard
+                                            </NavLink>
+                                        </li>
+                                    )}
+
                                     <li>
-                                        <button onClick={handleLogout} className="nav-link logout-button">
+                                        <a onClick={handleLogout} className="nav-link logout-button">
                                             Logout
-                                        </button>
+                                        </a>
                                     </li>
                                 </>
                             ) : (

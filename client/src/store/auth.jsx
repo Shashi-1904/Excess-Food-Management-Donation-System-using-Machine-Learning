@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Spinner from "../components/Spinner/Spinner";
+import { toast } from 'react-toastify';
 // Import useNavigate for redirection
 
 export const AuthContext = createContext();
@@ -22,7 +23,8 @@ export const AuthProvider = ({ children }) => {
     const LogoutUser = () => {
         setToken("");
         localStorage.removeItem("token");
-        navigate("/login"); // Redirect to login page on logout
+        toast.success("Logout Successful")
+        // navigate("/login"); // Redirect to login page on logout
     };
 
     // JWT Authentication to get data of currently logged in user

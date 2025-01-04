@@ -13,10 +13,10 @@ export default function Homepage() {
                             <p>Join our mission to reduce food waste and fight hunger by connecting surplus food with those in need. Our platform uses machine learning to optimize donations and ensure that every meal reaches the right place at the right time.</p>
                             <div className="btn btn-group">
                                 <NavLink to={"/"}>
-                                    <button className='btn'>Donate Food!</button>
+                                    <button className="btn btn-lg btn-success">Donate Food!</button>
                                 </NavLink>
                                 <NavLink to={"/"}>
-                                    <button className='btn'>Learn More</button>
+                                    <button className="btn btn-lg btn-success">Learn More</button>
                                 </NavLink>
                             </div>
                         </div>
@@ -65,10 +65,10 @@ export default function Homepage() {
                         <p>Join us in tackling food waste and hunger. Whether you're a restaurant, a volunteer, or someone in need, we make it easy to contribute and receive excess food. Let’s make sure no meal goes to waste!</p>
                         <div className="btn btn-group">
                             <NavLink to={"/"}>
-                                <button className='btn'>Become a Volunteer</button>
+                                <button className="btn btn-lg btn-success">Become a Volunteer</button>
                             </NavLink>
                             <NavLink to={"/"}>
-                                <button className='btn'>Read More</button>
+                                <button className="btn btn-lg btn-success">Read More</button>
                             </NavLink>
                         </div>
                     </div>

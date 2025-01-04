@@ -52,9 +52,66 @@ const getVolunteerEmails = async (req, res) => {
     }
 };
 
+const assignDonation = async (req, res) => {
+    const { donationId, userEmail } = req.body;
+
+    if (!donationId || !userEmail) {
+        return res.status(400).json({
+            success: false,
+            message: "Donation ID and User Email are required."
+        });
+    }
+
+    try {
+        // Find the donation by ID
+        const donation = await FoodDonation.findById(donationId);
+        if (!donation) {
+            return res.status(404).json({
+                success: false,
+                message: "Donation not found."
+            });
+        }
+
+        // Check if the donation is already assigned
+        if (donation.status !== "pending") {
+            return res.status(400).json({
+                success: false,
+                message: "Donation is already assigned or completed."
+            });
+        }
+
+        // Find the user by email
+        const user = await User.findOne({ email: userEmail });
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found."
+            });
+        }
+
+        // Update the donation
+        donation.status = "assigned";
+        donation.assignedTo = userEmail;
+        await donation.save();
+
+        return res.status(200).json({
+            success: true,
+            message: "Donation successfully assigned.",
+            data: donation
+        });
+    } catch (error) {
+        console.error("Error assigning donation:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error."
+        });
+    }
+};
+
 // Export controller functions
 module.exports = {
     getAllUsers,
     getAllDonations,
     getVolunteerEmails,
+    assignDonation,
 };

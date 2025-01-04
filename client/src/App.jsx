@@ -5,7 +5,7 @@ import Homepage from './pages/Homepage'
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import AdminNavbar from './components/AdminNavbar/AdminNavbar'
-// import VolunteerNavbar from './components/Navbar/VolunteerNavbar'
+import VolunteerNavbar from './components/VolunteerNavbar/VolunteerNavbar';
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Contact from './pages/Contact'
@@ -15,18 +15,21 @@ import DonateFood from './pages/Doners/DonateFood'
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import DonationTable from './pages/Admin/DonationTable';
 import UsersTable from './pages/Admin/UsersTable';
-// import VolunteerDashboard from "./pages/Volunteer/VolunteerDashboard";
+import VolunteerDashboard from './pages/volunteers/VolunteerDashboard';
+import AssignedDonations from './pages/volunteers/AssignedDonations';
 
 function Layout() {
   const location = useLocation();
 
   const isAdminRoute = location.pathname.startsWith('/admin');
-  // const isVolunteerRoute = location.pathname.startsWith('/volunteer');
+  const isVolunteerRoute = location.pathname.startsWith('/volunteer');
 
   return (
     <>
       {isAdminRoute ? (
         <AdminNavbar />
+      ) : isVolunteerRoute ? (
+        <VolunteerNavbar />
       ) : (
         <Navbar />
       )}
@@ -50,6 +53,10 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/getdonations" element={<DonationTable />} />
           <Route path="/admin/getusers" element={<UsersTable />} />
+        </Route>
+        <Route element={<ProtectedRoute allowedRoles={['volunteer']} />}>
+          <Route path="/volunteer" element={<VolunteerDashboard />} />
+          <Route path="/volunteer/assigneddonations" element={<AssignedDonations />} />
         </Route>
 
       </Routes>

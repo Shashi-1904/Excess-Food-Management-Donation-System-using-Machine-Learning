@@ -10,6 +10,7 @@ const authRoute = require("./router/auth-router");
 const contactRoute = require("./router/contact-router");
 const donorRoute = require("./router/doner-router");
 const adminRouter = require("./router/admin-router");
+const volunteerRouter = require("./router/volunteer-router")
 
 //allow cors
 const corsOptions = {
@@ -29,6 +30,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
 app.use("/api/donor", donorRoute)
 app.use("/api/admin", adminRouter);
+app.use("/api/volunteer", volunteerRouter);
 
 //error Middleware
 app.use(errorMiddleware);
