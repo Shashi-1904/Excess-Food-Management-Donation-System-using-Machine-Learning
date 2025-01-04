@@ -22,10 +22,10 @@ export function About() {
                         </p>
                         <div className="btn btn-group">
                             <NavLink to={"/contact"}>
-                                <button className='btn'>Contact us</button>
+                                <button className='btn btn-lg btn-success'>Contact us</button>
                             </NavLink>
                             <NavLink to={"/"}>
-                                <button className='btn'>Back to home</button>
+                                <button className='btn btn-lg btn-success'>Back to home</button>
                             </NavLink>
                         </div>
                     </div>
