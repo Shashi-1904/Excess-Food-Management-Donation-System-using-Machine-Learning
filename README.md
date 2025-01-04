@@ -79,7 +79,22 @@ This system aims to tackle the issue of increasing food wastage, especially in h
 - Implemented basic user roles: Donor, Volunteer, and Admin
 - Developed initial schema for data management
 - Integrated the basic functionality of IBCF model for location recommendation (in progress)
+  
+## Scrreshots
+## Home Page
+![Home Page](screenshots/home.png)
 
+## Register
+![Register](screenshots/register.png)
+
+## Login 
+![Feedback](screenshots/login.png)
+
+## About
+![Courses](screenshots/about.png)
+
+## Admin Panel
+![Admin Panel](screenshots/admin.png)
 
 
 ## Contact
