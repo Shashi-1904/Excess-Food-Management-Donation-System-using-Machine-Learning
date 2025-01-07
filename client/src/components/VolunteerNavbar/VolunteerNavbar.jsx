@@ -50,8 +50,11 @@ function VolunteerNavbar() {
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="#">Analytics</a>
+                            <NavLink className="nav-link text-white" to="/volunteer/getrecommendations">
+                                Get Recommendations
+                            </NavLink>
                         </li>
+
                     </ul>
                 </div>
             </div>

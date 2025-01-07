@@ -57,6 +57,7 @@ export default function Navbar() {
                                 </NavLink>
                             </li>
 
+
                             {/* Conditionally rendered links based on isLoggedIn */}
                             {isLoggedIn ? (
                                 <>
@@ -82,12 +83,30 @@ export default function Navbar() {
                                             </NavLink>
                                         </li>
                                     )}
-
+                                    {user && user.role === 'hotel' && ( // Check if the user is a volunteer
+                                        <li>
+                                            <NavLink
+                                                to="/hotel"
+                                                className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                            >
+                                                Hotel Dashboard
+                                            </NavLink>
+                                        </li>
+                                    )}
+                                    <li>
+                                        <NavLink
+                                            to="/profile"
+                                            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                        >
+                                            Profile
+                                        </NavLink>
+                                    </li>
                                     <li>
                                         <a onClick={handleLogout} className="nav-link logout-button">
                                             Logout
                                         </a>
                                     </li>
+
                                 </>
                             ) : (
                                 <>
