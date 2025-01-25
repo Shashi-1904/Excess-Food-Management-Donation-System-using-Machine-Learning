@@ -12,6 +12,8 @@ const donorRoute = require("./router/doner-router");
 const adminRouter = require("./router/admin-router");
 const volunteerRouter = require("./router/volunteer-router")
 const uploadRoutes = require("./router/uploadRoutes");
+const FoodRequestRoutes = require("./router/foodRequest-router");
+
 
 
 //allow cors
@@ -34,6 +36,7 @@ app.use("/api/donor", donorRoute)
 app.use("/api/admin", adminRouter);
 app.use("/api/volunteer", volunteerRouter);
 app.use("/api/predictions", uploadRoutes);
+app.use("/api/ngo", FoodRequestRoutes);
 
 //error Middleware
 app.use(errorMiddleware);

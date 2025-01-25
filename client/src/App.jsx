@@ -22,7 +22,7 @@ import AssignedDonations from './pages/volunteers/AssignedDonations';
 import GetRecommendation from './pages/volunteers/GetRecommendation';
 import HotelDashboard from './pages/Hotels/HotelDashboard';
 import HotelDashboardAnalytics from './pages/Hotels/HotelDashboardAnalytics';
-
+import FoodRequestForm from './pages/NGOs/FoodRequestForm';
 
 function Layout() {
   const location = useLocation();
@@ -58,6 +58,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/donatefood' element={<DonateFood />} />
+        <Route path='/foodrequest' element={<FoodRequestForm />} />
         <Route path='*' element={<Error />} />
         <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
           <Route path="/admin" element={<AdminDashboard />} />
@@ -73,7 +74,6 @@ function App() {
           <Route path="/hotel" element={<HotelDashboard />} />
           <Route path="/hotel/analytics" element={<HotelDashboardAnalytics />} />
         </Route>
-
       </Routes>
       <Footer />
     </BrowserRouter>

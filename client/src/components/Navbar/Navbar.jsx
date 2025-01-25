@@ -93,6 +93,16 @@ export default function Navbar() {
                                             </NavLink>
                                         </li>
                                     )}
+                                    {user && user.role === 'NGO' && ( // Check if the user is a volunteer
+                                        <li>
+                                            <NavLink
+                                                to="/foodrequest"
+                                                className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                            >
+                                                Request Food
+                                            </NavLink>
+                                        </li>
+                                    )}
                                     <li>
                                         <NavLink
                                             to="/profile"
