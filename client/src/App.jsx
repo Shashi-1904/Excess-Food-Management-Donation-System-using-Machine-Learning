@@ -23,6 +23,8 @@ import GetRecommendation from './pages/volunteers/GetRecommendation';
 import HotelDashboard from './pages/Hotels/HotelDashboard';
 import HotelDashboardAnalytics from './pages/Hotels/HotelDashboardAnalytics';
 import FoodRequestForm from './pages/NGOs/FoodRequestForm';
+import RequestsTable from './pages/Admin/RequestsTable';
+import Settings from './pages/Admin/Settings';
 
 function Layout() {
   const location = useLocation();
@@ -64,6 +66,8 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/getdonations" element={<DonationTable />} />
           <Route path="/admin/getusers" element={<UsersTable />} />
+          <Route path="/admin/requests" element={<RequestsTable />} />
+          <Route path="/admin/settings" element={<Settings />} />
         </Route>
         <Route element={<ProtectedRoute allowedRoles={['volunteer']} />}>
           <Route path="/volunteer" element={<VolunteerDashboard />} />

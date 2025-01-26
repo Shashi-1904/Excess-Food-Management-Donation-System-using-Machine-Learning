@@ -43,18 +43,22 @@ export default function Login() {
             const res_data = await response.json();
 
             if (response.ok) {
+                // Show success message first
                 toast.success("Login Successful");
-                storetokenInLS(res_data.token);
-                setUser({
-                    email: "",
-                    password: ""
-                });
-
-
                 navigate("/");
 
+                setTimeout(() => {
+                    storetokenInLS(res_data.token);
+                    setUser({
+                        email: "",
+                        password: ""
+                    });
 
-            } else if (response.status === 422) {
+
+
+                }, 3000);
+            }
+            else if (response.status === 422) {
                 const errorDetails = res_data.errors.map(error => `${error.field}: ${error.message}`);
                 errorDetails.forEach(err => toast.error(err));
                 setLoading(false);

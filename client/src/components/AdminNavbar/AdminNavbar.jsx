@@ -1,31 +1,42 @@
-// components/Navbar/AdminNavbar.js
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../store/auth';
+import { FaHome, FaUsers, FaDonate, FaChartBar, FaCog, FaSignOutAlt } from 'react-icons/fa';
 
 function AdminNavbar() {
+    const { isLoggedIn, LogoutUser, user } = useAuth();
+
+    const handleLogout = () => {
+        LogoutUser();
+    };
+
     return (
         <div className="container-fluid">
             {/* Horizontal Navbar */}
             <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={{ backgroundColor: '#28a745' }}>
-                <NavLink className="navbar-brand text-white" to="/admin" style={{ fontSize: '24px', fontWeight: 'bold' }}>
+                <NavLink className="navbar-brand text-white" to="/admin" style={{ fontSize: '24px', fontWeight: 'bold', marginLeft: "0.7em" }}>
                     Admin Panel
                 </NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto">  {/* Aligns items to the right */}
+                    <ul className="navbar-nav ms-auto"> {/* Aligns items to the right */}
                         <li className="nav-item mx-3"> {/* Adds spacing between items */}
                             <NavLink className="nav-link text-white" to="/">
-                                Home
+                                <FaHome className="me-2" /> Home
                             </NavLink>
                         </li>
-                        <li className="nav-item mx-3">
-                            <a className="nav-link text-white" href="#">Settings</a>
+                        <li className="nav-item">
+                            <NavLink className="nav-link text-white" to="/admin/settings">
+                                <FaCog className="me-2" /> Settings
+                            </NavLink>
                         </li>
-                        <li className="nav-item mx-3">
-                            <a className="nav-link text-white" href="#">Logout</a>
+                        <li>
+                            <a onClick={handleLogout} className="nav-link logout-button">
+                                <FaSignOutAlt className="me-2" /> Logout
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -36,29 +47,37 @@ function AdminNavbar() {
                 <div className="sidebar bg-success p-3" style={{ width: '200px', height: '100vh', position: 'fixed', top: '0', left: '0' }}>
                     <ul className="nav flex-column text-white">
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="#">Dashboard</a>
+                            <a className="nav-link text-white" href="#">
+                                <FaHome className="me-2" /> Dashboard
+                            </a>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link text-white" to="/admin/getusers">
-                                User Management
+                                <FaUsers className="me-2" /> User Management
                             </NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link text-white" to="/admin/getdonations">
-                                Food Donations
+                                <FaDonate className="me-2" /> Food Donations
                             </NavLink>
                         </li>
-
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="#">Analytics</a>
+                            <NavLink className="nav-link text-white" to="/admin/requests">
+                                <FaDonate className="me-2" /> Food Requests
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link text-white" href="#">Settings</a>
+                            <a className="nav-link text-white" href="#">
+                                <FaChartBar className="me-2" /> Analytics
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link text-white" to="/admin/settings">
+                                <FaCog className="me-2" /> Settings
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
-
-
             </div>
         </div>
     );

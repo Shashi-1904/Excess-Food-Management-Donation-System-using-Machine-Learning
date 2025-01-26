@@ -1,6 +1,6 @@
 const User = require("../models/user-model");
 const FoodDonation = require("../models/donation-model");
-
+const FoodRequest = require("../models/request-model")
 // Get all users
 const getAllUsers = async (req, res) => {
     try {
@@ -19,6 +19,23 @@ const getAllUsers = async (req, res) => {
 };
 
 // Get all donations
+const getAllRequests = async (req, res) => {
+    try {
+        const requests = await FoodRequest.find({});
+        res.status(200).json({
+            success: true,
+            data: requests,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error fetching donations",
+            error: error.message,
+        });
+    }
+};
+
+// Get all Requests
 const getAllDonations = async (req, res) => {
     try {
         const donations = await FoodDonation.find({});
@@ -114,4 +131,5 @@ module.exports = {
     getAllDonations,
     getVolunteerEmails,
     assignDonation,
+    getAllRequests,
 };
