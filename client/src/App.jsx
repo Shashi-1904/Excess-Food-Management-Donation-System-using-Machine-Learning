@@ -25,6 +25,9 @@ import HotelDashboardAnalytics from './pages/Hotels/HotelDashboardAnalytics';
 import FoodRequestForm from './pages/NGOs/FoodRequestForm';
 import RequestsTable from './pages/Admin/RequestsTable';
 import Settings from './pages/Admin/Settings';
+import MyDonationHistory from './pages/volunteers/MyDonationHistory';
+import MyMatchingRequests from './pages/volunteers/MyMatchingRequests';
+import VolunteerSettings from './pages/volunteers/VolunteerSettings';
 
 function Layout() {
   const location = useLocation();
@@ -73,6 +76,9 @@ function App() {
           <Route path="/volunteer" element={<VolunteerDashboard />} />
           <Route path="/volunteer/assigneddonations" element={<AssignedDonations />} />
           <Route path="/volunteer/getrecommendations" element={<GetRecommendation />} />
+          <Route path="/volunteer/mydonationhistory" element={<MyDonationHistory />} />
+          <Route path="/volunteer/mymatchingrequests" element={<MyMatchingRequests />} />
+          <Route path="/volunteer/mysettings" element={<VolunteerSettings />} />
         </Route>
         <Route element={<ProtectedRoute allowedRoles={['hotel']} />}>
           <Route path="/hotel" element={<HotelDashboard />} />

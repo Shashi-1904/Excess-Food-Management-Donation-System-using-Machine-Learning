@@ -40,13 +40,17 @@ const foodDonationSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        enum: ['pending', 'assigned', 'completed'],
+        enum: ['pending', 'assigned', 'picked', 'completed'],
         default: 'pending'
     },
     assignedTo: {
         type: String,
         default: null
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 

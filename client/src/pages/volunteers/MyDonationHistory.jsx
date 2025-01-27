@@ -3,13 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from "../../store/auth";
 import { toast } from "react-toastify";
 
-function AssignedDonations() {
+function MyDonationHistory() {
     const [donations, setDonations] = useState([]);
-    const [actionDropdown, setActionDropdown] = useState(null);
     const { authorizationToken, API } = useAuth();
 
     useEffect(() => {
-        const fetchAssignedDonations = async () => {
+        const fetchCompletedDonations = async () => {
             try {
                 const response = await fetch(`${API}/api/volunteer/assigned-donations`, {
                     headers: {
@@ -19,70 +18,22 @@ function AssignedDonations() {
                 const data = await response.json();
 
                 if (response.ok && data.donations) {
-                    // Filter out donations with status 'completed'
-                    const filteredDonations = data.donations.filter(
-                        (donation) => donation.status !== 'completed'
+                    // Filter donations with status 'completed'
+                    const completedDonations = data.donations.filter(
+                        (donation) => donation.status === 'completed'
                     );
-                    setDonations(filteredDonations);
+                    setDonations(completedDonations);
                 } else {
-                    toast.error(data.message || 'Failed to fetch donations.');
+                    toast.error(data.message || 'Failed to fetch donation history.');
                 }
             } catch (error) {
-                console.error('Error fetching donations:', error);
-                toast.error('An error occurred while fetching donations.');
+                console.error('Error fetching completed donations:', error);
+                toast.error('An error occurred while fetching donation history.');
             }
         };
 
-        fetchAssignedDonations();
+        fetchCompletedDonations();
     }, [API, authorizationToken]);
-
-
-    const handleActionClick = (donationId) => {
-        setActionDropdown(actionDropdown === donationId ? null : donationId);
-    };
-
-    const handleStatusChange = async (donationId, status) => {
-        try {
-            const response = await fetch(`${API}/api/volunteer/update-donation-status`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: authorizationToken,
-                },
-                body: JSON.stringify({ donationId, status }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                toast.success(data.message); // Notify the user
-
-                setDonations((prevDonations) => {
-                    if (status === 'completed') {
-                        // Remove the donation with the given ID if the status is 'completed'
-                        return prevDonations.filter((donation) => donation._id !== donationId);
-                    }
-                    // Update the status for the specific donation
-                    return prevDonations.map((donation) =>
-                        donation._id === donationId ? { ...donation, status } : donation
-                    );
-                });
-            } else {
-                toast.error(data.message || 'Failed to update the donation status.');
-            }
-        } catch (error) {
-            console.error('Error updating donation status:', error);
-            toast.error('An error occurred. Please try again.');
-        } finally {
-            setActionDropdown(null); // Close the dropdown after updating
-        }
-    };
-
-
-
-    const handleGetRoute = (donationId) => {
-        console.log(`Get route for Donation ID: ${donationId}`);
-    };
 
     return (
         <div className="container-fluid" style={{
@@ -96,10 +47,10 @@ function AssignedDonations() {
                 overflowY: 'auto',
                 padding: '20px',
             }}>
-                <h1 className="mb-4">Assigned Donations</h1>
+                <h1 className="mb-4">My Donation History</h1>
 
                 {donations.length === 0 ? (
-                    <div className="alert alert-warning">No donations assigned to you.</div>
+                    <div className="alert alert-warning">No completed donations found.</div>
                 ) : (
                     <div className="row">
                         {donations.map((donation) => (
@@ -137,6 +88,7 @@ function AssignedDonations() {
                                         <p><strong>Email: </strong>{donation.email}</p>
                                         <p><strong>Address: </strong>{donation.address}</p>
                                         <p><strong>Status: </strong>{donation.status}</p>
+                                        {/* <p><strong>Date Completed: </strong>{new Date(donation.completedDate).toLocaleDateString()}</p> */}
                                     </div>
                                     <div
                                         className="card-footer"
@@ -149,34 +101,7 @@ function AssignedDonations() {
                                             padding: '10px',
                                         }}
                                     >
-                                        <button
-                                            className="btn btn-success"
-                                            onClick={() => handleActionClick(donation._id)}
-                                        >
-                                            Actions
-                                        </button>
-                                        {actionDropdown === donation._id && (
-                                            <div className="dropdown-menu show" style={{ position: 'absolute', zIndex: 1000 }}>
-                                                <button
-                                                    className="dropdown-item"
-                                                    onClick={() => handleStatusChange(donation._id, 'picked')}
-                                                >
-                                                    Mark as Picked
-                                                </button>
-                                                <button
-                                                    className="dropdown-item"
-                                                    onClick={() => handleStatusChange(donation._id, 'completed')}
-                                                >
-                                                    Mark as Completed
-                                                </button>
-                                                <button
-                                                    className="dropdown-item"
-                                                    onClick={() => handleGetRoute(donation._id)}
-                                                >
-                                                    Get Route
-                                                </button>
-                                            </div>
-                                        )}
+                                        <p className="mb-0">Donation Completed</p>
                                     </div>
                                 </div>
                             </div>
@@ -188,4 +113,4 @@ function AssignedDonations() {
     );
 }
 
-export default AssignedDonations;
+export default MyDonationHistory;
