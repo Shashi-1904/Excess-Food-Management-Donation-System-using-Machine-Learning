@@ -28,7 +28,7 @@ import Settings from './pages/Admin/Settings';
 import MyDonationHistory from './pages/volunteers/MyDonationHistory';
 import MyMatchingRequests from './pages/volunteers/MyMatchingRequests';
 import VolunteerSettings from './pages/volunteers/VolunteerSettings';
-
+import GoogleMap from './pages/volunteers/GoogleMap';
 function Layout() {
   const location = useLocation();
 
@@ -79,6 +79,7 @@ function App() {
           <Route path="/volunteer/mydonationhistory" element={<MyDonationHistory />} />
           <Route path="/volunteer/mymatchingrequests" element={<MyMatchingRequests />} />
           <Route path="/volunteer/mysettings" element={<VolunteerSettings />} />
+          <Route path="/volunteer/gmap" element={<GoogleMap />} />
         </Route>
         <Route element={<ProtectedRoute allowedRoles={['hotel']} />}>
           <Route path="/hotel" element={<HotelDashboard />} />
