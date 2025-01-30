@@ -140,6 +140,25 @@ const foodRequestSchema = z.object({
         .max(255, { message: "Address must not exceed 255 characters." }),
 });
 
+const updateProfileSchema = z.object({
+    username: z
+        .string({ required_error: "Username is required" })
+        .trim()
+        .min(3, { message: "Username must be at least 3 characters long." })
+        .max(255, { message: "Username must not be more than 255 characters." }),
+
+    phoneNumber: z
+        .string({ required_error: "Phone number is required" })
+        .trim()
+        .min(10, { message: "Phone number must be at least 10 characters long." })
+        .max(20, { message: "Phone number must not be more than 20 characters." }),
+
+    address: z
+        .string({ required_error: "Address is required" })
+        .trim()
+        .min(5, { message: "Address must be at least 5 characters long." }),
+});
 
 
-module.exports = { signupSchema, loginSchema, foodDonationSchema, foodRequestSchema };
+
+module.exports = { signupSchema, loginSchema, foodDonationSchema, foodRequestSchema, updateProfileSchema };

@@ -13,6 +13,7 @@ const adminRouter = require("./router/admin-router");
 const volunteerRouter = require("./router/volunteer-router")
 const uploadRoutes = require("./router/uploadRoutes");
 const FoodRequestRoutes = require("./router/foodRequest-router");
+const UserRoutes = require("./router/user-router");
 
 
 
@@ -37,6 +38,7 @@ app.use("/api/admin", adminRouter);
 app.use("/api/volunteer", volunteerRouter);
 app.use("/api/predictions", uploadRoutes);
 app.use("/api/ngo", FoodRequestRoutes);
+app.use("/api/user", UserRoutes);
 
 //error Middleware
 app.use(errorMiddleware);

@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
     }, [token]); // Re-run when token changes (including after login/logout)
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn: !!token, storetokenInLS, LogoutUser, user, authorizationToken, isLoading, API }}>
+        <AuthContext.Provider value={{ isLoggedIn: !!token, storetokenInLS, LogoutUser, user, setUser, authorizationToken, isLoading, API }}>
             {isLoading ? <Spinner /> : children} {/* Show Spinner until data is fetched */}
         </AuthContext.Provider>
     );

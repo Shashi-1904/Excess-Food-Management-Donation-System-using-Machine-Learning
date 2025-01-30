@@ -9,9 +9,9 @@ const authMiddleware = require("../middlewares/auth-middleware")
 router.route("/register").post(validate(signupSchema), authcontrollers.register);
 
 //login route
-router.route("/login").post(validate(loginSchema), authcontrollers.login)
+router.route("/login").post(validate(loginSchema), authcontrollers.login);
 
 //
-router.route("/user").get(authMiddleware, authcontrollers.user)
+router.route("/user").get(authMiddleware, authcontrollers.user);
 
 module.exports = router;
