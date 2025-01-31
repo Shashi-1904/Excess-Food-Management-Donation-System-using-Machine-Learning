@@ -1,105 +1,53 @@
-import React, { useState } from 'react';
-import { FaUser, FaBell, FaCogs } from 'react-icons/fa'; // React Icons
-
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaUser, FaCog, FaMoon, FaSun, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { useAuth } from "../../store/auth";
+import { NavLink } from "react-router-dom";
 function Settings() {
-    const [profile, setProfile] = useState({
-        name: 'Admin Name',
-        email: 'admin@example.com',
-    });
+    const { user } = useAuth();
+    const { username, email, address } = user || {};
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
-    const handleProfileChange = (e) => {
-        const { name, value } = e.target;
-        setProfile({ ...profile, [name]: value });
-    };
+    useEffect(() => {
+        document.body.style.backgroundColor = theme === 'dark' ? '#343a40' : '#ffffff';
+        document.body.style.color = theme === 'dark' ? '#ffffff' : '#000000';
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
-    const handleSaveProfile = () => {
-        alert('Profile updated successfully!');
-        // Save profile changes to the database via API
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
     return (
-        <div className="container mt-5">
-            <h2 className="mb-4 text-center">Settings</h2>
+        <div className="container-fluid" style={{ minHeight: '89vh', paddingTop: '60px' }}>
+            <div className="content" style={{ marginLeft: '200px', padding: '20px' }}>
+                <h2><FaCog className="me-2" />Hotel Settings</h2>
 
-            <div className="row">
-                {/* User Profile Settings */}
-                <div className="col-md-12 mb-4">
-                    <div className="card shadow-sm rounded">
-                        <div className="card-header bg-success text-white">
-                            <FaUser className="me-2" /> Profile Settings
-                        </div>
-                        <div className="card-body">
-                            <form>
-                                <div className="mb-3">
-                                    <label className="form-label">Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={profile.name}
-                                        onChange={handleProfileChange}
-                                        className="form-control shadow-sm"
-                                        placeholder="Enter your name"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label className="form-label">Email</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={profile.email}
-                                        onChange={handleProfileChange}
-                                        className="form-control shadow-sm"
-                                        placeholder="Enter your email"
-                                    />
-                                </div>
-                                <button
-                                    type="button"
-                                    className="btn btn-success w-100 py-2 shadow-sm"
-                                    onClick={handleSaveProfile}
-                                >
-                                    Save Changes
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                {/* Hotel Profile Section */}
+                <div className="card p-3 mb-4" style={{ backgroundColor: theme === 'dark' ? '#495057' : '#ffffff', color: theme === 'dark' ? '#ffffff' : '#000000' }}>
+                    <h4>Hotel Profile</h4>
+                    <p><FaUser className="me-2 text-primary" /> <strong>Name:</strong> {username || "N/A"}</p>
+                    <p><FaEnvelope className="me-2 text-success" /> <strong>Email:</strong> {email || "N/A"}</p>
+                    <p><FaMapMarkerAlt className="me-2 text-danger" /> <strong>Address:</strong> {address || "N/A"}</p>
                 </div>
 
-                {/* System Configuration */}
-                <div className="col-md-12 mb-4">
-                    <div className="card shadow-sm rounded">
-                        <div className="card-header bg-warning text-white">
-                            <FaBell className="me-2" /> System Configuration
-                        </div>
-                        <div className="card-body">
-                            <div className="form-check mb-3">
-                                <input type="checkbox" className="form-check-input" id="emailAlerts" />
-                                <label className="form-check-label" htmlFor="emailAlerts">
-                                    Enable Email Alerts
-                                </label>
-                            </div>
-                            <div className="form-check mb-3">
-                                <input type="checkbox" className="form-check-input" id="volunteerNotifications" />
-                                <label className="form-check-label" htmlFor="volunteerNotifications">
-                                    Enable Volunteer Notifications
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                {/* General Settings Section */}
+                <div className="card p-3 mb-4" style={{ backgroundColor: theme === 'dark' ? '#495057' : '#ffffff', color: theme === 'dark' ? '#ffffff' : '#000000' }}>
+                    <h4><FaCog className="me-2" /> General Settings</h4>
+                    <p>Manage your hotel settings and preferences.</p>
+                    <NavLink to={"/profile"} className="w-100">
+                        <button className="btn btn-primary w-100">Update Profile</button>
+                    </NavLink>
                 </div>
 
-                {/* Access Control */}
-                <div className="col-md-12 mb-4">
-                    <div className="card shadow-sm rounded">
-                        <div className="card-header bg-info text-white">
-                            <FaCogs className="me-2" /> Access Control
-                        </div>
-                        <div className="card-body">
-                            <p>Manage roles and permissions for users in the system.</p>
-                            <button className="btn btn-warning w-100 py-2 shadow-sm">
-                                View Users & Manage Roles
-                            </button>
-                        </div>
-                    </div>
+                {/* Theme Toggle */}
+                <div className="card p-3" style={{ backgroundColor: theme === 'dark' ? '#495057' : '#ffffff', color: theme === 'dark' ? '#ffffff' : '#000000' }}>
+                    <h4><FaMoon className="me-2" /> Theme Settings</h4>
+                    <p>Switch between Light and Dark mode.</p>
+                    <button onClick={toggleTheme} className="btn btn-secondary">
+                        {theme === 'light' ? <><FaMoon className="me-2" /> Dark Mode</> : <><FaSun className="me-2" /> Light Mode</>}
+                    </button>
                 </div>
             </div>
         </div>

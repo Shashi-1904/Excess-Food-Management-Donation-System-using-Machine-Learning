@@ -19,7 +19,7 @@ function GetRecommendation() {
                 }
                 const data = await response.json();
                 setRecommendations(data.recommendations);
-                toast.success("Recommendations fetched successfully!");
+
             } catch (err) {
                 toast.error(err.message);
             } finally {

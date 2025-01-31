@@ -116,3 +116,23 @@ exports.getMatchingRequests = async (req, res) => {
         return res.status(500).json({ message: "An error occurred. Please try again later." });
     }
 };
+
+exports.updateRequestStatus = async (req, res) => {
+    const { requestId, status } = req.body;
+    try {
+        const request = await FoodRequest.findById(requestId);
+
+        if (!request) {
+            return res.status(404).json({ message: "Food request not found" });
+        }
+
+        // Update request status
+        request.status = status;
+        await request.save();
+
+        res.status(200).json({ message: "Request status updated successfully", request });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server Error" });
+    }
+};

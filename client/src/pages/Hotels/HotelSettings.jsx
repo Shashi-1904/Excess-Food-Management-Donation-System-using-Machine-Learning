@@ -36,7 +36,9 @@ function HotelSettings() {
                 <div className="card p-3 mb-4" style={{ backgroundColor: theme === 'dark' ? '#495057' : '#ffffff', color: theme === 'dark' ? '#ffffff' : '#000000' }}>
                     <h4><FaCog className="me-2" /> General Settings</h4>
                     <p>Manage your hotel settings and preferences.</p>
-                    <button className="btn btn-primary">Update Profile</button>
+                    <NavLink to={"/profile"} className="w-100">
+                        <button className="btn btn-primary w-100">Update Profile</button>
+                    </NavLink>
                 </div>
 
                 {/* Theme Toggle */}
