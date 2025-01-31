@@ -1,25 +1,62 @@
-// Hotel Dashboard Home Page Layout
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useAuth } from "../../store/auth";
 
 function HotelDashboard() {
+    const { authorizationToken, API } = useAuth();
+
+    const [totalDonated, setTotalDonated] = useState(0);
+    const [totalWastage, setTotalWastage] = useState(0);
+    const [previousDonationStatus, setPreviousDonationStatus] = useState("No donations yet");
+    const [latestDonation, setLatestDonation] = useState("No new donations");
+
+    useEffect(() => {
+        const fetchDonationHistory = async () => {
+            try {
+                const response = await fetch(`${API}/api/hotel/history`, {
+                    headers: {
+                        Authorization: authorizationToken,
+                    },
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.length > 0) {
+                        const totalQty = data.reduce((sum, donation) => sum + donation.quantity, 0);
+
+
+                        setTotalDonated(totalQty);
+
+
+                        setPreviousDonationStatus(data[data.length - 1].status || "Unknown");
+                        setLatestDonation(data[data.length - 1].foodName || "Unknown Item");
+                    }
+                } else {
+                    console.error("Failed to fetch donation history:", data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching donation history:', error);
+            }
+        };
+
+        fetchDonationHistory();
+    }, [API, authorizationToken]);
+
     return (
         <div className="container-fluid" style={{
             display: 'flex',
-            minHeight: '100vh', // Ensure the content covers the full screen height
-            paddingTop: '60px', // Space for the horizontal navbar
+            minHeight: '90vh',
+            paddingTop: '60px',
         }}>
             {/* Main Content Area */}
-            <div
-                className="content"
-                style={{
-                    marginLeft: '200px',  // Reserve space for the sidebar
-                    width: 'calc(100% - 200px)',  // Ensure the content takes the rest of the width
-                    overflowY: 'auto', // Make sure content is scrollable vertically if needed
-                    padding: '20px',
-                    zIndex: '500', // Ensure content is below the fixed navbar and sidebar
-                }}
-            >
+            <div className="content" style={{
+                marginLeft: '200px',
+                width: 'calc(100% - 200px)',
+                overflowY: 'auto',
+                padding: '20px',
+                zIndex: '500',
+            }}>
                 {/* Welcome Section */}
                 <div className="row mb-4">
                     <div className="col-12">
@@ -32,9 +69,9 @@ function HotelDashboard() {
                 <div className="row mb-4">
                     <div className="col-md-3">
                         <div className="card text-white bg-success mb-3">
-                            <div className="card-header">Food Donated</div>
+                            <div className="card-header">Total Food Donated</div>
                             <div className="card-body">
-                                <h5 className="card-title">300 Kg</h5>
+                                <h5 className="card-title">{totalDonated} Kg</h5>
                             </div>
                         </div>
                     </div>
@@ -48,55 +85,44 @@ function HotelDashboard() {
                     </div>
                     <div className="col-md-3">
                         <div className="card text-white bg-warning mb-3">
-                            <div className="card-header">Predicted Demand</div>
+                            <div className="card-header">Previous Donation Status</div>
                             <div className="card-body">
-                                <h5 className="card-title">450 Kg (Next 7 Days)</h5>
+                                <h5 className="card-title">{previousDonationStatus}</h5>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="card text-white bg-info mb-3">
-                            <div className="card-header">Food Wastage</div>
+                            <div className="card-header">Total Food Wastage</div>
                             <div className="card-body">
-                                <h5 className="card-title">200 Kg</h5>
+                                <h5 className="card-title">{totalDonated} Kg</h5>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Recent Activities Section */}
-                <div className="row mb-4">
+                <div className="row mb-4" style={{ marginTop: '5em' }}>
                     <div className="col-12">
-                        <h3>Recent Activities</h3>
+                        <h2>Recent Activities</h2>
                         <ul className="list-group">
-                            <li className="list-group-item">New Donation Added: 50 Kg of Vegetables</li>
-                            <li className="list-group-item">Volunteer Assigned: 30 Kg of Fruits</li>
+                            <li className="list-group-item">New Donation Added: {latestDonation}</li>
+                            <li className="list-group-item">Previous Donation Status: {previousDonationStatus}</li>
                             <li className="list-group-item">Wastage Data Submitted for Analytics</li>
                         </ul>
                     </div>
                 </div>
 
-                {/* Analytics Summary Section */}
-                <div className="row mb-4">
-                    <div className="col-12">
-                        <h3>Donation and Wastage Analytics</h3>
-                        {/* Placeholder for Chart */}
-                        <div className="chart-placeholder" style={{ height: '300px', backgroundColor: '#f0f0f0' }}>
-                            <p>Chart showing donation trends and wastage reduction over time.</p>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Actionable Shortcuts Section */}
-                <div className="row">
+                <div className="row" style={{ marginTop: '8em' }}>
                     <div className="col-md-4">
                         <button className="btn btn-success btn-block">Add New Donation</button>
                     </div>
                     <div className="col-md-4">
-                        <button className="btn btn-primary btn-block">Assign Volunteer</button>
+                        <button className="btn btn-primary btn-block">Hotel Analytics</button>
                     </div>
                     <div className="col-md-4">
-                        <button className="btn btn-info btn-block">View Detailed Analytics</button>
+                        <button className="btn btn-info btn-block">View Previous Donations</button>
                     </div>
                 </div>
             </div>

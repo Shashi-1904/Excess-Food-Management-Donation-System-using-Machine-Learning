@@ -14,8 +14,7 @@ const volunteerRouter = require("./router/volunteer-router")
 const uploadRoutes = require("./router/uploadRoutes");
 const FoodRequestRoutes = require("./router/foodRequest-router");
 const UserRoutes = require("./router/user-router");
-
-
+const HotelRoutes = require("./router/hotel-router")
 
 //allow cors
 const corsOptions = {
@@ -39,6 +38,7 @@ app.use("/api/volunteer", volunteerRouter);
 app.use("/api/predictions", uploadRoutes);
 app.use("/api/ngo", FoodRequestRoutes);
 app.use("/api/user", UserRoutes);
+app.use("/api/hotel", HotelRoutes);
 
 //error Middleware
 app.use(errorMiddleware);

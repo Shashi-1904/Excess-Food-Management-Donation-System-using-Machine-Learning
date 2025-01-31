@@ -29,6 +29,10 @@ import MyDonationHistory from './pages/volunteers/MyDonationHistory';
 import MyMatchingRequests from './pages/volunteers/MyMatchingRequests';
 import VolunteerSettings from './pages/volunteers/VolunteerSettings';
 import GoogleMap from './pages/volunteers/GoogleMap';
+import HotelDonationHistory from './pages/Hotels/HotelDonationHistory';
+import FoodWastage from './pages/Hotels/FoodWastage';
+import HotelSettings from './pages/Hotels/HotelSettings';
+
 function Layout() {
   const location = useLocation();
 
@@ -84,6 +88,9 @@ function App() {
         <Route element={<ProtectedRoute allowedRoles={['hotel']} />}>
           <Route path="/hotel" element={<HotelDashboard />} />
           <Route path="/hotel/analytics" element={<HotelDashboardAnalytics />} />
+          <Route path="/hotel/history" element={<HotelDonationHistory />} />
+          <Route path="/hotel/foodwastage" element={<FoodWastage />} />
+          <Route path="/hotel/settings" element={<HotelSettings />} />
         </Route>
       </Routes>
       <Footer />
