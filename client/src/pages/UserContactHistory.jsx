@@ -18,7 +18,7 @@ function UserContactHistory() {
                 if (response.ok) {
                     const result = await response.json();
                     if (result.success) {
-                        setContacts(result.data); // Load data
+                        setContacts(result.data);
                     } else {
                         console.error("Failed to fetch contacts:", result.message || "Unknown error");
                     }

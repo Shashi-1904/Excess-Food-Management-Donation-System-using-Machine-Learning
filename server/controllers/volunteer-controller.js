@@ -4,7 +4,7 @@ const FoodRequest = require('../models/request-model');
 // Function to get donations assigned to a specific volunteer
 exports.getAssignedDonations = async (req, res) => {
     try {
-        // Get the volunteer's details from the token (userID)
+
         const volunteer = await User.findById(req.user.id);
 
         if (!volunteer) {
@@ -14,8 +14,6 @@ exports.getAssignedDonations = async (req, res) => {
         if (volunteer.role !== 'volunteer') {
             return res.status(403).json({ message: "Not authorized. Only volunteers can view assigned donations." });
         }
-
-        // Find donations assigned to this volunteer
         const donations = await FoodDonation.find({ assignedTo: volunteer.email });
 
         if (!donations.length) {
@@ -29,7 +27,6 @@ exports.getAssignedDonations = async (req, res) => {
     }
 };
 
-// Optional: Function to change the status of a donation (if a volunteer completes a donation)
 exports.updateDonationStatus = async (req, res) => {
     const { donationId, status } = req.body;
 
@@ -40,12 +37,10 @@ exports.updateDonationStatus = async (req, res) => {
             return res.status(404).json({ message: "Donation not found" });
         }
 
-        // Check if the donation is assigned to the volunteer
         if (donation.assignedTo !== req.user.email) {
             return res.status(403).json({ message: "You are not assigned to this donation" });
         }
 
-        // Update donation status
         donation.status = status;
         await donation.save();
 
@@ -59,45 +54,36 @@ exports.updateDonationStatus = async (req, res) => {
 
 
 exports.getMatchingRequests = async (req, res) => {
-    const volunteerId = req.user.email; // Assuming the logged-in volunteer's ID is in req.user
-    const margin = 3; // Margin for quantity comparison
+    const volunteerId = req.user.email;
+    const margin = 3;
 
     try {
-        // Find all donations assigned to the logged-in volunteer
         const assignedDonations = await FoodDonation.find({
             assignedTo: volunteerId,
-            status: { $in: ['assigned', 'picked'] }, // Consider only ongoing donations
+            status: { $in: ['assigned', 'picked'] },
         });
 
         if (!assignedDonations.length) {
             return res.status(404).json({ message: "No assigned donations found for the volunteer." });
         }
 
-        // Extract relevant fields from assigned donations
-        let matchingRequests = [];  // Initialize matchingRequests outside the loop
+        let matchingRequests = [];
 
         for (const donation of assignedDonations) {
             const { foodType, category, quantity } = donation;
+            const currentDate = new Date();
 
-            // Find matching requests
-            const currentDate = new Date();  // Current date to compare
-
-            // Step 1: Retrieve results without filtering by `neededBy`
             const requests = await FoodRequest.find({
                 foodType: foodType,
                 category: category,
                 quantityNeeded: { $gte: quantity - margin, $lte: quantity + margin },
                 status: 'pending',
-            }).lean();  // Use .lean() for better performance (raw JavaScript objects)
-
+            }).lean();
             if (requests.length) {
-                // Step 2: Filter the results in JavaScript
                 const filteredRequests = requests.filter(request => {
-                    const neededByDate = new Date(request.neededBy);  // Convert to Date object if it's not
-                    return neededByDate > currentDate;  // Compare `neededBy` with current date
+                    const neededByDate = new Date(request.neededBy);
+                    return neededByDate > currentDate;
                 });
-
-                // Push matching filtered requests to the main matchingRequests array
                 matchingRequests.push(...filteredRequests);
             }
         }
@@ -125,8 +111,6 @@ exports.updateRequestStatus = async (req, res) => {
         if (!request) {
             return res.status(404).json({ message: "Food request not found" });
         }
-
-        // Update request status
         request.status = status;
         await request.save();
 

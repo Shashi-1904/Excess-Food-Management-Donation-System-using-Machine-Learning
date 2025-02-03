@@ -3,7 +3,7 @@ const FoodDonation = require("../models/donation-model");
 // Get donation history for a hotel by matching email
 exports.getHotelDonations = async (req, res) => {
     try {
-        const hotelEmail = req.user.email; // Assuming email is extracted from authentication middleware
+        const hotelEmail = req.user.email;
 
         const donations = await FoodDonation.find({ email: hotelEmail }).sort({ createdAt: -1 });
 

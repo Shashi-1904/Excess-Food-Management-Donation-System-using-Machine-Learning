@@ -20,6 +20,32 @@ const getAllUsers = async (req, res) => {
     }
 };
 
+// Delete a user
+const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findByIdAndDelete(id);
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "User deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error deleting user",
+            error: error.message,
+        });
+    }
+};
+
 // Get all donations
 const getAllRequests = async (req, res) => {
     try {
@@ -56,14 +82,12 @@ const getAllDonations = async (req, res) => {
 
 const getVolunteerEmails = async (req, res) => {
     try {
-        // Find all users with the role 'volunteer'
-        const volunteers = await User.find({ role: 'volunteer' }).select('email');  // Only selecting 'email' field
+        const volunteers = await User.find({ role: 'volunteer' }).select('email');
 
         if (!volunteers) {
             return res.status(404).json({ message: 'No volunteers found' });
         }
 
-        // Send the list of volunteer emails
         res.status(200).json({ emails: volunteers.map(user => user.email) });
     } catch (error) {
         console.error(error);
@@ -82,7 +106,6 @@ const assignDonation = async (req, res) => {
     }
 
     try {
-        // Find the donation by ID
         const donation = await FoodDonation.findById(donationId);
         if (!donation) {
             return res.status(404).json({
@@ -91,7 +114,6 @@ const assignDonation = async (req, res) => {
             });
         }
 
-        // Check if the donation is already assigned
         if (donation.status !== "pending") {
             return res.status(400).json({
                 success: false,
@@ -99,7 +121,6 @@ const assignDonation = async (req, res) => {
             });
         }
 
-        // Find the user by email
         const user = await User.findOne({ email: userEmail });
         if (!user) {
             return res.status(404).json({
@@ -132,13 +153,11 @@ const replyToMessage = async (req, res) => {
     try {
         const { contactId, reply } = req.body;
 
-        // Check if the message exists
         const contact = await Contact.findById(contactId);
         if (!contact) {
             return res.status(404).json({ message: "Contact message not found" });
         }
 
-        // Update the message with the reply
         contact.reply = reply;
         await contact.save();
 
@@ -169,5 +188,6 @@ module.exports = {
     assignDonation,
     getAllRequests,
     replyToMessage,
-    getAllContacts
+    getAllContacts,
+    deleteUser
 };

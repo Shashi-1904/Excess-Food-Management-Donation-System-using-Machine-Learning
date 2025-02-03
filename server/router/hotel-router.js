@@ -1,6 +1,6 @@
 const express = require("express");
 const { getHotelDonations } = require("../controllers/hotel-controller");
-const authMiddleware = require("../middlewares/auth-middleware") // Middleware for authentication
+const authMiddleware = require("../middlewares/auth-middleware")
 
 const router = express.Router();
 

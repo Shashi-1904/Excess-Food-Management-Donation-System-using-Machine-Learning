@@ -50,7 +50,6 @@ header {
     color: #333;
     background: none;
     text-decoration: none;
-    /* Ensure no text decoration by default */
 }
 
 .nav-link:hover {

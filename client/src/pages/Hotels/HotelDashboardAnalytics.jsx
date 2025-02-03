@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom"; // Use useNavigate instead of useHistory
-import { Bar } from "react-chartjs-2"; // Import the Bar chart component from react-chartjs-2
+import { useNavigate } from "react-router-dom";
+import { Bar } from "react-chartjs-2";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -10,17 +10,17 @@ import {
     Title,
     Tooltip,
     Legend,
-} from "chart.js"; // Import necessary Chart.js components
+} from "chart.js";
 
 // Register the chart components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function HotelDashboardAnalytics() {
-    const [file, setFile] = useState(null); // Store the file selected by the user
-    const [predictions, setPredictions] = useState([]); // Store predictions from API
-    const [loading, setLoading] = useState(false); // Loading state for file upload
-    const [error, setError] = useState(null); // Error handling state
-    const navigate = useNavigate(); // Initialize the navigate function
+    const [file, setFile] = useState(null);
+    const [predictions, setPredictions] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     // Handle file input change
     const handleFileChange = (e) => {
@@ -41,7 +41,6 @@ function HotelDashboardAnalytics() {
             setLoading(true);
             setError(null);
 
-            // Send file to backend (Replace with your backend URL)
             const response = await fetch("http://localhost:3000/api/predictions/response", {
                 method: "POST",
                 body: formData,
@@ -63,15 +62,15 @@ function HotelDashboardAnalytics() {
 
     // Prepare data for the bar chart
     const chartData = {
-        labels: predictions.map((prediction) => prediction.Date), // Dates as x-axis labels
+        labels: predictions.map((prediction) => prediction.Date),
         datasets: [
             {
                 label: "Predicted Quantity Ordered (kg)",
                 data: predictions.map(
                     (prediction) => prediction["Predicted Quantity Ordered (kg)"]
                 ),
-                backgroundColor: "rgba(75, 192, 192, 0.2)", // Bar color
-                borderColor: "rgba(75, 192, 192, 1)", // Border color
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
                 borderWidth: 1,
             },
         ],
@@ -89,8 +88,8 @@ function HotelDashboardAnalytics() {
             <div
                 className="content"
                 style={{
-                    marginLeft: "200px", // Ensure the main content area shifts to the right
-                    width: "calc(100% - 200px)", // Adjust the width accordingly
+                    marginLeft: "200px",
+                    width: "calc(100% - 200px)",
                     overflowY: "auto",
                     padding: "20px",
                     zIndex: "500",
@@ -136,7 +135,7 @@ function HotelDashboardAnalytics() {
                                     tooltip: {
                                         callbacks: {
                                             label: function (tooltipItem) {
-                                                return `${tooltipItem.raw.toFixed(2)} kg`; // Format tooltip
+                                                return `${tooltipItem.raw.toFixed(2)} kg`;
                                             },
                                         },
                                     },
@@ -153,7 +152,7 @@ function HotelDashboardAnalytics() {
                                             display: true,
                                             text: "Predicted Quantity (kg)",
                                         },
-                                        beginAtZero: true, // Start y-axis from 0
+                                        beginAtZero: true,
                                     },
                                 },
                             }}

@@ -4,8 +4,8 @@ const Contact = require("../models/contact-model");
 // Get user conatct history
 const getUserContactHistory = async (req, res) => {
     try {
-        const email = req.user.email; // Get email from authenticated user
-        const contactHistory = await Contact.find({ email }).sort({ _id: -1 }); // Get messages in descending order
+        const email = req.user.email;
+        const contactHistory = await Contact.find({ email }).sort({ _id: -1 });
 
         return res.status(200).json({
             success: true,
@@ -24,9 +24,7 @@ const getUserContactHistory = async (req, res) => {
 const updateProfile = async (req, res) => {
     try {
         const { username, phoneNumber, address } = req.body;
-        const userId = req.user.id; // Assuming user ID is extracted from JWT authentication middleware
-
-        // Find and update user
+        const userId = req.user.id;
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             { username, phoneNumber, address },

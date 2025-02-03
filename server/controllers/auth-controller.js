@@ -6,14 +6,11 @@ const register = async (req, res, next) => {
         // console.log(req.body);
         const { username, email, phoneNumber, password, role, address } = req.body;
 
-        // Check if user exist
         const userExists = await User.findOne({ email });
 
         if (userExists) {
             return res.status(400).json({ message: "Email already exists" });
         }
-
-        // Create the new user
         const userCreate = await User.create({
             username,
             email,
@@ -22,11 +19,9 @@ const register = async (req, res, next) => {
             role,
             address
         });
-
-        // Respond with success message and user data
         res.status(201).json({
             message: "Registration Successful!!!",
-            token: await userCreate.generateToken(),  // Assuming a method exists for generating tokens
+            token: await userCreate.generateToken(),
             userId: userCreate._id.toString()
         });
     } catch (error) {
@@ -37,7 +32,7 @@ const register = async (req, res, next) => {
 
 const login = async (req, res) => {
     try {
-        const { email, password } = req.body; // Ensure you're using 'password'
+        const { email, password } = req.body;
 
         // Check if user exists
         const userExists = await User.findOne({ email });
@@ -46,13 +41,13 @@ const login = async (req, res) => {
         }
 
         // Compare passwords
-        const isPasswordValid = await userExists.comparePassword(password); // Use 'password'
+        const isPasswordValid = await userExists.comparePassword(password);
         if (isPasswordValid) {
             return res.status(200).json({
                 message: "Login Successful!!!",
                 token: await userExists.generateToken(),
                 userId: userExists._id.toString(),
-                role: userExists.role // Include the user's role in the response
+                role: userExists.role
             });
         } else {
             return res.status(401).json({ message: "Invalid username or password" });

@@ -42,7 +42,7 @@ const Register = () => {
             const response = await fetch(URL, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json", // Corrected the case here
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(user),
             });
@@ -89,7 +89,7 @@ const Register = () => {
 
 
     const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword); // Toggle password visibility
+        setShowPassword(!showPassword);
     };
 
     return (
@@ -140,7 +140,7 @@ const Register = () => {
                                         <label htmlFor="phoneNumber">Phone</label>
                                         <input
                                             type="number"
-                                            name="phoneNumber" // Updated the name to match the backend field
+                                            name="phoneNumber"
                                             placeholder="Phone number"
                                             id="phoneNumber"
                                             required

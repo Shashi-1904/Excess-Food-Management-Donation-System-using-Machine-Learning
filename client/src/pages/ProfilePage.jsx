@@ -26,7 +26,7 @@ function ProfilePage() {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: authorizationToken, // Assuming you have a token stored
+                    Authorization: authorizationToken,
                 },
                 body: JSON.stringify(formData),
             });
@@ -36,23 +36,23 @@ function ProfilePage() {
             if (response.status === 422) {
                 const errorDetails = res_data.errors.map(error => `${error.field}: ${error.message}`);
                 errorDetails.forEach(err => toast.error(err));
-                return; // Stop further execution
+                return;
             }
 
             if (!response.ok) {
                 throw new Error(res_data.message || "Failed to update profile");
             }
 
-            // ✅ Show success toast
+
             toast.success(res_data.message || "Profile updated successfully!");
 
-            // ✅ Correctly update user state with `res_data.user`
+
             setUser((prevUser) => ({
-                ...prevUser,      // Keep existing user data
-                ...res_data.user  // Update only the changed fields
+                ...prevUser,
+                ...res_data.user
             }));
 
-            // ✅ Exit edit mode
+
             setEditMode(false);
         } catch (error) {
 
@@ -144,7 +144,7 @@ function ProfilePage() {
                                     <input
                                         type="password"
                                         className="form-control border-0 bg-light"
-                                        value="**********" // Keep password hidden
+                                        value="**********"
                                         readOnly
                                         style={{ maxWidth: "80%", fontSize: "1.2rem" }}
                                     />

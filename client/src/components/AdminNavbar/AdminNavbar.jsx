@@ -23,8 +23,8 @@ function AdminNavbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav ms-auto"> {/* Aligns items to the right */}
-                        <li className="nav-item mx-3"> {/* Adds spacing between items */}
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item mx-3">
                             <NavLink className="nav-link text-white" to="/">
                                 <FaHome className="me-2" />Return to Home
                             </NavLink>

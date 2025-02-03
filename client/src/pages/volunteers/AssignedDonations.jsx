@@ -19,7 +19,6 @@ function AssignedDonations() {
                 const data = await response.json();
 
                 if (response.ok && data.donations) {
-                    // Filter out donations with status 'completed'
                     const filteredDonations = data.donations.filter(
                         (donation) => donation.status !== 'completed'
                     );
@@ -55,14 +54,14 @@ function AssignedDonations() {
             const data = await response.json();
 
             if (response.ok) {
-                toast.success(data.message); // Notify the user
+                toast.success(data.message);
 
                 setDonations((prevDonations) => {
                     if (status === 'completed') {
-                        // Remove the donation with the given ID if the status is 'completed'
+
                         return prevDonations.filter((donation) => donation._id !== donationId);
                     }
-                    // Update the status for the specific donation
+
                     return prevDonations.map((donation) =>
                         donation._id === donationId ? { ...donation, status } : donation
                     );
@@ -74,7 +73,7 @@ function AssignedDonations() {
             console.error('Error updating donation status:', error);
             toast.error('An error occurred. Please try again.');
         } finally {
-            setActionDropdown(null); // Close the dropdown after updating
+            setActionDropdown(null);
         }
     };
 

@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from '../../store/auth';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-
-// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 
@@ -19,7 +17,7 @@ function AdminDashboard() {
     const [donationStats, setDonationStats] = useState({ pending: 0, assigned: 0, picked: 0, completed: 0 });
     const { authorizationToken, API } = useAuth();
 
-    // Fetch data from APIs
+
     useEffect(() => {
         // Fetch Users
         const fetchUsers = async () => {
@@ -33,7 +31,6 @@ function AdminDashboard() {
                         setTotalUsers(result.data.length);
                         const volunteers = result.data.filter(user => user.role === 'volunteer');
                         setActiveVolunteers(volunteers.length);
-                        // Get the most recent registration
                         if (result.data.length > 0) {
                             const sortedUsers = result.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
                             setRecentRegistration(sortedUsers[0].username);

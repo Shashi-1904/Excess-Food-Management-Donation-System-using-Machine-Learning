@@ -11,7 +11,7 @@ export default function Login() {
         password: ""
     });
 
-    const [loading, setLoading] = useState(false); // Manage loading state
+    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const { storetokenInLS, API } = useAuth();

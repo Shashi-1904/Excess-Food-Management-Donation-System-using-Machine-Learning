@@ -50,7 +50,7 @@ function DonationTable() {
             if (response.ok) {
                 const result = await response.json();
                 if (result.emails) {
-                    setVolunteerEmails(result.emails); // Extract the `emails` field
+                    setVolunteerEmails(result.emails);
                 } else {
                     console.error("Failed to fetch emails:", result.message || "Unknown error");
                 }

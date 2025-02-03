@@ -1,6 +1,5 @@
 const validate = (schema) => async (req, res, next) => {
     try {
-        // Validate the request body using the Zod schema
         const parseBody = await schema.parseAsync(req.body);
         req.body = parseBody;
         next();

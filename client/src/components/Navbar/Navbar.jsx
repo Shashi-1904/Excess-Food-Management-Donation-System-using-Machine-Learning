@@ -20,7 +20,6 @@ export default function Navbar() {
                     </div>
                     <nav>
                         <ul>
-                            {/* Always visible links */}
                             <li>
                                 <NavLink
                                     to="/"
@@ -92,7 +91,7 @@ export default function Navbar() {
                                 </>
                             )}
 
-                            {/* About & Contact - Always Available */}
+
                             <li>
                                 <NavLink
                                     to="/about"

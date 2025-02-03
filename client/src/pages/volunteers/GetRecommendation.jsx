@@ -4,8 +4,8 @@ import { useAuth } from "../../store/auth";
 import { toast } from 'react-toastify';
 
 function GetRecommendation() {
-    const { user } = useAuth(); // Get user details and API base URL from context
-    const API = "http://127.0.0.1:5000"
+    const { user, API } = useAuth();
+
     const [recommendations, setRecommendations] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -33,16 +33,16 @@ function GetRecommendation() {
     return (
         <div className="container-fluid" style={{
             display: 'flex',
-            minHeight: '100vh', // Ensure full-screen height
-            paddingTop: '60px', // Space for navbar
+            minHeight: '100vh',
+            paddingTop: '60px',
         }}>
             {/* Main Content Area */}
             <div
                 className="content"
                 style={{
-                    marginLeft: '200px', // Reserve space for sidebar
-                    width: 'calc(100% - 200px)', // Content takes the rest of the width
-                    overflowY: 'auto', // Scrollable if needed
+                    marginLeft: '200px',
+                    width: 'calc(100% - 200px)',
+                    overflowY: 'auto',
                     padding: '20px',
                 }}
             >

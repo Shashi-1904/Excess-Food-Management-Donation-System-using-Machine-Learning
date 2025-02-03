@@ -1,17 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Spinner from "../components/Spinner/Spinner";
 import { toast } from 'react-toastify';
-// Import useNavigate for redirection
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem("token"));
-    const [user, setUser] = useState(null); // Initialize as null
+    const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const authorizationToken = token ? `Bearer ${token}` : null; // Only set if token exists
+    const authorizationToken = token ? `Bearer ${token}` : null;
     const API = import.meta.env.VITE_URI_API;
-    // Initialize useNavigate for redirecting
+
 
     // Store token in localStorage
     const storetokenInLS = (serverToken) => {
@@ -23,21 +22,25 @@ export const AuthProvider = ({ children }) => {
     const LogoutUser = () => {
         setToken("");
         localStorage.removeItem("token");
-        toast.success("Logout Successful")
-        // navigate("/login"); // Redirect to login page on logout
+        toast.success("Logout Successful");
+
+        setTimeout(() => {
+            window.location.href = "/login";
+        }, 2000);
     };
+
 
     // JWT Authentication to get data of currently logged in user
     const userAuthentication = async () => {
         if (!token) {
-            // If no token exists, skip the API call or redirect to login
-            setIsLoading(false); // Stop loading as there's no need to fetch data
-            setUser(null); // No user data
+
+            setIsLoading(false);
+            setUser(null);
             return;
         }
 
         try {
-            setIsLoading(true); // Start loading
+            setIsLoading(true);
             const response = await fetch(`${API}/api/auth/user`, {
                 method: "GET",
                 headers: {
@@ -47,25 +50,25 @@ export const AuthProvider = ({ children }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                setUser(data.userData); // Set user data once fetched
+                setUser(data.userData);
             } else {
-                setUser(null); // If fetching fails, set user to null
+                setUser(null);
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
-            setUser(null); // Handle error and set user to null
+            setUser(null);
         } finally {
-            setIsLoading(false); // Stop loading
+            setIsLoading(false);
         }
     };
 
     useEffect(() => {
         userAuthentication();
-    }, [token]); // Re-run when token changes (including after login/logout)
+    }, [token]);
 
     return (
         <AuthContext.Provider value={{ isLoggedIn: !!token, storetokenInLS, LogoutUser, user, setUser, authorizationToken, isLoading, API }}>
-            {isLoading ? <Spinner /> : children} {/* Show Spinner until data is fetched */}
+            {isLoading ? <Spinner /> : children}
         </AuthContext.Provider>
     );
 };
