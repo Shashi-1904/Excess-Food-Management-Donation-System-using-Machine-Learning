@@ -1,4 +1,24 @@
-const User = require("../models/user-model"); // Import User model
+const User = require("../models/user-model");
+const Contact = require("../models/contact-model");
+
+// Get user conatct history
+const getUserContactHistory = async (req, res) => {
+    try {
+        const email = req.user.email; // Get email from authenticated user
+        const contactHistory = await Contact.find({ email }).sort({ _id: -1 }); // Get messages in descending order
+
+        return res.status(200).json({
+            success: true,
+            data: contactHistory
+        });
+    } catch (error) {
+        console.error("Error fetching user contact history:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error"
+        });
+    }
+};
 
 // Update user profile
 const updateProfile = async (req, res) => {
@@ -31,4 +51,4 @@ const updateProfile = async (req, res) => {
     }
 };
 
-module.exports = { updateProfile };
+module.exports = { updateProfile, getUserContactHistory };

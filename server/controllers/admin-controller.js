@@ -1,6 +1,8 @@
 const User = require("../models/user-model");
 const FoodDonation = require("../models/donation-model");
 const FoodRequest = require("../models/request-model")
+const Contact = require("../models/contact-model");
+
 // Get all users
 const getAllUsers = async (req, res) => {
     try {
@@ -125,6 +127,40 @@ const assignDonation = async (req, res) => {
     }
 };
 
+// Controller function to reply to a contact message
+const replyToMessage = async (req, res) => {
+    try {
+        const { contactId, reply } = req.body;
+
+        // Check if the message exists
+        const contact = await Contact.findById(contactId);
+        if (!contact) {
+            return res.status(404).json({ message: "Contact message not found" });
+        }
+
+        // Update the message with the reply
+        contact.reply = reply;
+        await contact.save();
+
+        res.status(200).json({ message: "Reply sent successfully", contact });
+    } catch (error) {
+        console.error("Error replying to contact message:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+// Get all contact messages
+const getAllContacts = async (req, res) => {
+    try {
+        const contacts = await Contact.find().sort({ createdAt: -1 });
+        res.status(200).json(contacts);
+    } catch (error) {
+        console.error("Error fetching contact messages:", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
+
 // Export controller functions
 module.exports = {
     getAllUsers,
@@ -132,4 +168,6 @@ module.exports = {
     getVolunteerEmails,
     assignDonation,
     getAllRequests,
+    replyToMessage,
+    getAllContacts
 };

@@ -32,6 +32,8 @@ import GoogleMap from './pages/volunteers/GoogleMap';
 import HotelDonationHistory from './pages/Hotels/HotelDonationHistory';
 import FoodWastage from './pages/Hotels/FoodWastage';
 import HotelSettings from './pages/Hotels/HotelSettings';
+import ContactMessages from './pages/Admin/ContactMessages';
+import UserContactHistory from './pages/UserContactHistory';
 
 function Layout() {
   const location = useLocation();
@@ -65,6 +67,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/contact-history' element={<UserContactHistory />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/donatefood' element={<DonateFood />} />
         <Route path='/foodrequest' element={<FoodRequestForm />} />
@@ -75,6 +78,7 @@ function App() {
           <Route path="/admin/getusers" element={<UsersTable />} />
           <Route path="/admin/requests" element={<RequestsTable />} />
           <Route path="/admin/settings" element={<Settings />} />
+          <Route path="/admin/contacts" element={<ContactMessages />} />
         </Route>
         <Route element={<ProtectedRoute allowedRoles={['volunteer']} />}>
           <Route path="/volunteer" element={<VolunteerDashboard />} />

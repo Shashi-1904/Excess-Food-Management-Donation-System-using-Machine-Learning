@@ -1,7 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../store/auth'
 import { toast } from 'react-toastify';
+import { NavLink } from "react-router-dom";
 
 //default form content
 const defaultContactForm = {
@@ -19,14 +20,15 @@ export default function Contact() {
 
     const URL = `${API}/api/form/contact`;
 
-    if (userData && user) {
-        setContact({
-            username: user.username,
-            email: user.email,
-            message: "",
-        });
-        setUserData(false);
-    }
+    useEffect(() => {
+        if (user) {
+            setContact({
+                username: user.username,
+                email: user.email,
+                message: "",
+            });
+        }
+    }, [user]);
 
     const handleInput = (e) => {
         const name = e.target.name;
@@ -41,9 +43,7 @@ export default function Contact() {
 
     }
     const handleSubmit = async (e) => {
-
         e.preventDefault();
-        //backend connection
         try {
             const response = await fetch(URL, {
                 method: "POST",
@@ -54,22 +54,22 @@ export default function Contact() {
             });
 
             if (response.ok) {
-
-                setContact(defaultContactForm);
                 const data = await response.json();
-                toast.success("Message sent Successful")
+                toast.success("Message sent successfully");
+
+                // Reset only the message field, preserving username & email
+                setContact((prevContact) => ({
+                    ...prevContact,
+                    message: "",
+                }));
+
                 console.log(data);
-
             }
-
-
-
         } catch (error) {
             console.log("contact", error);
         }
-
-
     };
+
 
     return (
         <div>
@@ -104,10 +104,12 @@ export default function Contact() {
                                 <textarea name="message" id="message" cols="30" rows="5" autoComplete='off' required value={contact.message} onChange={handleInput}></textarea>
                             </div>
 
-                            <div>
-                                <button type='submit'>
-                                    Submit
-                                </button>
+                            {/* Button Container */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+                                <button type="submit" className="btn btn-lg btn-success">Submit</button>
+                                <NavLink to={"/contact-history"}>
+                                    <button className="btn btn-lg btn-success">Contact History</button>
+                                </NavLink>
                             </div>
 
 

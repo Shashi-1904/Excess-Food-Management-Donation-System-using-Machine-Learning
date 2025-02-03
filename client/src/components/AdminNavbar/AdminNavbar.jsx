@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../store/auth';
 import { FaHome, FaUsers, FaDonate, FaChartBar, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { MdMessage } from 'react-icons/md';
 
 function AdminNavbar() {
     const { isLoggedIn, LogoutUser, user } = useAuth();
@@ -64,6 +65,11 @@ function AdminNavbar() {
                         <li className="nav-item">
                             <NavLink className="nav-link text-white" to="/admin/requests">
                                 <FaDonate className="me-2" /> Food Requests
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link text-white" to="/admin/contacts">
+                                <MdMessage className="me-2" /> User Inquiries
                             </NavLink>
                         </li>
                         {/* <li className="nav-item">

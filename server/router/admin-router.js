@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getAllUsers, getAllDonations, getVolunteerEmails, assignDonation, getAllRequests } = require("../controllers/admin-controller");
+const { getAllUsers, getAllDonations, getVolunteerEmails, assignDonation, getAllRequests, replyToMessage, getAllContacts } = require("../controllers/admin-controller");
 const isAdmin = require("../middlewares/isAdmin"); // Middleware to check admin role
 const authMiddleware = require("../middlewares/auth-middleware")
 
@@ -10,5 +10,15 @@ router.get("/donations", authMiddleware, isAdmin, getAllDonations);
 router.get("/requests", authMiddleware, isAdmin, getAllRequests);
 router.get('/emails', authMiddleware, isAdmin, getVolunteerEmails);
 router.post("/assign-donation", authMiddleware, isAdmin, assignDonation);
+router.post("/reply", authMiddleware, isAdmin, replyToMessage);
+router.get("/contacts", authMiddleware, isAdmin, getAllContacts);
 
 module.exports = router;
+
+
+
+
+
+
+
+

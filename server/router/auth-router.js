@@ -15,3 +15,5 @@ router.route("/login").post(validate(loginSchema), authcontrollers.login);
 router.route("/user").get(authMiddleware, authcontrollers.user);
 
 module.exports = router;
+
+
