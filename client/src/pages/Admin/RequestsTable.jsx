@@ -58,7 +58,7 @@ function RequestsTable() {
                     <div className="col-12">
                         <h2 style={{ fontSize: "2rem" }}>All Requests</h2>
                         <p style={{ fontSize: "1.2rem" }}>
-                            View all food requests from this page.
+                            View and Manage all food requests.
                         </p>
                     </div>
                 </div>
@@ -67,35 +67,30 @@ function RequestsTable() {
                 <div className="table-responsive">
                     <table
                         className="table table-striped table-hover"
-                        style={{ fontSize: "1.4rem" }}
+                        style={{ fontSize: "1.4rem", width: "100%" }}
                     >
                         <thead className="thead-dark">
                             <tr>
-                                <th>#</th>
-                                <th>Food Type</th>
-                                <th>Category</th>
-                                <th>Quantity Needed</th>
-                                <th>Needed By</th>
-                                <th>NGO Name</th>
-                                <th>Contact Email</th>
-                                <th>Contact Phone</th>
-                                <th>Address</th>
-                                <th>Status</th>
+                                {["#", "Food Type", "Category", "Quantity Needed", "Needed By", "NGO Name", "Contact Email", "Contact Phone", "Address", "Status"].map((header, index) => (
+                                    <th key={index} style={{ padding: "12px 16px", textAlign: "left" }}>
+                                        {header}
+                                    </th>
+                                ))}
                             </tr>
                         </thead>
                         <tbody>
                             {requests.length > 0 ? (
                                 requests.map((request, index) => (
                                     <tr key={request._id}>
-                                        <td>{index + 1}</td>
-                                        <td>{request.foodType}</td>
-                                        <td>{request.category}</td>
-                                        <td>{request.quantityNeeded}</td>
-                                        <td>{new Date(request.neededBy).toLocaleDateString()}</td>
-                                        <td>{request.ngoName}</td>
-                                        <td>{request.contactEmail}</td>
-                                        <td>{request.contactPhone}</td>
-                                        <td>{request.address}</td>
+                                        <td style={{ padding: "12px 16px" }}>{index + 1}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.foodType}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.category}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.quantityNeeded}</td>
+                                        <td style={{ padding: "12px 16px" }}>{new Date(request.neededBy).toLocaleDateString()}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.ngoName}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.contactEmail}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.contactPhone}</td>
+                                        <td style={{ padding: "12px 16px" }}>{request.address}</td>
                                         <td
                                             className={`text-${request.status === "pending"
                                                 ? "warning"
@@ -103,7 +98,7 @@ function RequestsTable() {
                                                     ? "success"
                                                     : "secondary"
                                                 }`}
-                                            style={{ textTransform: "uppercase" }}
+                                            style={{ textTransform: "uppercase", padding: "12px 16px" }}
                                         >
                                             {request.status}
                                         </td>
@@ -111,13 +106,14 @@ function RequestsTable() {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="10" className="text-center">
+                                    <td colSpan="10" className="text-center" style={{ padding: "12px 16px" }}>
                                         No requests found.
                                     </td>
                                 </tr>
                             )}
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>

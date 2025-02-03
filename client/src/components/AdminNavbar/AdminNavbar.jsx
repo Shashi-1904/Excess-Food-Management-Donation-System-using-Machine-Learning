@@ -25,7 +25,7 @@ function AdminNavbar() {
                     <ul className="navbar-nav ms-auto"> {/* Aligns items to the right */}
                         <li className="nav-item mx-3"> {/* Adds spacing between items */}
                             <NavLink className="nav-link text-white" to="/">
-                                <FaHome className="me-2" /> Home
+                                <FaHome className="me-2" />Return to Home
                             </NavLink>
                         </li>
                         <li className="nav-item">
@@ -66,11 +66,11 @@ function AdminNavbar() {
                                 <FaDonate className="me-2" /> Food Requests
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link text-white" href="#">
+                        {/* <li className="nav-item">
+                            <a className="nav-link text-white" href="">
                                 <FaChartBar className="me-2" /> Analytics
                             </a>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <NavLink className="nav-link text-white" to="/admin/settings">
                                 <FaCog className="me-2" /> Settings

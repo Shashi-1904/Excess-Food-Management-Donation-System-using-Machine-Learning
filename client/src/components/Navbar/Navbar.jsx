@@ -1,13 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../store/auth';
-import { useNavigate } from 'react-router-dom';
-import { Toast } from 'react-bootstrap';
 import "./Navbar.css";
 
 export default function Navbar() {
     const { isLoggedIn, LogoutUser, user } = useAuth();
-    // const navigate = useNavigate();
 
     const handleLogout = () => {
         LogoutUser();
@@ -40,40 +37,21 @@ export default function Navbar() {
                                     Donate Food
                                 </NavLink>
                             </li>
-                            <li>
-                                <NavLink
-                                    to="/about"
-                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-                                >
-                                    About
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/contact"
-                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-                                >
-                                    Contact
-                                </NavLink>
-                            </li>
 
-
-                            {/* Conditionally rendered links based on isLoggedIn */}
-                            {isLoggedIn ? (
+                            {/* Conditionally rendered links based on user role */}
+                            {isLoggedIn && user && (
                                 <>
-                                    {/* Ensure user is not null before accessing role */}
-                                    {user && user.role === 'admin' && ( // Check if the user is an admin
+                                    {user.role === 'admin' && (
                                         <li>
                                             <NavLink
                                                 to="/admin"
                                                 className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
                                             >
-                                                Admin
+                                                Admin Dashboard
                                             </NavLink>
                                         </li>
                                     )}
-
-                                    {user && user.role === 'volunteer' && ( // Check if the user is a volunteer
+                                    {user.role === 'volunteer' && (
                                         <li>
                                             <NavLink
                                                 to="/volunteer"
@@ -83,7 +61,7 @@ export default function Navbar() {
                                             </NavLink>
                                         </li>
                                     )}
-                                    {user && user.role === 'hotel' && ( // Check if the user is a volunteer
+                                    {user.role === 'hotel' && (
                                         <li>
                                             <NavLink
                                                 to="/hotel"
@@ -93,7 +71,7 @@ export default function Navbar() {
                                             </NavLink>
                                         </li>
                                     )}
-                                    {user && user.role === 'NGO' && ( // Check if the user is a volunteer
+                                    {user.role === 'NGO' && (
                                         <li>
                                             <NavLink
                                                 to="/foodrequest"
@@ -111,13 +89,34 @@ export default function Navbar() {
                                             Profile
                                         </NavLink>
                                     </li>
-                                    <li>
-                                        <a onClick={handleLogout} className="nav-link logout-button">
-                                            Logout
-                                        </a>
-                                    </li>
-
                                 </>
+                            )}
+
+                            {/* About & Contact - Always Available */}
+                            <li>
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                >
+                                    About
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/contact"
+                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                >
+                                    Contact
+                                </NavLink>
+                            </li>
+
+                            {/* Auth Links */}
+                            {isLoggedIn ? (
+                                <li>
+                                    <a onClick={handleLogout} className="nav-link logout-button">
+                                        Logout
+                                    </a>
+                                </li>
                             ) : (
                                 <>
                                     <li>

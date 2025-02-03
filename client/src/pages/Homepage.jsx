@@ -12,10 +12,10 @@ export default function Homepage() {
                             <h1>Welcome to  ServeSurplus</h1>
                             <p>Join our mission to reduce food waste and fight hunger by connecting surplus food with those in need. Our platform uses machine learning to optimize donations and ensure that every meal reaches the right place at the right time.</p>
                             <div className="btn btn-group">
-                                <NavLink to={"/"}>
+                                <NavLink to={"/donatefood"}>
                                     <button className="btn btn-lg btn-success">Donate Food!</button>
                                 </NavLink>
-                                <NavLink to={"/"}>
+                                <NavLink to={"/about"}>
                                     <button className="btn btn-lg btn-success">Learn More</button>
                                 </NavLink>
                             </div>
@@ -64,10 +64,10 @@ export default function Homepage() {
                         <h1>Are You Ready?</h1>
                         <p>Join us in tackling food waste and hunger. Whether you're a restaurant, a volunteer, or someone in need, we make it easy to contribute and receive excess food. Let’s make sure no meal goes to waste!</p>
                         <div className="btn btn-group">
-                            <NavLink to={"/"}>
-                                <button className="btn btn-lg btn-success">Become a Volunteer</button>
+                            <NavLink to={"/contact"}>
+                                <button className="btn btn-lg btn-success">Contact Us</button>
                             </NavLink>
-                            <NavLink to={"/"}>
+                            <NavLink to={"/about"}>
                                 <button className="btn btn-lg btn-success">Read More</button>
                             </NavLink>
                         </div>

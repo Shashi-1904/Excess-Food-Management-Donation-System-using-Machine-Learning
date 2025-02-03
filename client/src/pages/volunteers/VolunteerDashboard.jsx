@@ -23,11 +23,11 @@ function VolunteerDashboard() {
                 if (response.ok && data.donations) {
                     setCompletedDonations(data.donations.filter(d => d.status === 'completed'));
                 } else {
-                    toast.error(data.message || 'Failed to fetch completed donations.');
+                    console.error(data.message || 'Failed to fetch completed donations.');
                 }
             } catch (error) {
                 console.error('Error fetching completed donations:', error);
-                toast.error('An error occurred while fetching donation history.');
+
             }
         };
 
@@ -41,11 +41,11 @@ function VolunteerDashboard() {
                     setAssignedDonations(data.donations);
                     setCompletedDonations(data.donations.filter(d => d.status === 'completed'));
                 } else {
-                    toast.error(data.message || 'Failed to fetch assigned donations.');
+                    console.error(data.message || 'Failed to fetch assigned donations.');
                 }
             } catch (error) {
                 console.error('Error fetching assigned donations:', error);
-                toast.error('An error occurred while fetching assigned donations.');
+
             }
         };
 
@@ -58,11 +58,11 @@ function VolunteerDashboard() {
                 if (response.ok && data.requests) {
                     setMatchingRequests(data.requests);
                 } else {
-                    toast.error(data.message || 'Failed to fetch matching requests.');
+                    console.error(data.message || 'Failed to fetch matching requests.');
                 }
             } catch (error) {
                 console.error('Error fetching matching requests:', error);
-                toast.error('An error occurred while fetching matching requests.');
+
             }
         };
 
@@ -136,10 +136,10 @@ function VolunteerDashboard() {
                         New Donation Assigned: {assignedDonations.length > 0 ? assignedDonations[0].foodName : 'N/A'} ({assignedDonations.length > 0 ? assignedDonations[0].foodType : 'N/A'})
                     </li>
                     <li className="list-group-item">
-                        First Request Matched: {matchingRequests.length > 0 ? matchingRequests[0].foodType : 'N/A'} ({matchingRequests.length > 0 ? matchingRequests[0].category : 'N/A'})
+                        Request Matched: {matchingRequests.length > 0 ? matchingRequests[0].foodType : 'N/A'} ({matchingRequests.length > 0 ? matchingRequests[0].category : 'N/A'})
                     </li>
                     <li className="list-group-item">
-                        Recently Completed Donation: {completedDonations.length > 0 ? completedDonations[0].address : 'N/A'}
+                        Recently Completed Donation Location: {completedDonations.length > 0 ? completedDonations[0].address : 'N/A'}
                     </li>
                 </ul>
 

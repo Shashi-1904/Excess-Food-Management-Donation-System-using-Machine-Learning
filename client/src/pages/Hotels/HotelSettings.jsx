@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaUser, FaCog, FaMoon, FaSun, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { useAuth } from "../../store/auth";
+import { NavLink } from "react-router-dom";
 
 function HotelSettings() {
     const { user } = useAuth();

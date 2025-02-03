@@ -51,21 +51,26 @@ const Register = () => {
             console.log("response from server", res_data);
 
             if (response.ok) {
-                // Storing token
-                storetokenInLS(res_data.token);
-
-                // Resetting the form fields
-                setUser({
-                    username: '',
-                    email: '',
-                    phoneNumber: '',
-                    password: '',
-                    role: '',
-                    address: '',
-                });
-
-                toast.success("Registration Successful");
+                toast.success("Login Successful");
                 navigate("/");
+                setTimeout(() => {
+
+                    // Storing token
+                    storetokenInLS(res_data.token);
+
+                    // Resetting the form fields
+                    setUser({
+                        username: '',
+                        email: '',
+                        phoneNumber: '',
+                        password: '',
+                        role: '',
+                        address: '',
+                    });
+
+                }, 3000);
+
+
                 window.scrollTo(0, 0);
             } else if (response.status === 422) {
                 // Handle validation errors from Zod

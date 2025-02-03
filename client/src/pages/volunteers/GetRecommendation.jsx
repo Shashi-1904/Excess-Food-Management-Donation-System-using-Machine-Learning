@@ -65,14 +65,14 @@ function GetRecommendation() {
 
                 {/* Recommendations */}
                 {!loading && recommendations.length > 0 && (
-                    <div className="row">
+                    <div className="row" >
                         {recommendations.map((rec, index) => (
-                            <div key={index} className="col-md-4">
-                                <div className="card text-white bg-info mb-3">
-                                    <div className="card-header">Recommended Location</div>
-                                    <div className="card-body">
+                            <div key={index} className="col-md-4" >
+                                <div className="card text-white bg-info mb-3" >
+                                    <div className="card-header" style={{ background: 'rgb(10, 96, 3)' }}>Recommended Location</div>
+                                    <div className="card-body" style={{ background: 'rgb(36, 177, 26)' }}>
                                         <h3 className="card-title">Location : {rec[0]}</h3>
-                                        <button className="btn btn-lg btn-success" >
+                                        <button className="btn btn-lg btn-success" style={{ background: 'rgb(10, 96, 3)' }} >
                                             Get Route
                                         </button>
                                     </div>
