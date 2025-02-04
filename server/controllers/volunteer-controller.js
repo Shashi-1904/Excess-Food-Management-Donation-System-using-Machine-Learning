@@ -4,7 +4,6 @@ const FoodRequest = require('../models/request-model');
 // Function to get donations assigned to a specific volunteer
 exports.getAssignedDonations = async (req, res) => {
     try {
-
         const volunteer = await User.findById(req.user.id);
 
         if (!volunteer) {
@@ -14,18 +13,24 @@ exports.getAssignedDonations = async (req, res) => {
         if (volunteer.role !== 'volunteer') {
             return res.status(403).json({ message: "Not authorized. Only volunteers can view assigned donations." });
         }
+
+        // Fetch assigned donations
         const donations = await FoodDonation.find({ assignedTo: volunteer.email });
 
-        if (!donations.length) {
-            return res.status(404).json({ message: "No donations assigned to you." });
+        // Fetch assigned food requests
+        const foodRequests = await FoodRequest.find({ fulfilledBy: volunteer.email });
+
+        if (!donations.length && !foodRequests.length) {
+            return res.status(404).json({ message: "No donations or food requests assigned to you." });
         }
 
-        res.status(200).json({ donations });
+        res.status(200).json({ donations, foodRequests });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server Error" });
     }
 };
+
 
 exports.updateDonationStatus = async (req, res) => {
     const { donationId, status } = req.body;
@@ -105,13 +110,23 @@ exports.getMatchingRequests = async (req, res) => {
 
 exports.updateRequestStatus = async (req, res) => {
     const { requestId, status } = req.body;
+    const email = req.user.email; // Get email of the user making the request
+
     try {
         const request = await FoodRequest.findById(requestId);
 
         if (!request) {
             return res.status(404).json({ message: "Food request not found" });
         }
+
+        // Update status
         request.status = status;
+
+        // If status is changed to 'assigned', 'picked', or 'completed', update 'fulfilledBy'
+        if (['assigned', 'picked', 'completed'].includes(status)) {
+            request.fulfilledBy = email;
+        }
+
         await request.save();
 
         res.status(200).json({ message: "Request status updated successfully", request });

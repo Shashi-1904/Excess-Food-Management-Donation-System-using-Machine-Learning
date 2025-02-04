@@ -1,51 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useAuth } from "../../store/auth";
 import { toast } from "react-toastify";
 
 function AssignedDonations() {
     const [donations, setDonations] = useState([]);
+    const [foodRequests, setFoodRequests] = useState([]);
     const [actionDropdown, setActionDropdown] = useState(null);
     const { authorizationToken, API } = useAuth();
 
     useEffect(() => {
-        const fetchAssignedDonations = async () => {
+        const fetchAssignedData = async () => {
             try {
                 const response = await fetch(`${API}/api/volunteer/assigned-donations`, {
                     headers: {
                         Authorization: authorizationToken,
                     },
                 });
+
                 const data = await response.json();
 
-                if (response.ok && data.donations) {
-                    const filteredDonations = data.donations.filter(
-                        (donation) => donation.status !== 'completed'
+                if (response.ok) {
+                    const filteredDonations = (data.donations || []).filter(
+                        (donation) => donation.status !== "completed"
                     );
+                    const filteredRequests = (data.foodRequests || []).filter(
+                        (request) => request.status !== "completed"
+                    );
+
                     setDonations(filteredDonations);
+                    setFoodRequests(filteredRequests);
                 } else {
-                    toast.error(data.message || 'Failed to fetch donations.');
+                    toast.error(data.message || "Failed to fetch assigned data.");
                 }
             } catch (error) {
-                console.error('Error fetching donations:', error);
-                toast.error('An error occurred while fetching donations.');
+                console.error("Error fetching data:", error);
+                toast.error("An error occurred while fetching assigned data.");
             }
         };
 
-        fetchAssignedDonations();
+        fetchAssignedData();
     }, [API, authorizationToken]);
 
-
-    const handleActionClick = (donationId) => {
-        setActionDropdown(actionDropdown === donationId ? null : donationId);
+    const handleActionClick = (id) => {
+        setActionDropdown(actionDropdown === id ? null : id);
     };
 
     const handleStatusChange = async (donationId, status) => {
         try {
             const response = await fetch(`${API}/api/volunteer/update-donation-status`, {
-                method: 'PUT',
+                method: "PUT",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                     Authorization: authorizationToken,
                 },
                 body: JSON.stringify({ donationId, status }),
@@ -55,124 +61,143 @@ function AssignedDonations() {
 
             if (response.ok) {
                 toast.success(data.message);
-
-                setDonations((prevDonations) => {
-                    if (status === 'completed') {
-
-                        return prevDonations.filter((donation) => donation._id !== donationId);
-                    }
-
-                    return prevDonations.map((donation) =>
-                        donation._id === donationId ? { ...donation, status } : donation
-                    );
-                });
+                setDonations((prevDonations) =>
+                    status === "completed"
+                        ? prevDonations.filter((donation) => donation._id !== donationId)
+                        : prevDonations.map((donation) =>
+                            donation._id === donationId ? { ...donation, status } : donation
+                        )
+                );
             } else {
-                toast.error(data.message || 'Failed to update the donation status.');
+                toast.error(data.message || "Failed to update the donation status.");
             }
         } catch (error) {
-            console.error('Error updating donation status:', error);
-            toast.error('An error occurred. Please try again.');
+            console.error("Error updating donation status:", error);
+            toast.error("An error occurred. Please try again.");
         } finally {
             setActionDropdown(null);
         }
     };
 
+    const handleStatusChangeRequest = async (requestId, status) => {
+        try {
+            const response = await fetch(`${API}/api/volunteer/update-request-status`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: authorizationToken,
+                },
+                body: JSON.stringify({ requestId, status }),
+            });
 
+            const data = await response.json();
 
-    const handleGetRoute = (donationId) => {
-        console.log(`Get route for Donation ID: ${donationId}`);
+            if (response.ok) {
+                toast.success(data.message);
+                setFoodRequests((prevRequests) =>
+                    status === "completed"
+                        ? prevRequests.filter((request) => request._id !== requestId)
+                        : prevRequests.map((request) =>
+                            request._id === requestId ? { ...request, status } : request
+                        )
+                );
+            } else {
+                toast.error(data.message || "Failed to update the request status.");
+            }
+        } catch (error) {
+            console.error("Error updating request status:", error);
+            toast.error("An error occurred. Please try again.");
+        } finally {
+            setActionDropdown(null);
+        }
     };
 
     return (
-        <div className="container-fluid" style={{
-            display: 'flex',
-            minHeight: '100vh',
-            paddingTop: '60px',
-        }}>
-            <div className="content" style={{
-                marginLeft: '200px',
-                width: 'calc(100% - 200px)',
-                overflowY: 'auto',
-                padding: '20px',
-            }}>
-                <h1 className="mb-4">Assigned Donations</h1>
+        <div
+            className="container-fluid"
+            style={{
+                display: "flex",
+                minHeight: "100vh",
+                paddingTop: "60px",
+            }}
+        >
+            <div
+                className="content"
+                style={{
+                    marginLeft: "200px",
+                    width: "calc(100% - 200px)",
+                    overflowY: "auto",
+                    padding: "20px",
+                }}
+            >
+                <h1 className="mb-4">Assigned Donations & Requests</h1>
 
-                {donations.length === 0 ? (
-                    <div className="alert alert-warning">No donations assigned to you.</div>
+                {donations.length === 0 && foodRequests.length === 0 ? (
+                    <div className="alert alert-warning">No donations or food requests assigned to you.</div>
                 ) : (
                     <div className="row">
+                        {/* Assigned Donations */}
                         {donations.map((donation) => (
                             <div key={donation._id} className="col-md-4 mb-4">
-                                <div
-                                    className="card"
-                                    style={{
-                                        border: 'none',
-                                        borderRadius: '10px',
-                                        background: 'linear-gradient(145deg,rgb(255, 255, 255),rgb(252, 252, 252))',
-                                        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-                                        color: '#2d572c',
-                                    }}
-                                >
-                                    <div
-                                        className="card-header"
-                                        style={{
-                                            backgroundColor: 'rgb(36, 177, 26)',
-                                            color: '#fff',
-                                            borderRadius: '10px 10px 0 0',
-                                            fontWeight: 'bold',
-                                            textAlign: 'center',
-                                            padding: '10px',
-                                        }}
-                                    >
-                                        <h5 style={{ marginBottom: '5px' }}>{donation.foodName}</h5>
+                                <div className="card shadow-lg rounded">
+                                    <div className="card-header bg-success text-white text-center">
+                                        <h5>{donation.foodName}</h5>
                                         <small>{donation.foodType} - {donation.category}</small>
                                     </div>
-                                    <div className="card-body" style={{ padding: '15px' }}>
-                                        <h5 className="card-title" style={{ marginBottom: '10px' }}>
-                                            Quantity: {donation.quantity} Kg
-                                        </h5>
-                                        <p><strong>Expiry: </strong>{donation.expiry} days</p>
-                                        <p><strong>Contact: </strong>{donation.phoneNumber}</p>
-                                        <p><strong>Email: </strong>{donation.email}</p>
-                                        <p><strong>Address: </strong>{donation.address}</p>
-                                        <p><strong>Status: </strong>{donation.status}</p>
+                                    <div className="card-body">
+                                        <p><strong>Quantity:</strong> {donation.quantity} Kg</p>
+                                        <p><strong>Expiry:</strong> {donation.expiry} days</p>
+                                        <p><strong>Contact:</strong> {donation.phoneNumber}</p>
+                                        <p><strong>Email:</strong> {donation.email}</p>
+                                        <p><strong>Address:</strong> {donation.address}</p>
+                                        <p><strong>Status:</strong> {donation.status}</p>
                                     </div>
-                                    <div
-                                        className="card-footer"
-                                        style={{
-                                            backgroundColor: 'rgb(36, 177, 26)',
-                                            color: 'white',
-                                            borderRadius: '0 0 10px 10px',
-                                            textAlign: 'center',
-                                            fontWeight: 'bold',
-                                            padding: '10px',
-                                        }}
-                                    >
-                                        <button
-                                            className="btn btn-success"
-                                            onClick={() => handleActionClick(donation._id)}
-                                        >
+                                    <div className="card-footer text-center">
+                                        <button className="btn btn-success" onClick={() => handleActionClick(donation._id)}>
                                             Actions
                                         </button>
                                         {actionDropdown === donation._id && (
-                                            <div className="dropdown-menu show" style={{ position: 'absolute', zIndex: 1000 }}>
-                                                <button
-                                                    className="dropdown-item"
-                                                    onClick={() => handleStatusChange(donation._id, 'picked')}
-                                                >
+                                            <div className="dropdown-menu show">
+                                                <button className="dropdown-item" onClick={() => handleStatusChange(donation._id, "picked")}>
                                                     Mark as Picked
                                                 </button>
-                                                <button
-                                                    className="dropdown-item"
-                                                    onClick={() => handleStatusChange(donation._id, 'completed')}
-                                                >
+                                                <button className="dropdown-item" onClick={() => handleStatusChange(donation._id, "completed")}>
                                                     Mark as Completed
                                                 </button>
-                                                <button
-                                                    className="dropdown-item"
-                                                    onClick={() => handleGetRoute(donation._id)}
-                                                >
-                                                    Get Route
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* Assigned Food Requests */}
+                        {foodRequests.map((request) => (
+                            <div key={request._id} className="col-md-4 mb-4">
+                                <div className="card shadow-lg rounded">
+                                    <div className="card-header bg-primary text-white text-center">
+                                        <h5>{request.ngoName}</h5>
+                                        <small>{request.foodType} - {request.category}</small>
+                                    </div>
+                                    <div className="card-body">
+                                        <p><strong>Quantity Needed:</strong> {request.quantityNeeded} Kg</p>
+                                        <p><strong>Needed By:</strong> {new Date(request.neededBy).toDateString()}</p>
+                                        <p><strong>Contact:</strong> {request.contactPhone}</p>
+                                        <p><strong>Email:</strong> {request.contactEmail}</p>
+                                        <p><strong>Address:</strong> {request.address}</p>
+                                        <p><strong>Status:</strong> {request.status}</p>
+                                    </div>
+                                    <div className="card-footer text-center">
+                                        <button className="btn btn-primary" onClick={() => handleActionClick(request._id)}>
+                                            Actions
+                                        </button>
+                                        {actionDropdown === request._id && (
+                                            <div className="dropdown-menu show">
+                                                <button className="dropdown-item" onClick={() => handleStatusChangeRequest(request._id, "assigned")}>
+                                                    Mark as Assigned
+                                                </button>
+                                                <button className="dropdown-item" onClick={() => handleStatusChangeRequest(request._id, "completed")}>
+                                                    Mark as Completed
                                                 </button>
                                             </div>
                                         )}

@@ -4,8 +4,8 @@ import { useAuth } from "../../store/auth";
 import { toast } from 'react-toastify';
 
 function GetRecommendation() {
-    const { user, API } = useAuth();
-
+    const { user } = useAuth();
+    const API = "http://127.0.0.1:5000"
     const [recommendations, setRecommendations] = useState([]);
     const [loading, setLoading] = useState(true);
 

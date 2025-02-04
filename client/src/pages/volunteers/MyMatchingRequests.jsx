@@ -11,6 +11,7 @@ function MyMatchingRequests() {
     useEffect(() => {
         const fetchMatchingRequests = async () => {
             try {
+                // console.log(authorizationToken);
                 const response = await fetch(`${API}/api/volunteer/matching-requests`, {
                     headers: {
                         Authorization: authorizationToken,
