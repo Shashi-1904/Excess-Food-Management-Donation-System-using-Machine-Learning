@@ -67,7 +67,7 @@ function HotelDashboardAnalytics() {
             {
                 label: "Predicted Quantity Ordered (kg)",
                 data: predictions.map(
-                    (prediction) => prediction["Predicted Quantity Ordered (kg)"]
+                    (prediction) => prediction["Predicted Food Prepared (kg)"]
                 ),
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 borderColor: "rgba(75, 192, 192, 1)",
@@ -162,24 +162,31 @@ function HotelDashboardAnalytics() {
 
                 {/* Predictions Table */}
                 {predictions.length > 0 && (
-                    <div className="table-responsive">
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Predicted Quantity Ordered (kg)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {predictions.map((prediction, index) => (
-                                    <tr key={index}>
-                                        <td>{prediction.Date}</td>
-                                        <td>{prediction["Predicted Quantity Ordered (kg)"].toFixed(2)}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <div className="container-fluid">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="table-responsive">
+                                    <table className="table table-striped w-100" style={{ fontSize: "1.4rem" }}>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Predicted Food Prepared (kg)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {predictions.map((prediction, index) => (
+                                                <tr key={index}>
+                                                    <td>{prediction.Date}</td>
+                                                    <td>{prediction["Predicted Food Prepared (kg)"].toFixed(2)}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 )}
             </div>
         </div>

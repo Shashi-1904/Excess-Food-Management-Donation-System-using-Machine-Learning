@@ -1,0 +1,1001 @@
+Date,Day,Event/Festival,Food Type,Food Prepared (kg),Customers Served,Leftover (kg),Weather
+01-01-2024,Monday,Wedding Event,Veg,174,442,32,Windy
+02-01-2024,Tuesday,Business Meeting,Non-Veg,182,254,42,Windy
+03-01-2024,Wednesday,Corporate Event,Non-Veg,246,257,13,Sunny
+04-01-2024,Thursday,Corporate Event,Veg,122,379,19,Rainy
+05-01-2024,Friday,Festival,Non-Veg,85,96,2,Sunny
+06-01-2024,Saturday,Wedding Event,Veg,155,206,19,Stormy
+07-01-2024,Sunday,Business Meeting,Veg,100,342,11,Sunny
+08-01-2024,Monday,Festival,Non-Veg,196,192,16,Cloudy
+09-01-2024,Tuesday,Business Meeting,Veg,143,456,22,Windy
+10-01-2024,Wednesday,Festival,Non-Veg,161,490,16,Windy
+11-01-2024,Thursday,Wedding Event,Veg,185,352,9,Stormy
+12-01-2024,Friday,Business Meeting,Veg,139,100,31,Stormy
+13-01-2024,Saturday,None,Veg,161,82,8,Cloudy
+14-01-2024,Sunday,Festival,Veg,231,405,3,Sunny
+15-01-2024,Monday,None,Veg,115,341,15,Sunny
+16-01-2024,Tuesday,Corporate Event,Non-Veg,205,66,5,Rainy
+17-01-2024,Wednesday,Festival,Non-Veg,146,231,29,Rainy
+18-01-2024,Thursday,Wedding Event,Non-Veg,61,356,13,Stormy
+19-01-2024,Friday,Festival,Veg,122,249,6,Rainy
+20-01-2024,Saturday,Festival,Veg,108,418,6,Windy
+21-01-2024,Sunday,Business Meeting,Veg,64,224,7,Stormy
+22-01-2024,Monday,Wedding Event,Veg,82,206,15,Rainy
+23-01-2024,Tuesday,Business Meeting,Veg,122,449,27,Rainy
+24-01-2024,Wednesday,Festival,Veg,128,311,16,Stormy
+25-01-2024,Thursday,Business Meeting,Non-Veg,111,317,18,Rainy
+26-01-2024,Friday,Festival,Non-Veg,66,368,4,Sunny
+27-01-2024,Saturday,Business Meeting,Non-Veg,209,107,22,Stormy
+28-01-2024,Sunday,Corporate Event,Non-Veg,191,133,27,Rainy
+29-01-2024,Monday,Business Meeting,Veg,261,278,60,Windy
+30-01-2024,Tuesday,Festival,Veg,251,216,6,Cloudy
+31-01-2024,Wednesday,Wedding Event,Veg,111,306,25,Cloudy
+01-02-2024,Thursday,Corporate Event,Non-Veg,124,374,13,Cloudy
+02-02-2024,Friday,Festival,Non-Veg,256,218,63,Cloudy
+03-02-2024,Saturday,Festival,Veg,63,471,5,Cloudy
+04-02-2024,Sunday,Wedding Event,Non-Veg,295,110,64,Windy
+05-02-2024,Monday,Festival,Non-Veg,132,396,6,Windy
+06-02-2024,Tuesday,Business Meeting,Veg,112,235,20,Sunny
+07-02-2024,Wednesday,Corporate Event,Non-Veg,81,329,12,Rainy
+08-02-2024,Thursday,Corporate Event,Non-Veg,84,58,18,Stormy
+09-02-2024,Friday,Wedding Event,Veg,236,176,46,Stormy
+10-02-2024,Saturday,Corporate Event,Non-Veg,249,425,62,Rainy
+11-02-2024,Sunday,Festival,Veg,108,470,2,Windy
+12-02-2024,Monday,Corporate Event,Veg,114,104,21,Sunny
+13-02-2024,Tuesday,Business Meeting,Veg,82,492,15,Sunny
+14-02-2024,Wednesday,None,Veg,200,332,40,Rainy
+15-02-2024,Thursday,Corporate Event,Non-Veg,70,210,9,Rainy
+16-02-2024,Friday,None,Non-Veg,63,398,15,Rainy
+17-02-2024,Saturday,Festival,Non-Veg,116,64,7,Cloudy
+18-02-2024,Sunday,Business Meeting,Veg,173,63,10,Windy
+19-02-2024,Monday,Business Meeting,Veg,191,379,11,Cloudy
+20-02-2024,Tuesday,Wedding Event,Non-Veg,119,128,5,Cloudy
+21-02-2024,Wednesday,Wedding Event,Veg,243,236,9,Windy
+22-02-2024,Thursday,None,Veg,130,417,16,Windy
+23-02-2024,Friday,None,Non-Veg,211,408,1,Windy
+24-02-2024,Saturday,None,Veg,289,312,12,Rainy
+25-02-2024,Sunday,Festival,Non-Veg,213,279,22,Stormy
+26-02-2024,Monday,Wedding Event,Non-Veg,207,228,46,Cloudy
+27-02-2024,Tuesday,Wedding Event,Non-Veg,183,104,22,Cloudy
+28-02-2024,Wednesday,Wedding Event,Veg,218,433,37,Windy
+29-02-2024,Thursday,Corporate Event,Veg,57,417,8,Rainy
+01-03-2024,Friday,Festival,Veg,241,216,54,Sunny
+02-03-2024,Saturday,Festival,Veg,100,67,0,Sunny
+03-03-2024,Sunday,None,Veg,53,403,1,Cloudy
+04-03-2024,Monday,Wedding Event,Veg,294,311,34,Cloudy
+05-03-2024,Tuesday,Corporate Event,Non-Veg,249,302,12,Rainy
+06-03-2024,Wednesday,Festival,Veg,199,91,14,Rainy
+07-03-2024,Thursday,Corporate Event,Non-Veg,163,150,17,Cloudy
+08-03-2024,Friday,Corporate Event,Non-Veg,238,344,22,Sunny
+09-03-2024,Saturday,Corporate Event,Non-Veg,194,262,47,Windy
+10-03-2024,Sunday,Business Meeting,Veg,188,226,29,Cloudy
+11-03-2024,Monday,Business Meeting,Veg,189,494,42,Windy
+12-03-2024,Tuesday,Business Meeting,Non-Veg,191,304,29,Stormy
+13-03-2024,Wednesday,Corporate Event,Non-Veg,218,60,3,Sunny
+14-03-2024,Thursday,Wedding Event,Non-Veg,210,123,35,Cloudy
+15-03-2024,Friday,Business Meeting,Non-Veg,126,436,26,Stormy
+16-03-2024,Saturday,None,Veg,77,265,9,Cloudy
+17-03-2024,Sunday,Corporate Event,Veg,77,325,8,Stormy
+18-03-2024,Monday,Festival,Non-Veg,256,173,46,Sunny
+19-03-2024,Tuesday,Corporate Event,Veg,241,470,20,Windy
+20-03-2024,Wednesday,Corporate Event,Non-Veg,111,467,19,Sunny
+21-03-2024,Thursday,Business Meeting,Non-Veg,154,359,36,Sunny
+22-03-2024,Friday,None,Veg,294,400,7,Cloudy
+23-03-2024,Saturday,Business Meeting,Veg,269,386,17,Sunny
+24-03-2024,Sunday,Corporate Event,Veg,65,65,4,Cloudy
+25-03-2024,Monday,Corporate Event,Non-Veg,111,226,14,Cloudy
+26-03-2024,Tuesday,Festival,Veg,121,142,28,Sunny
+27-03-2024,Wednesday,None,Non-Veg,181,217,24,Sunny
+28-03-2024,Thursday,Festival,Veg,122,90,10,Windy
+29-03-2024,Friday,Wedding Event,Non-Veg,109,352,20,Sunny
+30-03-2024,Saturday,Festival,Veg,136,114,34,Cloudy
+31-03-2024,Sunday,None,Non-Veg,265,90,43,Windy
+01-04-2024,Monday,Corporate Event,Non-Veg,155,86,24,Sunny
+02-04-2024,Tuesday,Wedding Event,Veg,240,389,29,Windy
+03-04-2024,Wednesday,Festival,Veg,257,366,63,Rainy
+04-04-2024,Thursday,Business Meeting,Non-Veg,238,97,22,Sunny
+05-04-2024,Friday,Business Meeting,Non-Veg,223,121,48,Stormy
+06-04-2024,Saturday,Wedding Event,Non-Veg,256,192,25,Windy
+07-04-2024,Sunday,None,Veg,127,398,20,Rainy
+08-04-2024,Monday,Festival,Veg,81,133,15,Cloudy
+09-04-2024,Tuesday,Corporate Event,Non-Veg,179,425,2,Rainy
+10-04-2024,Wednesday,Corporate Event,Veg,194,100,34,Windy
+11-04-2024,Thursday,Business Meeting,Veg,125,476,15,Windy
+12-04-2024,Friday,None,Non-Veg,201,486,31,Cloudy
+13-04-2024,Saturday,Business Meeting,Non-Veg,218,494,2,Cloudy
+14-04-2024,Sunday,Corporate Event,Veg,111,123,21,Rainy
+15-04-2024,Monday,Wedding Event,Non-Veg,232,331,22,Sunny
+16-04-2024,Tuesday,None,Non-Veg,214,178,10,Windy
+17-04-2024,Wednesday,Festival,Veg,161,458,32,Stormy
+18-04-2024,Thursday,None,Veg,169,154,26,Sunny
+19-04-2024,Friday,Corporate Event,Non-Veg,137,57,31,Sunny
+20-04-2024,Saturday,Festival,Non-Veg,249,462,58,Sunny
+21-04-2024,Sunday,Wedding Event,Veg,78,117,14,Cloudy
+22-04-2024,Monday,Festival,Non-Veg,213,338,40,Rainy
+23-04-2024,Tuesday,Business Meeting,Veg,182,262,17,Windy
+24-04-2024,Wednesday,None,Non-Veg,268,189,41,Sunny
+25-04-2024,Thursday,Business Meeting,Non-Veg,155,430,27,Rainy
+26-04-2024,Friday,Festival,Veg,260,497,24,Rainy
+27-04-2024,Saturday,Corporate Event,Veg,68,318,13,Sunny
+28-04-2024,Sunday,Business Meeting,Non-Veg,90,388,19,Cloudy
+29-04-2024,Monday,Festival,Veg,205,223,19,Cloudy
+30-04-2024,Tuesday,None,Veg,168,325,8,Windy
+01-05-2024,Wednesday,Festival,Non-Veg,57,316,1,Windy
+02-05-2024,Thursday,Corporate Event,Veg,200,423,10,Cloudy
+03-05-2024,Friday,Festival,Veg,299,487,46,Stormy
+04-05-2024,Saturday,Festival,Veg,178,283,38,Windy
+05-05-2024,Sunday,None,Veg,123,203,5,Cloudy
+06-05-2024,Monday,None,Non-Veg,152,375,0,Rainy
+07-05-2024,Tuesday,Wedding Event,Non-Veg,151,196,32,Cloudy
+08-05-2024,Wednesday,Business Meeting,Veg,280,210,42,Windy
+09-05-2024,Thursday,Corporate Event,Veg,108,332,16,Windy
+10-05-2024,Friday,Business Meeting,Non-Veg,179,114,39,Windy
+11-05-2024,Saturday,Corporate Event,Veg,287,141,33,Sunny
+12-05-2024,Sunday,Business Meeting,Veg,166,265,39,Windy
+13-05-2024,Monday,Business Meeting,Non-Veg,188,121,43,Cloudy
+14-05-2024,Tuesday,None,Non-Veg,239,58,29,Sunny
+15-05-2024,Wednesday,Business Meeting,Non-Veg,141,171,32,Cloudy
+16-05-2024,Thursday,Business Meeting,Non-Veg,156,401,19,Windy
+17-05-2024,Friday,Festival,Non-Veg,106,476,2,Cloudy
+18-05-2024,Saturday,None,Veg,76,334,16,Windy
+19-05-2024,Sunday,None,Veg,108,384,20,Stormy
+20-05-2024,Monday,Corporate Event,Veg,202,302,35,Cloudy
+21-05-2024,Tuesday,Wedding Event,Veg,159,177,5,Sunny
+22-05-2024,Wednesday,None,Non-Veg,178,389,38,Windy
+23-05-2024,Thursday,None,Veg,206,485,40,Sunny
+24-05-2024,Friday,None,Non-Veg,98,487,22,Windy
+25-05-2024,Saturday,Wedding Event,Veg,157,271,0,Stormy
+26-05-2024,Sunday,Festival,Non-Veg,175,220,32,Windy
+27-05-2024,Monday,Wedding Event,Veg,248,381,26,Rainy
+28-05-2024,Tuesday,None,Veg,119,114,24,Cloudy
+29-05-2024,Wednesday,None,Veg,133,425,20,Rainy
+30-05-2024,Thursday,Festival,Veg,259,299,14,Windy
+31-05-2024,Friday,Corporate Event,Veg,246,491,11,Rainy
+01-06-2024,Saturday,Corporate Event,Veg,135,242,31,Rainy
+02-06-2024,Sunday,Corporate Event,Non-Veg,53,71,11,Stormy
+03-06-2024,Monday,Corporate Event,Non-Veg,284,395,29,Windy
+04-06-2024,Tuesday,Corporate Event,Non-Veg,218,427,32,Rainy
+05-06-2024,Wednesday,Corporate Event,Veg,251,156,10,Windy
+06-06-2024,Thursday,Festival,Non-Veg,212,201,22,Stormy
+07-06-2024,Friday,Festival,Veg,113,437,5,Stormy
+08-06-2024,Saturday,Business Meeting,Non-Veg,92,330,2,Cloudy
+09-06-2024,Sunday,None,Veg,188,469,42,Rainy
+10-06-2024,Monday,Festival,Veg,111,94,23,Rainy
+11-06-2024,Tuesday,Festival,Non-Veg,55,156,9,Cloudy
+12-06-2024,Wednesday,Wedding Event,Non-Veg,73,272,12,Cloudy
+13-06-2024,Thursday,None,Veg,84,93,2,Windy
+14-06-2024,Friday,Business Meeting,Veg,105,312,4,Sunny
+15-06-2024,Saturday,Festival,Non-Veg,59,114,3,Cloudy
+16-06-2024,Sunday,Business Meeting,Veg,278,284,12,Rainy
+17-06-2024,Monday,Corporate Event,Non-Veg,281,274,32,Sunny
+18-06-2024,Tuesday,Festival,Non-Veg,122,455,1,Stormy
+19-06-2024,Wednesday,Business Meeting,Non-Veg,215,76,42,Rainy
+20-06-2024,Thursday,Wedding Event,Veg,282,242,44,Stormy
+21-06-2024,Friday,Business Meeting,Veg,56,300,12,Sunny
+22-06-2024,Saturday,Festival,Non-Veg,137,97,26,Cloudy
+23-06-2024,Sunday,Corporate Event,Non-Veg,219,203,26,Cloudy
+24-06-2024,Monday,Corporate Event,Veg,233,200,36,Cloudy
+25-06-2024,Tuesday,None,Veg,121,154,17,Stormy
+26-06-2024,Wednesday,Festival,Veg,266,132,16,Stormy
+27-06-2024,Thursday,None,Veg,272,442,60,Stormy
+28-06-2024,Friday,Festival,Veg,118,370,11,Rainy
+29-06-2024,Saturday,Festival,Non-Veg,255,420,46,Cloudy
+30-06-2024,Sunday,Corporate Event,Non-Veg,276,222,28,Cloudy
+01-07-2024,Monday,Wedding Event,Veg,254,325,54,Cloudy
+02-07-2024,Tuesday,Corporate Event,Non-Veg,157,350,18,Windy
+03-07-2024,Wednesday,Festival,Non-Veg,121,417,2,Cloudy
+04-07-2024,Thursday,Corporate Event,Non-Veg,283,57,64,Stormy
+05-07-2024,Friday,Wedding Event,Veg,251,119,29,Rainy
+06-07-2024,Saturday,Business Meeting,Veg,177,157,24,Stormy
+07-07-2024,Sunday,Wedding Event,Veg,112,343,14,Cloudy
+08-07-2024,Monday,Wedding Event,Non-Veg,205,442,43,Sunny
+09-07-2024,Tuesday,Festival,Non-Veg,139,206,14,Rainy
+10-07-2024,Wednesday,Festival,Veg,79,174,6,Rainy
+11-07-2024,Thursday,Wedding Event,Non-Veg,253,147,24,Cloudy
+12-07-2024,Friday,None,Veg,99,138,6,Stormy
+13-07-2024,Saturday,Wedding Event,Non-Veg,230,495,39,Windy
+14-07-2024,Sunday,Wedding Event,Veg,194,207,39,Rainy
+15-07-2024,Monday,None,Veg,173,219,32,Rainy
+16-07-2024,Tuesday,Corporate Event,Non-Veg,278,118,15,Stormy
+17-07-2024,Wednesday,None,Non-Veg,214,94,9,Stormy
+18-07-2024,Thursday,None,Veg,78,421,18,Stormy
+19-07-2024,Friday,None,Veg,138,448,14,Rainy
+20-07-2024,Saturday,Corporate Event,Veg,239,230,18,Sunny
+21-07-2024,Sunday,Business Meeting,Veg,134,432,31,Windy
+22-07-2024,Monday,Wedding Event,Veg,254,478,41,Windy
+23-07-2024,Tuesday,None,Veg,278,443,11,Stormy
+24-07-2024,Wednesday,Festival,Veg,89,381,22,Windy
+25-07-2024,Thursday,None,Non-Veg,142,484,16,Rainy
+26-07-2024,Friday,Corporate Event,Non-Veg,295,353,66,Stormy
+27-07-2024,Saturday,Corporate Event,Veg,112,477,5,Cloudy
+28-07-2024,Sunday,Festival,Veg,68,104,11,Sunny
+29-07-2024,Monday,Business Meeting,Veg,284,356,58,Cloudy
+30-07-2024,Tuesday,Festival,Non-Veg,70,194,7,Rainy
+31-07-2024,Wednesday,Festival,Veg,133,162,16,Cloudy
+01-08-2024,Thursday,Wedding Event,Non-Veg,140,136,15,Stormy
+02-08-2024,Friday,Wedding Event,Veg,171,183,27,Stormy
+03-08-2024,Saturday,None,Non-Veg,125,482,25,Sunny
+04-08-2024,Sunday,Festival,Veg,216,346,23,Windy
+05-08-2024,Monday,Corporate Event,Veg,110,374,17,Sunny
+06-08-2024,Tuesday,Festival,Non-Veg,242,196,15,Cloudy
+07-08-2024,Wednesday,Wedding Event,Veg,56,291,5,Windy
+08-08-2024,Thursday,Business Meeting,Veg,182,125,40,Sunny
+09-08-2024,Friday,Wedding Event,Non-Veg,63,191,12,Stormy
+10-08-2024,Saturday,Wedding Event,Veg,278,340,23,Cloudy
+11-08-2024,Sunday,Festival,Veg,223,193,26,Rainy
+12-08-2024,Monday,Festival,Veg,58,191,5,Rainy
+13-08-2024,Tuesday,None,Veg,85,343,19,Sunny
+14-08-2024,Wednesday,None,Non-Veg,75,467,16,Windy
+15-08-2024,Thursday,Festival,Veg,92,164,4,Windy
+16-08-2024,Friday,Wedding Event,Veg,269,453,67,Windy
+17-08-2024,Saturday,Wedding Event,Non-Veg,166,226,24,Sunny
+18-08-2024,Sunday,None,Veg,76,463,18,Sunny
+19-08-2024,Monday,Wedding Event,Veg,299,313,74,Stormy
+20-08-2024,Tuesday,Corporate Event,Veg,69,290,5,Rainy
+21-08-2024,Wednesday,Corporate Event,Veg,263,55,47,Rainy
+22-08-2024,Thursday,Corporate Event,Veg,169,230,12,Cloudy
+23-08-2024,Friday,Business Meeting,Non-Veg,95,400,20,Windy
+24-08-2024,Saturday,Corporate Event,Non-Veg,202,316,16,Cloudy
+25-08-2024,Sunday,Corporate Event,Veg,61,325,1,Windy
+26-08-2024,Monday,Business Meeting,Non-Veg,294,270,50,Stormy
+27-08-2024,Tuesday,Wedding Event,Non-Veg,142,380,2,Cloudy
+28-08-2024,Wednesday,Wedding Event,Non-Veg,68,391,6,Stormy
+29-08-2024,Thursday,None,Non-Veg,151,172,15,Stormy
+30-08-2024,Friday,Wedding Event,Veg,260,316,20,Stormy
+31-08-2024,Saturday,None,Non-Veg,221,259,33,Stormy
+01-09-2024,Sunday,None,Non-Veg,270,256,11,Cloudy
+02-09-2024,Monday,Business Meeting,Non-Veg,68,464,14,Cloudy
+03-09-2024,Tuesday,Corporate Event,Non-Veg,156,476,13,Windy
+04-09-2024,Wednesday,None,Veg,232,193,0,Rainy
+05-09-2024,Thursday,Business Meeting,Veg,243,475,7,Cloudy
+06-09-2024,Friday,Wedding Event,Veg,226,382,3,Rainy
+07-09-2024,Saturday,Corporate Event,Non-Veg,144,457,12,Rainy
+08-09-2024,Sunday,Wedding Event,Non-Veg,296,368,27,Rainy
+09-09-2024,Monday,None,Veg,278,93,32,Sunny
+10-09-2024,Tuesday,Wedding Event,Non-Veg,68,285,3,Stormy
+11-09-2024,Wednesday,None,Non-Veg,71,316,12,Stormy
+12-09-2024,Thursday,Wedding Event,Veg,101,189,2,Windy
+13-09-2024,Friday,Corporate Event,Veg,137,297,16,Sunny
+14-09-2024,Saturday,Business Meeting,Veg,291,377,69,Windy
+15-09-2024,Sunday,Business Meeting,Veg,274,329,42,Sunny
+16-09-2024,Monday,Business Meeting,Veg,133,320,13,Rainy
+17-09-2024,Tuesday,Business Meeting,Veg,113,320,8,Stormy
+18-09-2024,Wednesday,Festival,Non-Veg,180,305,39,Cloudy
+19-09-2024,Thursday,Corporate Event,Non-Veg,53,104,3,Rainy
+20-09-2024,Friday,Festival,Veg,57,243,6,Cloudy
+21-09-2024,Saturday,Corporate Event,Veg,173,243,29,Cloudy
+22-09-2024,Sunday,Wedding Event,Veg,110,494,2,Rainy
+23-09-2024,Monday,Wedding Event,Veg,275,334,55,Windy
+24-09-2024,Tuesday,Corporate Event,Veg,110,343,0,Sunny
+25-09-2024,Wednesday,Business Meeting,Veg,253,275,43,Stormy
+26-09-2024,Thursday,None,Veg,103,486,17,Stormy
+27-09-2024,Friday,Corporate Event,Non-Veg,188,265,26,Cloudy
+28-09-2024,Saturday,None,Veg,266,326,22,Sunny
+29-09-2024,Sunday,None,Non-Veg,52,238,12,Windy
+30-09-2024,Monday,None,Non-Veg,263,211,5,Windy
+01-10-2024,Tuesday,None,Non-Veg,91,166,8,Stormy
+02-10-2024,Wednesday,Festival,Non-Veg,209,131,18,Cloudy
+03-10-2024,Thursday,None,Non-Veg,181,76,42,Cloudy
+04-10-2024,Friday,Festival,Non-Veg,126,214,0,Sunny
+05-10-2024,Saturday,Festival,Veg,258,329,22,Stormy
+06-10-2024,Sunday,None,Veg,296,268,8,Stormy
+07-10-2024,Monday,Wedding Event,Non-Veg,246,279,47,Stormy
+08-10-2024,Tuesday,Business Meeting,Non-Veg,196,306,7,Windy
+09-10-2024,Wednesday,Corporate Event,Veg,114,496,0,Rainy
+10-10-2024,Thursday,Business Meeting,Veg,202,447,38,Cloudy
+11-10-2024,Friday,Business Meeting,Veg,107,222,20,Stormy
+12-10-2024,Saturday,Business Meeting,Veg,186,172,2,Cloudy
+13-10-2024,Sunday,Wedding Event,Veg,56,112,13,Cloudy
+14-10-2024,Monday,Wedding Event,Veg,219,384,29,Windy
+15-10-2024,Tuesday,Festival,Veg,160,499,30,Sunny
+16-10-2024,Wednesday,Festival,Veg,282,329,9,Windy
+17-10-2024,Thursday,Festival,Veg,185,147,26,Sunny
+18-10-2024,Friday,None,Non-Veg,272,263,12,Cloudy
+19-10-2024,Saturday,Corporate Event,Veg,76,467,9,Stormy
+20-10-2024,Sunday,Business Meeting,Veg,97,110,5,Cloudy
+21-10-2024,Monday,Wedding Event,Veg,96,68,19,Rainy
+22-10-2024,Tuesday,Business Meeting,Non-Veg,76,203,15,Stormy
+23-10-2024,Wednesday,Wedding Event,Non-Veg,51,336,9,Cloudy
+24-10-2024,Thursday,Festival,Veg,296,496,44,Sunny
+25-10-2024,Friday,Wedding Event,Non-Veg,212,233,2,Rainy
+26-10-2024,Saturday,Festival,Veg,256,69,34,Windy
+27-10-2024,Sunday,Wedding Event,Veg,82,301,2,Windy
+28-10-2024,Monday,Wedding Event,Non-Veg,199,350,36,Sunny
+29-10-2024,Tuesday,Festival,Non-Veg,285,114,64,Rainy
+30-10-2024,Wednesday,None,Non-Veg,161,162,16,Sunny
+31-10-2024,Thursday,Wedding Event,Veg,201,289,15,Windy
+01-11-2024,Friday,Corporate Event,Veg,237,294,18,Stormy
+02-11-2024,Saturday,None,Non-Veg,108,110,13,Rainy
+03-11-2024,Sunday,None,Non-Veg,135,215,20,Stormy
+04-11-2024,Monday,Wedding Event,Veg,88,266,3,Rainy
+05-11-2024,Tuesday,Wedding Event,Non-Veg,70,160,1,Sunny
+06-11-2024,Wednesday,Wedding Event,Non-Veg,267,480,35,Cloudy
+07-11-2024,Thursday,Festival,Veg,202,164,24,Stormy
+08-11-2024,Friday,Wedding Event,Veg,122,189,3,Stormy
+09-11-2024,Saturday,None,Veg,236,341,24,Rainy
+10-11-2024,Sunday,Business Meeting,Veg,177,53,24,Windy
+11-11-2024,Monday,Wedding Event,Veg,93,324,17,Stormy
+12-11-2024,Tuesday,Festival,Veg,153,126,6,Sunny
+13-11-2024,Wednesday,Wedding Event,Veg,274,319,38,Stormy
+14-11-2024,Thursday,Wedding Event,Non-Veg,280,59,60,Sunny
+15-11-2024,Friday,None,Non-Veg,213,442,50,Rainy
+16-11-2024,Saturday,None,Veg,272,80,27,Cloudy
+17-11-2024,Sunday,Corporate Event,Non-Veg,292,366,45,Stormy
+18-11-2024,Monday,None,Veg,65,69,2,Stormy
+19-11-2024,Tuesday,Festival,Veg,234,406,56,Stormy
+20-11-2024,Wednesday,None,Non-Veg,286,360,12,Sunny
+21-11-2024,Thursday,Festival,Non-Veg,195,271,9,Cloudy
+22-11-2024,Friday,Wedding Event,Veg,62,308,4,Windy
+23-11-2024,Saturday,Corporate Event,Veg,253,362,48,Windy
+24-11-2024,Sunday,None,Veg,119,487,5,Sunny
+25-11-2024,Monday,None,Non-Veg,260,218,11,Cloudy
+26-11-2024,Tuesday,Wedding Event,Veg,215,195,4,Rainy
+27-11-2024,Wednesday,Corporate Event,Veg,288,95,24,Sunny
+28-11-2024,Thursday,Festival,Non-Veg,203,386,37,Rainy
+29-11-2024,Friday,Business Meeting,Non-Veg,126,473,8,Windy
+30-11-2024,Saturday,Festival,Non-Veg,283,257,9,Cloudy
+01-12-2024,Sunday,Festival,Non-Veg,55,366,5,Stormy
+02-12-2024,Monday,Corporate Event,Non-Veg,156,485,19,Sunny
+03-12-2024,Tuesday,Business Meeting,Non-Veg,275,243,3,Rainy
+04-12-2024,Wednesday,Corporate Event,Non-Veg,188,388,43,Windy
+05-12-2024,Thursday,Business Meeting,Non-Veg,280,50,1,Cloudy
+06-12-2024,Friday,Corporate Event,Non-Veg,109,278,2,Stormy
+07-12-2024,Saturday,Festival,Veg,257,421,33,Windy
+08-12-2024,Sunday,Wedding Event,Veg,263,235,7,Rainy
+09-12-2024,Monday,Wedding Event,Veg,188,231,38,Windy
+10-12-2024,Tuesday,Business Meeting,Non-Veg,262,302,17,Stormy
+11-12-2024,Wednesday,None,Veg,235,438,34,Cloudy
+12-12-2024,Thursday,Festival,Veg,233,168,35,Cloudy
+13-12-2024,Friday,Festival,Veg,69,204,7,Rainy
+14-12-2024,Saturday,Festival,Non-Veg,119,480,9,Cloudy
+15-12-2024,Sunday,Business Meeting,Veg,236,434,3,Rainy
+16-12-2024,Monday,Business Meeting,Non-Veg,275,279,29,Stormy
+17-12-2024,Tuesday,Festival,Non-Veg,81,102,20,Rainy
+18-12-2024,Wednesday,Wedding Event,Veg,273,89,22,Windy
+19-12-2024,Thursday,Wedding Event,Veg,89,219,16,Rainy
+20-12-2024,Friday,Corporate Event,Veg,178,355,0,Stormy
+21-12-2024,Saturday,Corporate Event,Non-Veg,288,189,32,Stormy
+22-12-2024,Sunday,Corporate Event,Veg,158,305,21,Rainy
+23-12-2024,Monday,Corporate Event,Non-Veg,262,214,1,Sunny
+24-12-2024,Tuesday,None,Non-Veg,272,472,59,Stormy
+25-12-2024,Wednesday,None,Non-Veg,82,299,3,Cloudy
+26-12-2024,Thursday,Wedding Event,Veg,87,231,19,Windy
+27-12-2024,Friday,Wedding Event,Non-Veg,108,496,10,Stormy
+28-12-2024,Saturday,Festival,Veg,156,124,0,Windy
+29-12-2024,Sunday,None,Veg,215,249,30,Stormy
+30-12-2024,Monday,Business Meeting,Veg,63,92,5,Stormy
+31-12-2024,Tuesday,Festival,Non-Veg,83,112,17,Sunny
+01-01-2025,Wednesday,Business Meeting,Non-Veg,198,438,37,Cloudy
+02-01-2025,Thursday,Corporate Event,Non-Veg,221,329,43,Stormy
+03-01-2025,Friday,Corporate Event,Veg,252,414,56,Cloudy
+04-01-2025,Saturday,None,Non-Veg,227,437,42,Cloudy
+05-01-2025,Sunday,None,Non-Veg,255,190,44,Sunny
+06-01-2025,Monday,Wedding Event,Non-Veg,194,355,33,Cloudy
+07-01-2025,Tuesday,Festival,Veg,212,423,44,Cloudy
+08-01-2025,Wednesday,Festival,Veg,106,370,4,Windy
+09-01-2025,Thursday,None,Non-Veg,266,280,1,Rainy
+10-01-2025,Friday,Festival,Non-Veg,81,410,9,Windy
+11-01-2025,Saturday,Corporate Event,Veg,128,73,20,Cloudy
+12-01-2025,Sunday,None,Veg,283,497,7,Sunny
+13-01-2025,Monday,Festival,Non-Veg,297,301,74,Sunny
+14-01-2025,Tuesday,Corporate Event,Veg,206,464,45,Cloudy
+15-01-2025,Wednesday,Wedding Event,Non-Veg,131,269,6,Stormy
+16-01-2025,Thursday,None,Veg,194,344,2,Sunny
+17-01-2025,Friday,Festival,Veg,94,362,2,Cloudy
+18-01-2025,Saturday,Festival,Veg,259,448,12,Rainy
+19-01-2025,Sunday,Festival,Veg,58,97,13,Rainy
+20-01-2025,Monday,None,Veg,271,103,20,Sunny
+21-01-2025,Tuesday,Business Meeting,Non-Veg,162,273,22,Stormy
+22-01-2025,Wednesday,Wedding Event,Non-Veg,139,130,31,Windy
+23-01-2025,Thursday,None,Veg,177,310,10,Cloudy
+24-01-2025,Friday,Corporate Event,Veg,190,267,35,Sunny
+25-01-2025,Saturday,Business Meeting,Veg,65,365,16,Stormy
+26-01-2025,Sunday,Wedding Event,Veg,187,489,2,Rainy
+27-01-2025,Monday,Wedding Event,Veg,56,444,9,Rainy
+28-01-2025,Tuesday,Corporate Event,Veg,67,177,2,Stormy
+29-01-2025,Wednesday,Wedding Event,Non-Veg,151,466,14,Cloudy
+30-01-2025,Thursday,Festival,Veg,290,331,71,Windy
+31-01-2025,Friday,None,Veg,229,378,38,Rainy
+01-02-2025,Saturday,None,Veg,289,75,2,Sunny
+02-02-2025,Sunday,Wedding Event,Non-Veg,191,309,38,Sunny
+03-02-2025,Monday,Corporate Event,Veg,76,350,15,Cloudy
+04-02-2025,Tuesday,Wedding Event,Veg,230,405,7,Windy
+05-02-2025,Wednesday,Wedding Event,Veg,233,108,29,Sunny
+06-02-2025,Thursday,Corporate Event,Non-Veg,228,293,13,Sunny
+07-02-2025,Friday,Wedding Event,Veg,91,391,9,Windy
+08-02-2025,Saturday,None,Non-Veg,164,72,35,Cloudy
+09-02-2025,Sunday,Business Meeting,Veg,135,151,2,Windy
+10-02-2025,Monday,Business Meeting,Veg,237,73,19,Cloudy
+11-02-2025,Tuesday,Business Meeting,Veg,231,95,24,Windy
+12-02-2025,Wednesday,Festival,Veg,236,211,11,Stormy
+13-02-2025,Thursday,Business Meeting,Non-Veg,170,187,12,Cloudy
+14-02-2025,Friday,Corporate Event,Veg,250,215,19,Windy
+15-02-2025,Saturday,Festival,Non-Veg,97,141,24,Rainy
+16-02-2025,Sunday,Wedding Event,Veg,135,449,32,Stormy
+17-02-2025,Monday,Business Meeting,Non-Veg,241,304,23,Sunny
+18-02-2025,Tuesday,Business Meeting,Non-Veg,203,334,12,Cloudy
+19-02-2025,Wednesday,Business Meeting,Veg,108,208,3,Rainy
+20-02-2025,Thursday,Wedding Event,Non-Veg,87,332,14,Rainy
+21-02-2025,Friday,Business Meeting,Veg,233,130,35,Cloudy
+22-02-2025,Saturday,None,Veg,56,85,1,Rainy
+23-02-2025,Sunday,Corporate Event,Non-Veg,284,195,57,Stormy
+24-02-2025,Monday,Business Meeting,Non-Veg,101,66,14,Windy
+25-02-2025,Tuesday,Corporate Event,Veg,268,142,21,Sunny
+26-02-2025,Wednesday,Corporate Event,Veg,201,413,45,Sunny
+27-02-2025,Thursday,Business Meeting,Veg,74,351,18,Windy
+28-02-2025,Friday,Business Meeting,Veg,139,274,3,Sunny
+01-03-2025,Saturday,Business Meeting,Non-Veg,260,173,36,Stormy
+02-03-2025,Sunday,Business Meeting,Veg,295,422,13,Sunny
+03-03-2025,Monday,None,Veg,256,79,7,Windy
+04-03-2025,Tuesday,Business Meeting,Non-Veg,299,78,7,Cloudy
+05-03-2025,Wednesday,Festival,Veg,88,114,18,Windy
+06-03-2025,Thursday,Wedding Event,Non-Veg,110,59,24,Rainy
+07-03-2025,Friday,Business Meeting,Veg,136,251,8,Windy
+08-03-2025,Saturday,None,Non-Veg,85,97,20,Cloudy
+09-03-2025,Sunday,Corporate Event,Non-Veg,293,407,35,Sunny
+10-03-2025,Monday,None,Non-Veg,161,419,35,Rainy
+11-03-2025,Tuesday,Festival,Non-Veg,214,418,18,Stormy
+12-03-2025,Wednesday,Corporate Event,Veg,177,398,38,Windy
+13-03-2025,Thursday,Wedding Event,Veg,150,159,32,Windy
+14-03-2025,Friday,Business Meeting,Veg,300,388,44,Cloudy
+15-03-2025,Saturday,Wedding Event,Non-Veg,230,142,34,Rainy
+16-03-2025,Sunday,Business Meeting,Non-Veg,106,55,3,Windy
+17-03-2025,Monday,Corporate Event,Veg,259,264,9,Stormy
+18-03-2025,Tuesday,None,Veg,200,235,39,Rainy
+19-03-2025,Wednesday,Corporate Event,Non-Veg,118,95,23,Windy
+20-03-2025,Thursday,Festival,Non-Veg,73,462,1,Sunny
+21-03-2025,Friday,Wedding Event,Veg,133,91,16,Cloudy
+22-03-2025,Saturday,None,Non-Veg,231,386,22,Windy
+23-03-2025,Sunday,Festival,Veg,110,106,12,Cloudy
+24-03-2025,Monday,None,Non-Veg,202,270,30,Sunny
+25-03-2025,Tuesday,Corporate Event,Non-Veg,147,293,31,Windy
+26-03-2025,Wednesday,None,Veg,180,493,36,Windy
+27-03-2025,Thursday,None,Veg,168,442,33,Stormy
+28-03-2025,Friday,Business Meeting,Veg,286,99,4,Windy
+29-03-2025,Saturday,Corporate Event,Veg,229,387,10,Sunny
+30-03-2025,Sunday,Business Meeting,Veg,65,237,4,Stormy
+31-03-2025,Monday,None,Veg,126,80,3,Windy
+01-04-2025,Tuesday,None,Veg,73,252,14,Windy
+02-04-2025,Wednesday,Festival,Veg,285,186,55,Sunny
+03-04-2025,Thursday,Corporate Event,Non-Veg,295,51,38,Windy
+04-04-2025,Friday,Wedding Event,Non-Veg,75,261,10,Stormy
+05-04-2025,Saturday,Corporate Event,Veg,240,318,1,Windy
+06-04-2025,Sunday,None,Non-Veg,104,134,23,Stormy
+07-04-2025,Monday,None,Veg,213,415,48,Rainy
+08-04-2025,Tuesday,Corporate Event,Non-Veg,286,493,21,Stormy
+09-04-2025,Wednesday,Business Meeting,Veg,55,278,0,Sunny
+10-04-2025,Thursday,Corporate Event,Veg,221,121,5,Cloudy
+11-04-2025,Friday,Corporate Event,Veg,269,493,2,Stormy
+12-04-2025,Saturday,None,Veg,97,358,10,Rainy
+13-04-2025,Sunday,Festival,Non-Veg,261,400,0,Stormy
+14-04-2025,Monday,Corporate Event,Non-Veg,137,351,18,Sunny
+15-04-2025,Tuesday,None,Veg,221,412,22,Rainy
+16-04-2025,Wednesday,None,Veg,181,422,32,Rainy
+17-04-2025,Thursday,None,Non-Veg,155,368,2,Sunny
+18-04-2025,Friday,None,Veg,236,386,1,Rainy
+19-04-2025,Saturday,Corporate Event,Veg,172,168,43,Cloudy
+20-04-2025,Sunday,Corporate Event,Non-Veg,170,276,20,Sunny
+21-04-2025,Monday,None,Non-Veg,183,68,1,Stormy
+22-04-2025,Tuesday,Wedding Event,Non-Veg,211,58,49,Rainy
+23-04-2025,Wednesday,Wedding Event,Veg,53,225,0,Stormy
+24-04-2025,Thursday,None,Veg,104,139,17,Stormy
+25-04-2025,Friday,Corporate Event,Non-Veg,110,446,18,Stormy
+26-04-2025,Saturday,Corporate Event,Non-Veg,211,299,7,Rainy
+27-04-2025,Sunday,Business Meeting,Non-Veg,173,298,9,Sunny
+28-04-2025,Monday,Business Meeting,Non-Veg,232,213,11,Rainy
+29-04-2025,Tuesday,Wedding Event,Veg,200,127,4,Stormy
+30-04-2025,Wednesday,Corporate Event,Non-Veg,138,497,27,Sunny
+01-05-2025,Thursday,None,Veg,84,346,6,Stormy
+02-05-2025,Friday,Festival,Veg,244,416,58,Rainy
+03-05-2025,Saturday,Business Meeting,Non-Veg,71,285,11,Cloudy
+04-05-2025,Sunday,None,Veg,166,337,18,Windy
+05-05-2025,Monday,Business Meeting,Non-Veg,176,454,24,Windy
+06-05-2025,Tuesday,Festival,Veg,163,99,27,Stormy
+07-05-2025,Wednesday,Wedding Event,Non-Veg,134,357,31,Sunny
+08-05-2025,Thursday,Festival,Veg,263,310,20,Windy
+09-05-2025,Friday,Business Meeting,Non-Veg,255,251,54,Cloudy
+10-05-2025,Saturday,Wedding Event,Veg,233,101,8,Cloudy
+11-05-2025,Sunday,Festival,Veg,81,64,8,Sunny
+12-05-2025,Monday,Wedding Event,Non-Veg,110,192,1,Stormy
+13-05-2025,Tuesday,Corporate Event,Veg,284,499,62,Cloudy
+14-05-2025,Wednesday,Festival,Non-Veg,249,287,36,Windy
+15-05-2025,Thursday,None,Non-Veg,156,89,15,Windy
+16-05-2025,Friday,Festival,Non-Veg,197,467,36,Windy
+17-05-2025,Saturday,Business Meeting,Non-Veg,262,251,30,Rainy
+18-05-2025,Sunday,None,Non-Veg,193,53,28,Stormy
+19-05-2025,Monday,Festival,Veg,59,149,3,Cloudy
+20-05-2025,Tuesday,None,Veg,128,413,10,Sunny
+21-05-2025,Wednesday,Festival,Veg,222,181,15,Rainy
+22-05-2025,Thursday,Wedding Event,Non-Veg,182,100,22,Windy
+23-05-2025,Friday,Business Meeting,Non-Veg,179,301,34,Sunny
+24-05-2025,Saturday,Business Meeting,Non-Veg,95,174,20,Cloudy
+25-05-2025,Sunday,Business Meeting,Veg,289,457,27,Sunny
+26-05-2025,Monday,Wedding Event,Non-Veg,51,169,7,Rainy
+27-05-2025,Tuesday,Corporate Event,Veg,183,321,30,Windy
+28-05-2025,Wednesday,Corporate Event,Veg,234,180,17,Stormy
+29-05-2025,Thursday,Business Meeting,Non-Veg,71,479,9,Windy
+30-05-2025,Friday,Festival,Veg,227,425,47,Stormy
+31-05-2025,Saturday,Festival,Veg,222,187,1,Stormy
+01-06-2025,Sunday,Business Meeting,Veg,65,170,14,Rainy
+02-06-2025,Monday,None,Veg,219,488,45,Cloudy
+03-06-2025,Tuesday,Corporate Event,Veg,83,443,2,Windy
+04-06-2025,Wednesday,Wedding Event,Veg,165,497,11,Cloudy
+05-06-2025,Thursday,Festival,Non-Veg,87,186,7,Sunny
+06-06-2025,Friday,None,Veg,115,187,16,Windy
+07-06-2025,Saturday,Wedding Event,Veg,132,359,2,Sunny
+08-06-2025,Sunday,Festival,Non-Veg,228,284,28,Sunny
+09-06-2025,Monday,Festival,Non-Veg,291,201,55,Sunny
+10-06-2025,Tuesday,None,Veg,269,111,34,Sunny
+11-06-2025,Wednesday,Corporate Event,Veg,152,73,28,Stormy
+12-06-2025,Thursday,Wedding Event,Non-Veg,261,316,17,Rainy
+13-06-2025,Friday,Festival,Non-Veg,286,277,17,Rainy
+14-06-2025,Saturday,Festival,Non-Veg,134,296,7,Stormy
+15-06-2025,Sunday,Festival,Veg,99,90,2,Stormy
+16-06-2025,Monday,Wedding Event,Non-Veg,106,445,15,Rainy
+17-06-2025,Tuesday,Wedding Event,Veg,292,199,28,Rainy
+18-06-2025,Wednesday,Wedding Event,Non-Veg,220,213,15,Cloudy
+19-06-2025,Thursday,Festival,Veg,98,465,22,Cloudy
+20-06-2025,Friday,Wedding Event,Non-Veg,130,397,1,Stormy
+21-06-2025,Saturday,None,Veg,108,134,20,Windy
+22-06-2025,Sunday,Corporate Event,Non-Veg,265,209,26,Cloudy
+23-06-2025,Monday,Wedding Event,Non-Veg,79,217,10,Cloudy
+24-06-2025,Tuesday,Wedding Event,Non-Veg,291,450,51,Rainy
+25-06-2025,Wednesday,Business Meeting,Veg,68,170,10,Stormy
+26-06-2025,Thursday,Festival,Veg,182,138,37,Sunny
+27-06-2025,Friday,Festival,Non-Veg,177,430,13,Sunny
+28-06-2025,Saturday,Festival,Veg,141,293,25,Stormy
+29-06-2025,Sunday,None,Non-Veg,152,472,20,Windy
+30-06-2025,Monday,Festival,Veg,246,275,61,Stormy
+01-07-2025,Tuesday,Business Meeting,Veg,191,108,35,Windy
+02-07-2025,Wednesday,Corporate Event,Veg,165,152,37,Rainy
+03-07-2025,Thursday,None,Veg,236,127,11,Rainy
+04-07-2025,Friday,Festival,Non-Veg,167,64,26,Sunny
+05-07-2025,Saturday,Festival,Veg,243,456,31,Stormy
+06-07-2025,Sunday,Business Meeting,Non-Veg,194,155,37,Stormy
+07-07-2025,Monday,Business Meeting,Veg,267,367,56,Rainy
+08-07-2025,Tuesday,Wedding Event,Non-Veg,240,59,36,Windy
+09-07-2025,Wednesday,Festival,Veg,219,173,20,Cloudy
+10-07-2025,Thursday,None,Veg,160,151,29,Stormy
+11-07-2025,Friday,Festival,Non-Veg,76,438,2,Rainy
+12-07-2025,Saturday,None,Veg,198,204,0,Windy
+13-07-2025,Sunday,Wedding Event,Veg,163,170,30,Sunny
+14-07-2025,Monday,Wedding Event,Non-Veg,147,199,28,Rainy
+15-07-2025,Tuesday,Corporate Event,Non-Veg,263,112,29,Windy
+16-07-2025,Wednesday,Festival,Veg,272,399,20,Sunny
+17-07-2025,Thursday,Festival,Veg,280,497,57,Sunny
+18-07-2025,Friday,Wedding Event,Veg,186,199,10,Stormy
+19-07-2025,Saturday,None,Non-Veg,88,476,3,Cloudy
+20-07-2025,Sunday,None,Veg,130,226,29,Rainy
+21-07-2025,Monday,Business Meeting,Non-Veg,234,488,57,Windy
+22-07-2025,Tuesday,Wedding Event,Non-Veg,202,172,33,Cloudy
+23-07-2025,Wednesday,None,Veg,74,257,13,Stormy
+24-07-2025,Thursday,None,Non-Veg,215,188,17,Rainy
+25-07-2025,Friday,Festival,Non-Veg,78,70,11,Sunny
+26-07-2025,Saturday,None,Veg,211,246,3,Stormy
+27-07-2025,Sunday,Corporate Event,Non-Veg,104,99,22,Stormy
+28-07-2025,Monday,Corporate Event,Non-Veg,119,203,19,Windy
+29-07-2025,Tuesday,Festival,Veg,154,229,32,Stormy
+30-07-2025,Wednesday,Festival,Non-Veg,57,360,0,Rainy
+31-07-2025,Thursday,Wedding Event,Non-Veg,167,331,0,Cloudy
+01-08-2025,Friday,None,Non-Veg,52,392,8,Stormy
+02-08-2025,Saturday,Corporate Event,Non-Veg,293,208,46,Rainy
+03-08-2025,Sunday,Corporate Event,Non-Veg,251,176,57,Stormy
+04-08-2025,Monday,Business Meeting,Veg,141,108,5,Sunny
+05-08-2025,Tuesday,Festival,Non-Veg,144,201,31,Stormy
+06-08-2025,Wednesday,Wedding Event,Non-Veg,258,252,55,Stormy
+07-08-2025,Thursday,Festival,Veg,73,340,2,Rainy
+08-08-2025,Friday,Festival,Non-Veg,95,453,4,Windy
+09-08-2025,Saturday,Corporate Event,Non-Veg,275,120,24,Windy
+10-08-2025,Sunday,Festival,Veg,201,148,17,Windy
+11-08-2025,Monday,Business Meeting,Non-Veg,155,297,24,Windy
+12-08-2025,Tuesday,None,Veg,296,274,72,Windy
+13-08-2025,Wednesday,Business Meeting,Veg,226,325,0,Stormy
+14-08-2025,Thursday,Wedding Event,Veg,216,315,7,Cloudy
+15-08-2025,Friday,None,Veg,284,242,11,Sunny
+16-08-2025,Saturday,Corporate Event,Veg,180,345,0,Stormy
+17-08-2025,Sunday,Festival,Non-Veg,105,398,23,Sunny
+18-08-2025,Monday,Festival,Veg,299,74,6,Cloudy
+19-08-2025,Tuesday,Festival,Veg,249,125,20,Sunny
+20-08-2025,Wednesday,Corporate Event,Veg,225,189,55,Stormy
+21-08-2025,Thursday,None,Veg,243,439,59,Cloudy
+22-08-2025,Friday,Wedding Event,Veg,121,420,15,Stormy
+23-08-2025,Saturday,Business Meeting,Non-Veg,218,61,31,Stormy
+24-08-2025,Sunday,Festival,Non-Veg,163,143,28,Sunny
+25-08-2025,Monday,Business Meeting,Veg,166,183,40,Cloudy
+26-08-2025,Tuesday,Wedding Event,Non-Veg,300,242,34,Windy
+27-08-2025,Wednesday,Wedding Event,Veg,106,66,16,Stormy
+28-08-2025,Thursday,Business Meeting,Non-Veg,262,167,50,Stormy
+29-08-2025,Friday,Business Meeting,Non-Veg,101,76,23,Windy
+30-08-2025,Saturday,Business Meeting,Non-Veg,104,242,13,Rainy
+31-08-2025,Sunday,None,Veg,98,350,24,Sunny
+01-09-2025,Monday,Festival,Non-Veg,57,83,9,Cloudy
+02-09-2025,Tuesday,Wedding Event,Veg,107,457,6,Windy
+03-09-2025,Wednesday,Wedding Event,Non-Veg,107,215,13,Rainy
+04-09-2025,Thursday,None,Non-Veg,242,489,28,Rainy
+05-09-2025,Friday,Corporate Event,Non-Veg,294,201,15,Windy
+06-09-2025,Saturday,None,Non-Veg,200,382,46,Stormy
+07-09-2025,Sunday,None,Veg,258,297,28,Windy
+08-09-2025,Monday,Wedding Event,Veg,146,387,18,Stormy
+09-09-2025,Tuesday,Wedding Event,Non-Veg,225,413,43,Cloudy
+10-09-2025,Wednesday,Corporate Event,Veg,147,302,13,Windy
+11-09-2025,Thursday,Corporate Event,Veg,116,425,15,Cloudy
+12-09-2025,Friday,Festival,Veg,265,192,44,Windy
+13-09-2025,Saturday,None,Veg,115,350,13,Rainy
+14-09-2025,Sunday,Business Meeting,Non-Veg,108,425,22,Cloudy
+15-09-2025,Monday,Festival,Non-Veg,211,132,5,Stormy
+16-09-2025,Tuesday,Wedding Event,Veg,209,435,46,Rainy
+17-09-2025,Wednesday,Festival,Veg,124,345,27,Cloudy
+18-09-2025,Thursday,Wedding Event,Veg,280,413,15,Cloudy
+19-09-2025,Friday,Corporate Event,Veg,227,348,40,Cloudy
+20-09-2025,Saturday,Corporate Event,Non-Veg,55,343,5,Sunny
+21-09-2025,Sunday,Festival,Veg,105,352,8,Cloudy
+22-09-2025,Monday,Corporate Event,Non-Veg,67,176,14,Sunny
+23-09-2025,Tuesday,Wedding Event,Veg,162,288,23,Sunny
+24-09-2025,Wednesday,None,Non-Veg,64,60,11,Rainy
+25-09-2025,Thursday,Wedding Event,Non-Veg,260,111,5,Windy
+26-09-2025,Friday,Corporate Event,Non-Veg,85,217,17,Cloudy
+27-09-2025,Saturday,Festival,Veg,137,199,28,Sunny
+28-09-2025,Sunday,None,Non-Veg,105,189,13,Rainy
+29-09-2025,Monday,Corporate Event,Non-Veg,244,134,42,Rainy
+30-09-2025,Tuesday,None,Non-Veg,128,135,18,Cloudy
+01-10-2025,Wednesday,Business Meeting,Non-Veg,279,131,48,Rainy
+02-10-2025,Thursday,Corporate Event,Non-Veg,87,98,18,Rainy
+03-10-2025,Friday,Business Meeting,Non-Veg,291,467,12,Stormy
+04-10-2025,Saturday,Corporate Event,Veg,88,73,3,Cloudy
+05-10-2025,Sunday,Wedding Event,Non-Veg,76,236,0,Cloudy
+06-10-2025,Monday,Business Meeting,Non-Veg,84,441,1,Rainy
+07-10-2025,Tuesday,Corporate Event,Non-Veg,299,88,36,Stormy
+08-10-2025,Wednesday,Wedding Event,Veg,176,95,1,Stormy
+09-10-2025,Thursday,Corporate Event,Non-Veg,213,80,52,Windy
+10-10-2025,Friday,Business Meeting,Non-Veg,277,359,42,Cloudy
+11-10-2025,Saturday,Corporate Event,Non-Veg,148,218,31,Stormy
+12-10-2025,Sunday,Business Meeting,Veg,260,374,59,Cloudy
+13-10-2025,Monday,None,Veg,89,336,18,Windy
+14-10-2025,Tuesday,Wedding Event,Veg,137,412,1,Rainy
+15-10-2025,Wednesday,Corporate Event,Non-Veg,164,95,9,Rainy
+16-10-2025,Thursday,Business Meeting,Veg,88,391,10,Rainy
+17-10-2025,Friday,Corporate Event,Veg,223,311,55,Windy
+18-10-2025,Saturday,Corporate Event,Veg,273,431,48,Windy
+19-10-2025,Sunday,None,Veg,126,104,23,Rainy
+20-10-2025,Monday,Festival,Non-Veg,135,269,0,Stormy
+21-10-2025,Tuesday,None,Non-Veg,75,138,15,Rainy
+22-10-2025,Wednesday,Festival,Veg,152,185,7,Cloudy
+23-10-2025,Thursday,Corporate Event,Veg,297,406,71,Stormy
+24-10-2025,Friday,Corporate Event,Veg,225,326,38,Sunny
+25-10-2025,Saturday,Business Meeting,Veg,195,231,9,Sunny
+26-10-2025,Sunday,Wedding Event,Veg,157,460,21,Cloudy
+27-10-2025,Monday,Wedding Event,Non-Veg,162,128,11,Windy
+28-10-2025,Tuesday,None,Veg,53,162,2,Rainy
+29-10-2025,Wednesday,Wedding Event,Non-Veg,191,267,16,Stormy
+30-10-2025,Thursday,Festival,Veg,270,289,44,Cloudy
+31-10-2025,Friday,None,Veg,278,489,4,Sunny
+01-11-2025,Saturday,Business Meeting,Veg,107,500,19,Sunny
+02-11-2025,Sunday,Wedding Event,Veg,105,252,3,Cloudy
+03-11-2025,Monday,Corporate Event,Non-Veg,56,218,9,Stormy
+04-11-2025,Tuesday,Festival,Veg,214,80,13,Rainy
+05-11-2025,Wednesday,Wedding Event,Veg,218,409,35,Cloudy
+06-11-2025,Thursday,Wedding Event,Non-Veg,99,232,7,Windy
+07-11-2025,Friday,Corporate Event,Non-Veg,221,463,47,Windy
+08-11-2025,Saturday,Wedding Event,Veg,204,383,26,Cloudy
+09-11-2025,Sunday,Wedding Event,Non-Veg,213,261,44,Rainy
+10-11-2025,Monday,None,Non-Veg,257,273,35,Sunny
+11-11-2025,Tuesday,Corporate Event,Veg,63,310,1,Windy
+12-11-2025,Wednesday,Business Meeting,Non-Veg,201,97,0,Rainy
+13-11-2025,Thursday,None,Veg,280,105,13,Rainy
+14-11-2025,Friday,Festival,Veg,56,495,9,Windy
+15-11-2025,Saturday,Corporate Event,Veg,234,134,55,Stormy
+16-11-2025,Sunday,None,Non-Veg,250,448,53,Stormy
+17-11-2025,Monday,Festival,Veg,194,484,47,Rainy
+18-11-2025,Tuesday,Business Meeting,Non-Veg,97,255,12,Cloudy
+19-11-2025,Wednesday,Festival,Non-Veg,188,102,4,Sunny
+20-11-2025,Thursday,Wedding Event,Non-Veg,75,122,13,Rainy
+21-11-2025,Friday,Wedding Event,Non-Veg,167,228,13,Rainy
+22-11-2025,Saturday,None,Non-Veg,143,198,26,Rainy
+23-11-2025,Sunday,None,Non-Veg,108,434,27,Stormy
+24-11-2025,Monday,Wedding Event,Veg,217,407,52,Sunny
+25-11-2025,Tuesday,Wedding Event,Non-Veg,90,487,19,Stormy
+26-11-2025,Wednesday,Festival,Veg,68,172,3,Windy
+27-11-2025,Thursday,Business Meeting,Non-Veg,232,58,2,Sunny
+28-11-2025,Friday,Corporate Event,Veg,234,186,46,Windy
+29-11-2025,Saturday,Corporate Event,Non-Veg,248,387,36,Cloudy
+30-11-2025,Sunday,Festival,Veg,146,427,34,Windy
+01-12-2025,Monday,None,Non-Veg,208,330,48,Sunny
+02-12-2025,Tuesday,Wedding Event,Veg,64,96,3,Sunny
+03-12-2025,Wednesday,Festival,Veg,231,281,5,Stormy
+04-12-2025,Thursday,Wedding Event,Non-Veg,298,70,51,Stormy
+05-12-2025,Friday,Business Meeting,Veg,277,349,39,Cloudy
+06-12-2025,Saturday,Corporate Event,Non-Veg,107,140,18,Cloudy
+07-12-2025,Sunday,Corporate Event,Veg,234,356,34,Stormy
+08-12-2025,Monday,None,Veg,297,224,5,Sunny
+09-12-2025,Tuesday,Business Meeting,Non-Veg,219,192,26,Windy
+10-12-2025,Wednesday,Wedding Event,Non-Veg,82,466,0,Rainy
+11-12-2025,Thursday,Wedding Event,Veg,168,176,17,Windy
+12-12-2025,Friday,None,Veg,65,278,12,Stormy
+13-12-2025,Saturday,Wedding Event,Non-Veg,158,86,11,Sunny
+14-12-2025,Sunday,Festival,Non-Veg,269,304,55,Sunny
+15-12-2025,Monday,Business Meeting,Non-Veg,213,325,24,Cloudy
+16-12-2025,Tuesday,Wedding Event,Veg,64,476,13,Windy
+17-12-2025,Wednesday,Wedding Event,Veg,270,454,24,Sunny
+18-12-2025,Thursday,Business Meeting,Veg,154,60,7,Rainy
+19-12-2025,Friday,Business Meeting,Non-Veg,252,108,32,Stormy
+20-12-2025,Saturday,None,Veg,186,68,20,Cloudy
+21-12-2025,Sunday,None,Veg,173,258,43,Sunny
+22-12-2025,Monday,Festival,Veg,88,363,19,Windy
+23-12-2025,Tuesday,Corporate Event,Veg,125,61,3,Cloudy
+24-12-2025,Wednesday,Festival,Non-Veg,57,172,2,Sunny
+25-12-2025,Thursday,Wedding Event,Non-Veg,129,145,9,Windy
+26-12-2025,Friday,Corporate Event,Non-Veg,241,62,52,Rainy
+27-12-2025,Saturday,Corporate Event,Veg,281,170,21,Cloudy
+28-12-2025,Sunday,Corporate Event,Veg,247,294,32,Cloudy
+29-12-2025,Monday,None,Non-Veg,187,168,6,Cloudy
+30-12-2025,Tuesday,Festival,Non-Veg,129,199,28,Windy
+31-12-2025,Wednesday,Wedding Event,Non-Veg,122,493,4,Windy
+01-01-2026,Thursday,None,Non-Veg,221,225,38,Cloudy
+02-01-2026,Friday,Business Meeting,Non-Veg,102,142,12,Sunny
+03-01-2026,Saturday,Festival,Veg,133,126,1,Windy
+04-01-2026,Sunday,Corporate Event,Non-Veg,92,473,4,Cloudy
+05-01-2026,Monday,None,Non-Veg,239,61,31,Rainy
+06-01-2026,Tuesday,Business Meeting,Veg,162,471,6,Sunny
+07-01-2026,Wednesday,Festival,Veg,288,75,36,Sunny
+08-01-2026,Thursday,None,Veg,54,212,8,Sunny
+09-01-2026,Friday,Wedding Event,Veg,85,497,8,Rainy
+10-01-2026,Saturday,Corporate Event,Non-Veg,300,431,74,Rainy
+11-01-2026,Sunday,None,Non-Veg,272,274,50,Windy
+12-01-2026,Monday,Corporate Event,Veg,106,454,12,Cloudy
+13-01-2026,Tuesday,Festival,Veg,241,284,17,Rainy
+14-01-2026,Wednesday,Business Meeting,Veg,269,107,9,Rainy
+15-01-2026,Thursday,None,Non-Veg,86,346,8,Stormy
+16-01-2026,Friday,None,Veg,283,223,9,Windy
+17-01-2026,Saturday,Business Meeting,Veg,186,284,32,Windy
+18-01-2026,Sunday,Corporate Event,Non-Veg,192,81,46,Stormy
+19-01-2026,Monday,Wedding Event,Veg,297,289,9,Rainy
+20-01-2026,Tuesday,Festival,Veg,141,484,18,Stormy
+21-01-2026,Wednesday,Wedding Event,Non-Veg,251,248,24,Rainy
+22-01-2026,Thursday,Festival,Non-Veg,56,196,6,Windy
+23-01-2026,Friday,None,Veg,145,281,18,Windy
+24-01-2026,Saturday,Wedding Event,Veg,222,229,41,Stormy
+25-01-2026,Sunday,Business Meeting,Non-Veg,128,129,17,Windy
+26-01-2026,Monday,Business Meeting,Non-Veg,226,214,26,Stormy
+27-01-2026,Tuesday,Wedding Event,Non-Veg,260,149,57,Windy
+28-01-2026,Wednesday,None,Non-Veg,179,497,24,Sunny
+29-01-2026,Thursday,Wedding Event,Veg,188,452,19,Windy
+30-01-2026,Friday,Wedding Event,Veg,65,221,1,Cloudy
+31-01-2026,Saturday,Wedding Event,Veg,84,470,10,Cloudy
+01-02-2026,Sunday,None,Veg,72,62,16,Cloudy
+02-02-2026,Monday,Festival,Non-Veg,200,277,23,Sunny
+03-02-2026,Tuesday,Festival,Veg,75,163,2,Cloudy
+04-02-2026,Wednesday,Corporate Event,Non-Veg,82,413,17,Sunny
+05-02-2026,Thursday,Festival,Non-Veg,143,180,6,Sunny
+06-02-2026,Friday,None,Veg,180,362,39,Windy
+07-02-2026,Saturday,Business Meeting,Non-Veg,215,290,39,Stormy
+08-02-2026,Sunday,Corporate Event,Non-Veg,123,313,2,Sunny
+09-02-2026,Monday,Business Meeting,Non-Veg,219,376,27,Rainy
+10-02-2026,Tuesday,None,Veg,153,138,12,Stormy
+11-02-2026,Wednesday,Corporate Event,Non-Veg,102,461,19,Rainy
+12-02-2026,Thursday,None,Veg,258,122,18,Windy
+13-02-2026,Friday,Wedding Event,Non-Veg,141,306,17,Sunny
+14-02-2026,Saturday,Business Meeting,Non-Veg,276,386,40,Sunny
+15-02-2026,Sunday,None,Veg,222,364,54,Windy
+16-02-2026,Monday,None,Veg,249,129,46,Rainy
+17-02-2026,Tuesday,Wedding Event,Veg,181,479,45,Cloudy
+18-02-2026,Wednesday,None,Veg,87,231,11,Rainy
+19-02-2026,Thursday,Business Meeting,Veg,170,454,9,Stormy
+20-02-2026,Friday,Festival,Non-Veg,91,319,9,Sunny
+21-02-2026,Saturday,Wedding Event,Non-Veg,169,234,24,Sunny
+22-02-2026,Sunday,None,Non-Veg,289,493,72,Rainy
+23-02-2026,Monday,Wedding Event,Veg,261,88,44,Cloudy
+24-02-2026,Tuesday,Corporate Event,Veg,166,290,27,Sunny
+25-02-2026,Wednesday,Wedding Event,Non-Veg,74,291,11,Stormy
+26-02-2026,Thursday,Corporate Event,Non-Veg,205,109,15,Stormy
+27-02-2026,Friday,Business Meeting,Non-Veg,143,179,12,Windy
+28-02-2026,Saturday,Corporate Event,Veg,261,250,46,Cloudy
+01-03-2026,Sunday,None,Non-Veg,137,123,14,Cloudy
+02-03-2026,Monday,Festival,Veg,280,239,37,Windy
+03-03-2026,Tuesday,None,Veg,78,339,14,Cloudy
+04-03-2026,Wednesday,Wedding Event,Veg,293,217,71,Stormy
+05-03-2026,Thursday,None,Non-Veg,227,204,24,Cloudy
+06-03-2026,Friday,None,Veg,93,326,12,Windy
+07-03-2026,Saturday,Corporate Event,Non-Veg,87,462,15,Windy
+08-03-2026,Sunday,Corporate Event,Veg,189,416,36,Sunny
+09-03-2026,Monday,Business Meeting,Non-Veg,273,70,29,Stormy
+10-03-2026,Tuesday,Business Meeting,Veg,73,438,5,Windy
+11-03-2026,Wednesday,None,Veg,57,63,2,Rainy
+12-03-2026,Thursday,None,Non-Veg,281,309,36,Rainy
+13-03-2026,Friday,None,Non-Veg,63,455,2,Sunny
+14-03-2026,Saturday,Wedding Event,Veg,105,459,2,Cloudy
+15-03-2026,Sunday,None,Non-Veg,209,134,52,Cloudy
+16-03-2026,Monday,Wedding Event,Veg,173,108,40,Sunny
+17-03-2026,Tuesday,Business Meeting,Veg,180,444,39,Cloudy
+18-03-2026,Wednesday,Wedding Event,Non-Veg,131,478,6,Windy
+19-03-2026,Thursday,None,Non-Veg,279,429,44,Stormy
+20-03-2026,Friday,Festival,Veg,106,64,17,Cloudy
+21-03-2026,Saturday,Corporate Event,Veg,296,129,39,Stormy
+22-03-2026,Sunday,Business Meeting,Veg,217,264,12,Rainy
+23-03-2026,Monday,Business Meeting,Veg,263,117,47,Rainy
+24-03-2026,Tuesday,Business Meeting,Non-Veg,218,97,53,Stormy
+25-03-2026,Wednesday,Business Meeting,Non-Veg,234,215,8,Stormy
+26-03-2026,Thursday,Wedding Event,Veg,82,105,11,Stormy
+27-03-2026,Friday,Corporate Event,Non-Veg,152,90,3,Windy
+28-03-2026,Saturday,None,Veg,69,103,16,Cloudy
+29-03-2026,Sunday,Corporate Event,Non-Veg,201,401,12,Sunny
+30-03-2026,Monday,None,Non-Veg,85,438,21,Cloudy
+31-03-2026,Tuesday,Festival,Veg,198,261,3,Cloudy
+01-04-2026,Wednesday,Business Meeting,Non-Veg,152,415,1,Stormy
+02-04-2026,Thursday,None,Non-Veg,111,222,21,Stormy
+03-04-2026,Friday,Corporate Event,Non-Veg,163,494,25,Windy
+04-04-2026,Saturday,Corporate Event,Veg,198,343,12,Windy
+05-04-2026,Sunday,Wedding Event,Non-Veg,232,340,13,Cloudy
+06-04-2026,Monday,Wedding Event,Veg,147,51,26,Stormy
+07-04-2026,Tuesday,Festival,Veg,270,434,56,Rainy
+08-04-2026,Wednesday,Festival,Veg,67,287,13,Cloudy
+09-04-2026,Thursday,None,Non-Veg,257,320,39,Windy
+10-04-2026,Friday,Wedding Event,Non-Veg,146,298,23,Rainy
+11-04-2026,Saturday,None,Non-Veg,132,493,16,Stormy
+12-04-2026,Sunday,Festival,Veg,277,171,17,Windy
+13-04-2026,Monday,Festival,Veg,255,350,29,Sunny
+14-04-2026,Tuesday,Corporate Event,Non-Veg,105,370,7,Windy
+15-04-2026,Wednesday,Festival,Non-Veg,195,265,44,Sunny
+16-04-2026,Thursday,None,Veg,117,175,4,Windy
+17-04-2026,Friday,Corporate Event,Non-Veg,156,368,29,Windy
+18-04-2026,Saturday,Festival,Veg,192,434,18,Cloudy
+19-04-2026,Sunday,Wedding Event,Veg,284,128,41,Rainy
+20-04-2026,Monday,None,Veg,203,446,6,Stormy
+21-04-2026,Tuesday,None,Veg,52,302,5,Cloudy
+22-04-2026,Wednesday,Wedding Event,Veg,121,54,25,Rainy
+23-04-2026,Thursday,Corporate Event,Veg,132,277,13,Sunny
+24-04-2026,Friday,Business Meeting,Veg,144,451,2,Stormy
+25-04-2026,Saturday,Business Meeting,Non-Veg,87,136,9,Rainy
+26-04-2026,Sunday,None,Veg,80,325,14,Rainy
+27-04-2026,Monday,Business Meeting,Veg,276,61,53,Cloudy
+28-04-2026,Tuesday,Business Meeting,Veg,102,130,17,Stormy
+29-04-2026,Wednesday,Wedding Event,Non-Veg,135,288,15,Sunny
+30-04-2026,Thursday,None,Veg,233,172,19,Windy
+01-05-2026,Friday,Festival,Non-Veg,178,245,37,Sunny
+02-05-2026,Saturday,None,Non-Veg,174,203,32,Stormy
+03-05-2026,Sunday,Festival,Non-Veg,197,261,25,Windy
+04-05-2026,Monday,Festival,Veg,124,289,3,Windy
+05-05-2026,Tuesday,None,Veg,204,254,0,Sunny
+06-05-2026,Wednesday,Wedding Event,Veg,287,108,50,Cloudy
+07-05-2026,Thursday,Festival,Veg,133,179,9,Stormy
+08-05-2026,Friday,Festival,Non-Veg,77,255,15,Stormy
+09-05-2026,Saturday,Wedding Event,Non-Veg,198,196,17,Cloudy
+10-05-2026,Sunday,None,Veg,120,273,23,Sunny
+11-05-2026,Monday,Business Meeting,Non-Veg,201,319,16,Windy
+12-05-2026,Tuesday,Business Meeting,Veg,286,490,13,Cloudy
+13-05-2026,Wednesday,Wedding Event,Non-Veg,201,365,43,Cloudy
+14-05-2026,Thursday,Business Meeting,Veg,157,338,4,Windy
+15-05-2026,Friday,Wedding Event,Non-Veg,193,295,28,Stormy
+16-05-2026,Saturday,Business Meeting,Veg,82,352,0,Cloudy
+17-05-2026,Sunday,Festival,Non-Veg,296,315,60,Stormy
+18-05-2026,Monday,Business Meeting,Non-Veg,235,325,21,Cloudy
+19-05-2026,Tuesday,None,Non-Veg,141,314,35,Cloudy
+20-05-2026,Wednesday,Festival,Veg,165,377,40,Sunny
+21-05-2026,Thursday,Wedding Event,Veg,186,302,25,Windy
+22-05-2026,Friday,None,Veg,281,497,11,Rainy
+23-05-2026,Saturday,None,Non-Veg,240,306,45,Stormy
+24-05-2026,Sunday,Corporate Event,Non-Veg,281,385,31,Windy
+25-05-2026,Monday,Business Meeting,Non-Veg,132,53,26,Sunny
+26-05-2026,Tuesday,Business Meeting,Veg,183,388,9,Windy
+27-05-2026,Wednesday,None,Non-Veg,289,425,58,Stormy
+28-05-2026,Thursday,Festival,Non-Veg,98,350,11,Cloudy
+29-05-2026,Friday,Corporate Event,Non-Veg,267,111,5,Windy
+30-05-2026,Saturday,Wedding Event,Veg,129,363,16,Windy
+31-05-2026,Sunday,None,Veg,199,499,39,Stormy
+01-06-2026,Monday,Corporate Event,Veg,179,78,10,Stormy
+02-06-2026,Tuesday,Business Meeting,Veg,123,347,12,Sunny
+03-06-2026,Wednesday,None,Non-Veg,90,484,13,Cloudy
+04-06-2026,Thursday,Corporate Event,Veg,126,380,8,Stormy
+05-06-2026,Friday,Festival,Veg,282,458,7,Windy
+06-06-2026,Saturday,None,Veg,262,307,50,Windy
+07-06-2026,Sunday,None,Veg,191,191,4,Windy
+08-06-2026,Monday,Festival,Non-Veg,77,408,11,Sunny
+09-06-2026,Tuesday,Corporate Event,Veg,57,316,9,Rainy
+10-06-2026,Wednesday,Wedding Event,Veg,259,481,49,Sunny
+11-06-2026,Thursday,Festival,Veg,233,251,12,Cloudy
+12-06-2026,Friday,Business Meeting,Non-Veg,193,360,26,Sunny
+13-06-2026,Saturday,Wedding Event,Veg,82,175,3,Sunny
+14-06-2026,Sunday,Business Meeting,Veg,214,130,40,Rainy
+15-06-2026,Monday,None,Veg,258,62,42,Sunny
+16-06-2026,Tuesday,Corporate Event,Non-Veg,276,105,59,Stormy
+17-06-2026,Wednesday,Festival,Non-Veg,281,473,20,Cloudy
+18-06-2026,Thursday,Festival,Veg,126,435,23,Rainy
+19-06-2026,Friday,Wedding Event,Veg,189,204,41,Rainy
+20-06-2026,Saturday,None,Non-Veg,164,478,24,Rainy
+21-06-2026,Sunday,Wedding Event,Non-Veg,91,316,22,Cloudy
+22-06-2026,Monday,Festival,Veg,131,142,8,Cloudy
+23-06-2026,Tuesday,Wedding Event,Non-Veg,218,110,3,Cloudy
+24-06-2026,Wednesday,Festival,Non-Veg,197,302,45,Stormy
+25-06-2026,Thursday,Corporate Event,Non-Veg,149,455,33,Stormy
+26-06-2026,Friday,Wedding Event,Veg,161,172,8,Cloudy
+27-06-2026,Saturday,Business Meeting,Non-Veg,129,447,16,Sunny
+28-06-2026,Sunday,Corporate Event,Non-Veg,82,302,3,Stormy
+29-06-2026,Monday,Business Meeting,Veg,211,275,26,Stormy
+30-06-2026,Tuesday,Wedding Event,Veg,92,401,0,Windy
+01-07-2026,Wednesday,Business Meeting,Veg,191,456,3,Windy
+02-07-2026,Thursday,Wedding Event,Non-Veg,126,450,8,Cloudy
+03-07-2026,Friday,Corporate Event,Veg,140,154,8,Cloudy
+04-07-2026,Saturday,None,Non-Veg,246,443,42,Sunny
+05-07-2026,Sunday,None,Non-Veg,99,245,13,Windy
+06-07-2026,Monday,Corporate Event,Veg,111,286,15,Cloudy
+07-07-2026,Tuesday,None,Non-Veg,289,416,48,Windy
+08-07-2026,Wednesday,Wedding Event,Veg,83,246,2,Stormy
+09-07-2026,Thursday,Wedding Event,Non-Veg,229,455,1,Cloudy
+10-07-2026,Friday,Wedding Event,Veg,91,358,16,Stormy
+11-07-2026,Saturday,Festival,Non-Veg,116,423,4,Stormy
+12-07-2026,Sunday,Corporate Event,Veg,216,165,23,Rainy
+13-07-2026,Monday,Wedding Event,Non-Veg,75,397,1,Cloudy
+14-07-2026,Tuesday,Festival,Veg,173,432,15,Sunny
+15-07-2026,Wednesday,Business Meeting,Non-Veg,222,289,39,Cloudy
+16-07-2026,Thursday,Corporate Event,Non-Veg,294,99,56,Sunny
+17-07-2026,Friday,Festival,Veg,209,66,43,Cloudy
+18-07-2026,Saturday,None,Veg,272,363,57,Stormy
+19-07-2026,Sunday,Festival,Non-Veg,242,81,43,Windy
+20-07-2026,Monday,Festival,Non-Veg,122,351,18,Sunny
+21-07-2026,Tuesday,Wedding Event,Veg,269,148,46,Sunny
+22-07-2026,Wednesday,Corporate Event,Non-Veg,158,140,29,Rainy
+23-07-2026,Thursday,None,Veg,232,82,3,Rainy
+24-07-2026,Friday,Corporate Event,Veg,127,81,15,Cloudy
+25-07-2026,Saturday,Business Meeting,Non-Veg,296,451,54,Cloudy
+26-07-2026,Sunday,None,Non-Veg,140,252,26,Sunny
+27-07-2026,Monday,None,Non-Veg,299,198,49,Stormy
+28-07-2026,Tuesday,None,Veg,269,273,0,Cloudy
+29-07-2026,Wednesday,Corporate Event,Veg,200,355,37,Cloudy
+30-07-2026,Thursday,Wedding Event,Veg,287,222,12,Cloudy
+31-07-2026,Friday,None,Non-Veg,157,343,28,Windy
+01-08-2026,Saturday,Wedding Event,Veg,105,172,19,Rainy
+02-08-2026,Sunday,None,Veg,284,155,21,Cloudy
+03-08-2026,Monday,None,Veg,248,165,6,Cloudy
+04-08-2026,Tuesday,Corporate Event,Non-Veg,289,61,46,Sunny
+05-08-2026,Wednesday,Corporate Event,Veg,266,201,12,Rainy
+06-08-2026,Thursday,Corporate Event,Non-Veg,293,287,1,Rainy
+07-08-2026,Friday,Corporate Event,Veg,224,156,6,Rainy
+08-08-2026,Saturday,Corporate Event,Non-Veg,108,445,11,Windy
+09-08-2026,Sunday,Business Meeting,Non-Veg,291,465,68,Windy
+10-08-2026,Monday,Festival,Veg,56,187,7,Sunny
+11-08-2026,Tuesday,Business Meeting,Non-Veg,294,135,15,Windy
+12-08-2026,Wednesday,Wedding Event,Non-Veg,197,278,14,Windy
+13-08-2026,Thursday,Corporate Event,Non-Veg,210,264,49,Cloudy
+14-08-2026,Friday,Corporate Event,Non-Veg,243,480,2,Windy
+15-08-2026,Saturday,None,Veg,209,313,27,Cloudy
+16-08-2026,Sunday,Corporate Event,Veg,264,428,29,Windy
+17-08-2026,Monday,Wedding Event,Non-Veg,134,179,21,Stormy
+18-08-2026,Tuesday,Festival,Non-Veg,78,382,18,Stormy
+19-08-2026,Wednesday,None,Non-Veg,145,100,8,Cloudy
+20-08-2026,Thursday,Business Meeting,Non-Veg,97,123,20,Sunny
+21-08-2026,Friday,None,Veg,204,420,40,Sunny
+22-08-2026,Saturday,Corporate Event,Non-Veg,290,416,26,Windy
+23-08-2026,Sunday,None,Non-Veg,123,420,5,Windy
+24-08-2026,Monday,None,Non-Veg,157,434,24,Stormy
+25-08-2026,Tuesday,None,Veg,102,457,8,Rainy
+26-08-2026,Wednesday,Corporate Event,Veg,223,191,43,Rainy
+27-08-2026,Thursday,Corporate Event,Non-Veg,146,204,8,Cloudy
+28-08-2026,Friday,Wedding Event,Non-Veg,88,174,13,Stormy
+29-08-2026,Saturday,Festival,Veg,134,80,6,Cloudy
+30-08-2026,Sunday,None,Veg,189,101,8,Windy
+31-08-2026,Monday,Corporate Event,Non-Veg,277,347,2,Sunny
+01-09-2026,Tuesday,Corporate Event,Veg,199,228,30,Cloudy
+02-09-2026,Wednesday,None,Non-Veg,173,63,32,Rainy
+03-09-2026,Thursday,None,Non-Veg,87,209,12,Rainy
+04-09-2026,Friday,Business Meeting,Non-Veg,274,347,42,Rainy
+05-09-2026,Saturday,Festival,Non-Veg,243,499,24,Rainy
+06-09-2026,Sunday,Corporate Event,Veg,153,134,6,Cloudy
+07-09-2026,Monday,Business Meeting,Non-Veg,268,246,0,Cloudy
+08-09-2026,Tuesday,Wedding Event,Non-Veg,205,438,6,Windy
+09-09-2026,Wednesday,Festival,Non-Veg,286,205,33,Cloudy
+10-09-2026,Thursday,Corporate Event,Non-Veg,103,270,0,Stormy
+11-09-2026,Friday,None,Veg,167,154,11,Sunny
+12-09-2026,Saturday,Business Meeting,Non-Veg,50,112,1,Sunny
+13-09-2026,Sunday,Corporate Event,Non-Veg,296,465,26,Cloudy
+14-09-2026,Monday,Business Meeting,Non-Veg,63,57,5,Sunny
+15-09-2026,Tuesday,Corporate Event,Non-Veg,107,249,11,Windy
+16-09-2026,Wednesday,Festival,Veg,202,190,31,Cloudy
+17-09-2026,Thursday,Business Meeting,Veg,181,321,28,Cloudy
+18-09-2026,Friday,Wedding Event,Non-Veg,298,436,70,Rainy
+19-09-2026,Saturday,Corporate Event,Veg,225,284,30,Rainy
+20-09-2026,Sunday,Festival,Veg,296,58,3,Sunny
+21-09-2026,Monday,Festival,Non-Veg,232,95,11,Stormy
+22-09-2026,Tuesday,Corporate Event,Non-Veg,135,220,5,Sunny
+23-09-2026,Wednesday,Corporate Event,Veg,199,472,39,Stormy
+24-09-2026,Thursday,Festival,Veg,218,149,49,Stormy
+25-09-2026,Friday,Business Meeting,Veg,59,499,0,Sunny
+26-09-2026,Saturday,Business Meeting,Non-Veg,130,104,30,Rainy

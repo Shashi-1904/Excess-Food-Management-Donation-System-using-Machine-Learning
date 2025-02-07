@@ -18,7 +18,7 @@ exports.uploadDataset = async (req, res) => {
         formData.append("file", fs.createReadStream(fileStream));
 
         // Send the file to the Flask backend
-        const response = await axios.post('http://127.0.0.1:5000/train_and_predict', formData, {
+        const response = await axios.post('http://127.0.0.1:5000/train_and_predict_2', formData, {
             headers: {
                 ...formData.getHeaders(),
             },

@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../store/auth';
 import { FaSignOutAlt, FaHome, FaCog, FaChartBar, FaUtensils, FaDonate, FaTachometerAlt } from 'react-icons/fa';
+import { FaHotel } from "react-icons/fa";
+import { AiOutlineFileText } from "react-icons/ai";
 
 function HotelNavbar() {
     const { LogoutUser } = useAuth();
@@ -75,6 +77,11 @@ function HotelNavbar() {
                         <li className="nav-item">
                             <NavLink className="nav-link text-white" to="/hotel/analytics">
                                 <FaChartBar className="me-2" /> Hotel Analytics
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link text-white" to="/hotel/add-log">
+                                <AiOutlineFileText className="me-2" /> Activity Log
                             </NavLink>
                         </li>
                         <li className="nav-item">

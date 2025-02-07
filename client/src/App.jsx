@@ -34,6 +34,7 @@ import FoodWastage from './pages/Hotels/FoodWastage';
 import HotelSettings from './pages/Hotels/HotelSettings';
 import ContactMessages from './pages/Admin/ContactMessages';
 import UserContactHistory from './pages/UserContactHistory';
+import AddLogDetails from './pages/Hotels/AddLogDetails';
 
 function Layout() {
   const location = useLocation();
@@ -95,6 +96,7 @@ function App() {
           <Route path="/hotel/history" element={<HotelDonationHistory />} />
           <Route path="/hotel/foodwastage" element={<FoodWastage />} />
           <Route path="/hotel/settings" element={<HotelSettings />} />
+          <Route path="/hotel/add-log" element={<AddLogDetails />} />
         </Route>
       </Routes>
       <Footer />
