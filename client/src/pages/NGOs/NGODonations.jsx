@@ -3,51 +3,83 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from "../../store/auth";
 import { toast } from "react-toastify";
 
-function HotelDonationHistory() {
+function NGODonations() {
     const [donations, setDonations] = useState([]);
     const { authorizationToken, API } = useAuth();
 
     useEffect(() => {
-        const fetchDonationHistory = async () => {
+        const fetchAvailableDonations = async () => {
             try {
-                const response = await fetch(`${API}/api/hotel/history`, {
+                const response = await fetch(`${API}/api/ngo/available-donations`, {
                     headers: {
                         Authorization: authorizationToken,
                     },
                 });
-
                 const data = await response.json();
 
-                if (response.ok) {
-                    setDonations(data);
+                if (response.ok && data.success) {
+                    if (data.data.length > 0) {
+                        setDonations(data.data);
+                        toast.success(data.message); // Show success only if donations are found
+                    } else {
+                        setDonations([]); // Clear donations if none are found
+                        toast.info("No available donations found.");
+                    }
                 } else {
-                    toast.error(data.message || 'Failed to fetch donation history.');
+                    toast.error(data.message || 'Failed to fetch donations.');
                 }
             } catch (error) {
-                console.error('Error fetching donation history:', error);
-                toast.error('An error occurred while fetching donation history.');
+                console.error('Error fetching donations:', error);
+                toast.error('An error occurred while fetching donations.');
             }
         };
 
-        fetchDonationHistory();
+        fetchAvailableDonations();
     }, [API, authorizationToken]);
+
+
+    const handleAcceptDonation = async (donationId) => {
+        try {
+            const response = await fetch(`${API}/api/ngo/request-donation`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: authorizationToken,
+                },
+                body: JSON.stringify({ donationId }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                toast.success('Donation accepted successfully.');
+                // Remove the accepted donation from the list
+                setDonations(donations.filter((donation) => donation._id !== donationId));
+            } else {
+                toast.error(data.message || 'Failed to accept the donation.');
+            }
+        } catch (error) {
+            console.error('Error accepting donation:', error);
+            toast.error('An error occurred while accepting the donation.');
+        }
+    };
 
     return (
         <div className="container-fluid" style={{
             display: 'flex',
+            flexDirection: 'column',
             minHeight: '100vh',
-            paddingTop: '60px',
+            // paddingTop: '60px',
         }}>
             <div className="content" style={{
-                marginLeft: '200px',
-                width: 'calc(100% - 200px)',
+                width: '100%',
                 overflowY: 'auto',
                 padding: '20px',
             }}>
-                <h1 className="mb-4">Donation History</h1>
+                <h1 className="mb-4">Available Donations</h1>
 
                 {donations.length === 0 ? (
-                    <div className="alert alert-warning">No donations found.</div>
+                    <div className="alert alert-warning">No available donations found.</div>
                 ) : (
                     <div className="row">
                         {donations.map((donation) => (
@@ -80,7 +112,7 @@ function HotelDonationHistory() {
                                         <h5 className="card-title" style={{ marginBottom: '10px' }}>
                                             Quantity: {donation.quantity} Kg
                                         </h5>
-                                        <p><strong>Expiry: </strong>{donation.expiry} Hours</p>
+                                        <p><strong>Expiry: </strong>{donation.expiry} days</p>
                                         <p><strong>Contact: </strong>{donation.phoneNumber}</p>
                                         <p><strong>Email: </strong>{donation.email}</p>
                                         <p><strong>Address: </strong>{donation.address}</p>
@@ -97,7 +129,13 @@ function HotelDonationHistory() {
                                             padding: '10px',
                                         }}
                                     >
-                                        <p style={{ margin: 0 }}>Created At: {new Date(donation.createdAt).toLocaleString()}</p>
+                                        <button
+                                            className="btn btn-light"
+                                            style={{ fontWeight: 'bold', color: 'rgb(36, 177, 26)' }}
+                                            onClick={() => handleAcceptDonation(donation._id)}
+                                        >
+                                            Accept Donation
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -109,4 +147,4 @@ function HotelDonationHistory() {
     );
 }
 
-export default HotelDonationHistory;
+export default NGODonations;

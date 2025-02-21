@@ -39,7 +39,7 @@ const foodRequestSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        enum: ['pending', 'assigned', 'picked', 'completed'],
+        enum: ['pending', 'Accepted', 'completed', 'In Progress', 'Cancelled'],
         default: 'pending'
     },
     fulfilledBy: {

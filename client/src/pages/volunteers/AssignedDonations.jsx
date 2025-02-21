@@ -112,6 +112,10 @@ function AssignedDonations() {
         }
     };
 
+    const handleGetRoute = (requestId) => {
+        console.log(`Get route for Request ID: ${requestId}`);
+    };
+
     return (
         <div
             className="container-fluid"
@@ -146,7 +150,7 @@ function AssignedDonations() {
                                     </div>
                                     <div className="card-body">
                                         <p><strong>Quantity:</strong> {donation.quantity} Kg</p>
-                                        <p><strong>Expiry:</strong> {donation.expiry} days</p>
+                                        <p><strong>Expiry:</strong> {donation.expiry} Hours</p>
                                         <p><strong>Contact:</strong> {donation.phoneNumber}</p>
                                         <p><strong>Email:</strong> {donation.email}</p>
                                         <p><strong>Address:</strong> {donation.address}</p>
@@ -163,6 +167,9 @@ function AssignedDonations() {
                                                 </button>
                                                 <button className="dropdown-item" onClick={() => handleStatusChange(donation._id, "completed")}>
                                                     Mark as Completed
+                                                </button>
+                                                <button className="dropdown-item" onClick={() => handleGetRoute(request._id)}>
+                                                    Get Route
                                                 </button>
                                             </div>
                                         )}
@@ -193,11 +200,14 @@ function AssignedDonations() {
                                         </button>
                                         {actionDropdown === request._id && (
                                             <div className="dropdown-menu show">
-                                                <button className="dropdown-item" onClick={() => handleStatusChangeRequest(request._id, "assigned")}>
-                                                    Mark as Assigned
+                                                <button className="dropdown-item" onClick={() => handleStatusChangeRequest(request._id, "In Progress")}>
+                                                    Mark as In Progress
                                                 </button>
                                                 <button className="dropdown-item" onClick={() => handleStatusChangeRequest(request._id, "completed")}>
                                                     Mark as Completed
+                                                </button>
+                                                <button className="dropdown-item" onClick={() => handleGetRoute(request._id)}>
+                                                    Get Route
                                                 </button>
                                             </div>
                                         )}

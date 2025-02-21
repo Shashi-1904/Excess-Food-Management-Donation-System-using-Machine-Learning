@@ -35,6 +35,7 @@ import HotelSettings from './pages/Hotels/HotelSettings';
 import ContactMessages from './pages/Admin/ContactMessages';
 import UserContactHistory from './pages/UserContactHistory';
 import AddLogDetails from './pages/Hotels/AddLogDetails';
+import NGODonations from './pages/NGOs/NGODonations';
 
 function Layout() {
   const location = useLocation();
@@ -97,6 +98,9 @@ function App() {
           <Route path="/hotel/foodwastage" element={<FoodWastage />} />
           <Route path="/hotel/settings" element={<HotelSettings />} />
           <Route path="/hotel/add-log" element={<AddLogDetails />} />
+        </Route>
+        <Route element={<ProtectedRoute allowedRoles={['NGO']} />}>
+          <Route path="/ngo/donations" element={<NGODonations />} />
         </Route>
       </Routes>
       <Footer />

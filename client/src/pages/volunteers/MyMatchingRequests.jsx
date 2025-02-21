@@ -104,12 +104,12 @@ function MyMatchingRequests() {
                                         </button>
                                         {actionDropdown === request._id && (
                                             <div className="dropdown-menu show" style={{ position: 'absolute', zIndex: 1000 }}>
-                                                <button className="dropdown-item" onClick={() => handleStatusChange(request._id, 'picked')}>
-                                                    Mark as Picked
+                                                <button className="dropdown-item" onClick={() => handleStatusChange(request._id, 'Accepted')}>
+                                                    Mark as Accepted
                                                 </button>
-                                                <button className="dropdown-item" onClick={() => handleStatusChange(request._id, 'completed')}>
+                                                {/* <button className="dropdown-item" onClick={() => handleStatusChange(request._id, 'completed')}>
                                                     Mark as Completed
-                                                </button>
+                                                </button> */}
                                                 <button className="dropdown-item" onClick={() => handleGetRoute(request._id)}>
                                                     Get Route
                                                 </button>

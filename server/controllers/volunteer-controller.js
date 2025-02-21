@@ -123,7 +123,7 @@ exports.updateRequestStatus = async (req, res) => {
         request.status = status;
 
         // If status is changed to 'assigned', 'picked', or 'completed', update 'fulfilledBy'
-        if (['assigned', 'picked', 'completed'].includes(status)) {
+        if (['assigned', 'Accepted', 'picked', 'In Progress', 'completed'].includes(status)) {
             request.fulfilledBy = email;
         }
 

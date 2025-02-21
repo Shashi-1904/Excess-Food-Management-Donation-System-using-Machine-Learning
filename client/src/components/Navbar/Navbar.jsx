@@ -71,15 +71,26 @@ export default function Navbar() {
                                         </li>
                                     )}
                                     {user.role === 'NGO' && (
-                                        <li>
-                                            <NavLink
-                                                to="/foodrequest"
-                                                className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-                                            >
-                                                Request Food
-                                            </NavLink>
-                                        </li>
+                                        <>
+                                            <li>
+                                                <NavLink
+                                                    to="/foodrequest"
+                                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                                >
+                                                    Request Food
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    to="/ngo/donations"
+                                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                                >
+                                                    NGO Donations
+                                                </NavLink>
+                                            </li>
+                                        </>
                                     )}
+
                                     <li>
                                         <NavLink
                                             to="/profile"

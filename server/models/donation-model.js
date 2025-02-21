@@ -47,6 +47,10 @@ const foodDonationSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    deliveredTo: {
+        type: String,
+        default: null
+    },
     createdAt: {
         type: Date,
         default: Date.now
