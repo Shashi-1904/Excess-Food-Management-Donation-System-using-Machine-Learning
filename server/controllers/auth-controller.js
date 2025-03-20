@@ -4,7 +4,7 @@ const User = require("../models/user-model")
 const register = async (req, res, next) => {
     try {
         // console.log(req.body);
-        const { username, email, phoneNumber, password, role, address } = req.body;
+        const { username, email, phoneNumber, password, role, address, latitude, longitude } = req.body;
 
         const userExists = await User.findOne({ email });
 
@@ -17,8 +17,11 @@ const register = async (req, res, next) => {
             phoneNumber,
             password,
             role,
-            address
+            address,
+            latitude,  // Include latitude
+            longitude  // Include longitude
         });
+
         res.status(201).json({
             message: "Registration Successful!!!",
             token: await userCreate.generateToken(),

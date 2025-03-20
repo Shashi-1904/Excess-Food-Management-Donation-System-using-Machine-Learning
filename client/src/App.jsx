@@ -36,6 +36,9 @@ import ContactMessages from './pages/Admin/ContactMessages';
 import UserContactHistory from './pages/UserContactHistory';
 import AddLogDetails from './pages/Hotels/AddLogDetails';
 import NGODonations from './pages/NGOs/NGODonations';
+import GetRoute from './pages/volunteers/GetRoute';
+import { useAuth } from "./store/auth";
+import { LoadScript } from "@react-google-maps/api";
 
 function Layout() {
   const location = useLocation();
@@ -43,6 +46,7 @@ function Layout() {
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isVolunteerRoute = location.pathname.startsWith('/volunteer');
   const isHotelRoute = location.pathname.startsWith('/hotel');
+
 
   return (
     <>
@@ -60,51 +64,55 @@ function Layout() {
 }
 
 function App() {
+  const { apiKey } = useAuth();
   return (
-    <BrowserRouter>
-      <Layout />
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/contact-history' element={<UserContactHistory />} />
-        <Route path='/profile' element={<ProfilePage />} />
-        <Route path='/donatefood' element={<DonateFood />} />
-        <Route path='/foodrequest' element={<FoodRequestForm />} />
-        <Route path='*' element={<Error />} />
-        <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/getdonations" element={<DonationTable />} />
-          <Route path="/admin/getusers" element={<UsersTable />} />
-          <Route path="/admin/requests" element={<RequestsTable />} />
-          <Route path="/admin/settings" element={<Settings />} />
-          <Route path="/admin/contacts" element={<ContactMessages />} />
-        </Route>
-        <Route element={<ProtectedRoute allowedRoles={['volunteer']} />}>
-          <Route path="/volunteer" element={<VolunteerDashboard />} />
-          <Route path="/volunteer/assigneddonations" element={<AssignedDonations />} />
-          <Route path="/volunteer/getrecommendations" element={<GetRecommendation />} />
-          <Route path="/volunteer/mydonationhistory" element={<MyDonationHistory />} />
-          <Route path="/volunteer/mymatchingrequests" element={<MyMatchingRequests />} />
-          <Route path="/volunteer/mysettings" element={<VolunteerSettings />} />
-          <Route path="/volunteer/gmap" element={<GoogleMap />} />
-        </Route>
-        <Route element={<ProtectedRoute allowedRoles={['hotel']} />}>
-          <Route path="/hotel" element={<HotelDashboard />} />
-          <Route path="/hotel/analytics" element={<HotelDashboardAnalytics />} />
-          <Route path="/hotel/history" element={<HotelDonationHistory />} />
-          <Route path="/hotel/foodwastage" element={<FoodWastage />} />
-          <Route path="/hotel/settings" element={<HotelSettings />} />
-          <Route path="/hotel/add-log" element={<AddLogDetails />} />
-        </Route>
-        <Route element={<ProtectedRoute allowedRoles={['NGO']} />}>
-          <Route path="/ngo/donations" element={<NGODonations />} />
-        </Route>
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <LoadScript googleMapsApiKey={apiKey}>
+      <BrowserRouter>
+        <Layout />
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/contact-history' element={<UserContactHistory />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/donatefood' element={<DonateFood />} />
+          <Route path='/foodrequest' element={<FoodRequestForm />} />
+          <Route path='*' element={<Error />} />
+          <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/getdonations" element={<DonationTable />} />
+            <Route path="/admin/getusers" element={<UsersTable />} />
+            <Route path="/admin/requests" element={<RequestsTable />} />
+            <Route path="/admin/settings" element={<Settings />} />
+            <Route path="/admin/contacts" element={<ContactMessages />} />
+          </Route>
+          <Route element={<ProtectedRoute allowedRoles={['volunteer']} />}>
+            <Route path="/volunteer" element={<VolunteerDashboard />} />
+            <Route path="/volunteer/assigneddonations" element={<AssignedDonations />} />
+            <Route path="/volunteer/getrecommendations" element={<GetRecommendation />} />
+            <Route path="/volunteer/mydonationhistory" element={<MyDonationHistory />} />
+            <Route path="/volunteer/mymatchingrequests" element={<MyMatchingRequests />} />
+            <Route path="/volunteer/mysettings" element={<VolunteerSettings />} />
+            <Route path="/volunteer/gmap" element={<GoogleMap />} />
+            <Route path="/getroute/:pickupLat/:pickupLng" element={<GetRoute />} />
+          </Route>
+          <Route element={<ProtectedRoute allowedRoles={['hotel']} />}>
+            <Route path="/hotel" element={<HotelDashboard />} />
+            <Route path="/hotel/analytics" element={<HotelDashboardAnalytics />} />
+            <Route path="/hotel/history" element={<HotelDonationHistory />} />
+            <Route path="/hotel/foodwastage" element={<FoodWastage />} />
+            <Route path="/hotel/settings" element={<HotelSettings />} />
+            <Route path="/hotel/add-log" element={<AddLogDetails />} />
+          </Route>
+          <Route element={<ProtectedRoute allowedRoles={['NGO']} />}>
+            <Route path="/ngo/donations" element={<NGODonations />} />
+          </Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </LoadScript>
   );
 }
 

@@ -8,6 +8,7 @@
 # Environment variables
 /client/.env
 /server/.env
+/server/uploads
 
 # External Files
 Commands.txt

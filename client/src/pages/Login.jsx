@@ -29,7 +29,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setLoading(true); 
+        setLoading(true);
 
         try {
             const response = await fetch(URL, {
@@ -46,17 +46,14 @@ export default function Login() {
                 // Show success message first
                 toast.success("Login Successful");
                 navigate("/");
-
                 setTimeout(() => {
                     storetokenInLS(res_data.token);
-                    setUser({
-                        email: "",
-                        password: ""
-                    });
-
-
-
+                    setUser({ email: "", password: "" });
+                    setLoading(false);
+                    navigate("/");
+                    window.location.reload();
                 }, 3000);
+
             }
             else if (response.status === 422) {
                 const errorDetails = res_data.errors.map(error => `${error.field}: ${error.message}`);
@@ -71,6 +68,9 @@ export default function Login() {
         } catch (error) {
             console.log("login error", error);
             setLoading(false);
+        }
+        finally {
+            setLoading(false);  // Stop loading in all cases
         }
     };
 

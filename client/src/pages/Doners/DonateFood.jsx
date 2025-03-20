@@ -1,41 +1,33 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"
-import { useAuth } from '../../store/auth';
-import { toast } from 'react-toastify';
-
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../store/auth";
+import { toast } from "react-toastify";
+import { GoogleMap, MarkerF } from "@react-google-maps/api";
 
 export default function DonateFood() {
     const [food, setFood] = useState({
-        foodName: '',
-        foodType: '',
-        category: '',
-        quantity: '',
-        expiry: '',
-        email: '',
-        phoneNumber: '',
-        address: ''
+        foodName: "",
+        foodType: "",
+        category: "",
+        quantity: "",
+        expiry: "",
+        email: "",
+        phoneNumber: "",
+        address: "",
+        latitude: 18.5204,
+        longitude: 73.8567,
     });
 
     const { API } = useAuth();
-    const URL = `${API}/api/donor/donateFood`;
-    //for navigate to home
+    const donateURL = `${API}/api/donor/donateFood`;
+    const assignVolunteerURL = `${API}/api/volunteer/assign-volunteer`;
     const navigate = useNavigate();
 
-    const checkLoginStatus = () => {
+    useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
             toast.error("You are not logged in. Please log in first.");
             navigate("/login");
-            return false;
-        }
-        return true;
-    };
-
-
-    useEffect(() => {
-        if (!checkLoginStatus()) {
-            return;
         }
     }, []);
 
@@ -43,85 +35,84 @@ export default function DonateFood() {
         const { name, value } = e.target;
         setFood((prevState) => ({
             ...prevState,
-            [name]: name === 'quantity' || name === 'expiry' ? Number(value) : value,
+            [name]: name === "quantity" || name === "expiry" ? Number(value) : value,
         }));
     };
 
+    const handleMapClick = (event) => {
+        setFood((prevState) => ({
+            ...prevState,
+            latitude: event.latLng.lat(),
+            longitude: event.latLng.lng(),
+        }));
+    };
 
-    // Handling form submission
+    const assignVolunteer = async (donationId) => {
+        try {
+            const response = await fetch(assignVolunteerURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ donationId }),
+            });
+            const res_data = await response.json();
+
+            if (response.ok) {
+                console.log("Volunteer assigned successfully");
+            } else {
+                console.log(res_data.message || "Failed to assign volunteer");
+            }
+        } catch (error) {
+            console.error("Assign volunteer error:", error);
+
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form submitted:", food);
         try {
-            const response = await fetch(URL, {
+            const response = await fetch(donateURL, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(food),
             });
 
             const res_data = await response.json();
-            console.log("response from server", res_data);
-
             if (response.ok) {
-                // Resetting the form fields
-                setFood({
-                    foodName: '',
-                    foodType: '',
-                    category: '',
-                    quantity: '',
-                    expiry: '',
-                    email: '',
-                    phoneNumber: '',
-                    address: ''
-                });
-
                 toast.success("Food donation registered successfully");
-
+                await assignVolunteer(res_data.donation._id);;
                 navigate("/");
                 window.scrollTo(0, 0);
-            } else if (response.status === 422) {
-                // Handle validation errors from Zod
-                const errorDetails = res_data.errors.map(error => `${error.field}: ${error.message}`);
-                errorDetails.forEach(err => toast.error(err));
             } else {
-                toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+                toast.error(res_data.message || "Failed to register donation");
             }
-
-            console.log(response);
         } catch (error) {
-            console.log("food donation", error);
+            console.error("Food donation error:", error);
             toast.error("An error occurred while submitting your food donation. Please try again.");
         }
     };
 
-
     return (
         <div>
-            <section className='section-content'>
+            <section className="section-content">
                 <main>
-                    <div className="section-registeration">
+                    <div className="section-registration">
                         <div className="container grid grid-two-cols">
-                            <div className="registeration-image">
-                                <img src="./images/img3.png" alt="Donate Food" width="950" height='500' />
+                            <div className="registration-image">
+                                <img src="./images/img3.png" alt="Donate Food" width="950" height="500" />
                             </div>
-                            {/* Donate Food Form */}
-                            <div className="registeration-form section-form">
-                                <h1 className="main-heading mb-3">
-                                    Donate Food Form
-                                </h1>
+                            <div className="registration-form section-form">
+                                <h1 className="main-heading mb-3">Donate Food Form</h1>
                                 <br />
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         <label htmlFor="foodName">Food Name</label>
                                         <input
                                             type="text"
-                                            name='foodName'
-                                            placeholder='Enter food name'
-                                            id='foodName'
+                                            name="foodName"
+                                            placeholder="Enter food name"
+                                            id="foodName"
                                             required
-                                            autoComplete='off'
+                                            autoComplete="off"
                                             value={food.foodName}
                                             onChange={handleInput}
                                         />
@@ -129,14 +120,7 @@ export default function DonateFood() {
 
                                     <div>
                                         <label htmlFor="foodType">Food Type</label>
-                                        <select
-                                            name="foodType"
-                                            id="foodType"
-                                            required
-                                            value={food.foodType}
-                                            onChange={handleInput}
-                                            className="form-select form-select-lg"
-                                        >
+                                        <select name="foodType" id="foodType" required value={food.foodType} onChange={handleInput}>
                                             <option value="">Select Type</option>
                                             <option value="veg">Vegetarian</option>
                                             <option value="non-veg">Non-Vegetarian</option>
@@ -144,24 +128,14 @@ export default function DonateFood() {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="category" className="form-label fs-2">
-                                            Category
-                                        </label>
-                                        <select
-                                            name="category"
-                                            id="category"
-                                            required
-                                            value={food.category}
-                                            onChange={handleInput}
-                                            className="form-select form-select-lg"
-                                        >
+                                        <label htmlFor="category">Category</label>
+                                        <select name="category" id="category" required value={food.category} onChange={handleInput}>
                                             <option value="">Select Category</option>
                                             <option value="raw">Raw Food</option>
                                             <option value="cooked">Cooked Food</option>
                                             <option value="packed">Packed Food</option>
                                         </select>
                                     </div>
-
 
                                     <div>
                                         <label htmlFor="quantity">Quantity (Person)</label>
@@ -188,7 +162,6 @@ export default function DonateFood() {
                                             onChange={handleInput}
                                         />
                                     </div>
-
                                     <div>
                                         <label htmlFor="email">Email</label>
                                         <input
@@ -231,7 +204,36 @@ export default function DonateFood() {
                                         />
                                     </div>
 
-                                    <button type='submit' className='btn btn-lg btn-success'>Donate Now</button>
+                                    <div>
+                                        <h4>Choose Pickup Location</h4>
+                                        <GoogleMap
+                                            mapContainerStyle={{ width: "100%", height: "400px" }}
+                                            center={{ lat: food.latitude, lng: food.longitude }}
+                                            zoom={12}
+                                            onClick={handleMapClick}
+                                        >
+                                            <MarkerF
+                                                position={{ lat: food.latitude, lng: food.longitude }}
+                                                draggable={true}
+                                                onDragEnd={(event) => {
+                                                    if (event.latLng) {
+                                                        setFood((prevState) => ({
+                                                            ...prevState,
+                                                            latitude: event.latLng.lat(),
+                                                            longitude: event.latLng.lng(),
+                                                        }));
+                                                    }
+                                                }}
+                                            />
+
+
+                                        </GoogleMap>
+                                        <p>Selected Location: Latitude: {food.latitude}, Longitude: {food.longitude}</p>
+                                    </div>
+
+                                    <button type="submit" className="btn btn-lg btn-success">
+                                        Donate Now
+                                    </button>
                                 </form>
                             </div>
                         </div>
@@ -239,6 +241,5 @@ export default function DonateFood() {
                 </main>
             </section>
         </div>
-
-    )
+    );
 }

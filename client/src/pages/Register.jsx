@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { useAuth } from '../store/auth';
 import { toast } from 'react-toastify';
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -12,38 +13,42 @@ const Register = () => {
         phoneNumber: '',
         role: '',
         address: '',
+        latitude: 18.5204,
+        longitude: 73.8567,
     });
 
     const { storetokenInLS, API } = useAuth();
     const URL = `${API}/api/auth/register`;
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+
 
     const handleInput = (e) => {
-
-        let name = e.target.name;
-        let value = e.target.value;
+        const { name, value } = e.target;
         setUser({
             ...user,
-            [name]: value,
-
+            [name]: value
         });
     };
 
-    //for navigate to home
-    const navigate = useNavigate();
+    const handleMapClick = (event) => {
+        setUser({
+            ...user,
+            latitude: event.latLng.lat(),
+            longitude: event.latLng.lng()
+        });
+        toast.success("Location selected on map!");
+    };
 
-    // handling form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(user);
 
-        // backend connection
         try {
             const response = await fetch(URL, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(user),
             });
 
@@ -51,14 +56,11 @@ const Register = () => {
             console.log("response from server", res_data);
 
             if (response.ok) {
-                toast.success("Login Successful");
+                toast.success("Registration Successful!");
                 navigate("/");
+
                 setTimeout(() => {
-
-                    // Storing token
                     storetokenInLS(res_data.token);
-
-                    // Resetting the form fields
                     setUser({
                         username: '',
                         email: '',
@@ -66,27 +68,20 @@ const Register = () => {
                         password: '',
                         role: '',
                         address: '',
+                        latitude: 19.0760,
+                        longitude: 72.8777
                     });
-
                 }, 3000);
 
-
                 window.scrollTo(0, 0);
-            } else if (response.status === 422) {
-                // Handle validation errors from Zod
-                const errorDetails = res_data.errors.map(error => `${error.field}: ${error.message}`);
-                errorDetails.forEach(err => toast.error(err));
             } else {
-                toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+                toast.error(res_data.message || "Registration failed. Try again.");
             }
-
-            console.log(response);
         } catch (error) {
-            console.log("register", error);
+            console.error("register", error);
             toast.error("An error occurred while registering. Please try again.");
         }
     };
-
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -99,13 +94,10 @@ const Register = () => {
                     <div className="section-registeration">
                         <div className="container grid grid-two-cols">
                             <div className="registeration-image">
-                                <img src="./images/register.png" alt="Registeration" width="950" height='500' />
+                                <img src="./images/register.png" alt="Registration" width="950" height='500' />
                             </div>
-                            {/* Registration Form */}
                             <div className="registeration-form section-form">
-                                <h1 className="main-heading mb-3">
-                                    Registration Form
-                                </h1>
+                                <h1 className="main-heading mb-3">Registration Form</h1>
                                 <br />
                                 <form onSubmit={handleSubmit}>
                                     <div>
@@ -113,7 +105,7 @@ const Register = () => {
                                         <input
                                             type="text"
                                             name='username'
-                                            placeholder='username'
+                                            placeholder='Username'
                                             id='username'
                                             required
                                             autoComplete='off'
@@ -150,14 +142,13 @@ const Register = () => {
                                         />
                                     </div>
 
-
                                     {/* Password Field with Toggle Visibility */}
                                     <div style={{ position: 'relative' }}>
                                         <label htmlFor="password">Password</label>
                                         <input
                                             type={showPassword ? 'text' : 'password'}
                                             name='password'
-                                            placeholder='password'
+                                            placeholder='Password'
                                             id='password'
                                             required
                                             autoComplete='off'
@@ -176,14 +167,14 @@ const Register = () => {
                                         >
                                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                                         </span>
-
                                     </div>
+
                                     <div>
                                         <label htmlFor="address">Address</label>
                                         <input
                                             type="text"
                                             name='address'
-                                            placeholder='address'
+                                            placeholder='Address'
                                             id='address'
                                             required
                                             autoComplete='off'
@@ -191,6 +182,7 @@ const Register = () => {
                                             onChange={handleInput}
                                         />
                                     </div>
+
                                     {/* Role Field */}
                                     <div>
                                         <label htmlFor="role">Role</label>
@@ -209,8 +201,44 @@ const Register = () => {
                                         </select>
                                     </div>
 
-                                    <button type='submit' className="btn btn-lg btn-success">Register Now</button>
 
+                                    <div>
+                                        <label htmlFor="latitude">Select Location</label>
+
+                                        <GoogleMap
+                                            mapContainerStyle={{ width: "100%", height: "400px" }}
+                                            center={{ lat: user.latitude, lng: user.longitude }}
+                                            zoom={12}
+                                            onClick={handleMapClick}
+                                        >
+                                            <MarkerF
+                                                position={{ lat: user.latitude, lng: user.longitude }}
+                                                draggable={true}
+                                                onDragEnd={(event) => {
+                                                    if (event.latLng) {
+                                                        setUser({
+                                                            ...user,
+                                                            latitude: event.latLng.lat(),
+                                                            longitude: event.latLng.lng(),
+                                                        });
+                                                    }
+                                                }}
+                                            />
+                                        </GoogleMap>
+
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="latitude">Latitude</label>
+                                        <input type="text" name="latitude" id="latitude" readOnly value={user.latitude} />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="longitude">Longitude</label>
+                                        <input type="text" name="longitude" id="longitude" readOnly value={user.longitude} />
+                                    </div>
+
+                                    <button type='submit' className="btn btn-lg btn-success">Register Now</button>
                                 </form>
                             </div>
                         </div>

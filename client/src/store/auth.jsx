@@ -10,6 +10,8 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
     const authorizationToken = token ? `Bearer ${token}` : null;
     const API = import.meta.env.VITE_URI_API;
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+
 
 
     // Store token in localStorage
@@ -67,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     }, [token]);
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn: !!token, storetokenInLS, LogoutUser, user, setUser, authorizationToken, isLoading, API }}>
+        <AuthContext.Provider value={{ isLoggedIn: !!token, storetokenInLS, LogoutUser, user, setUser, authorizationToken, isLoading, API, apiKey }}>
             {isLoading ? <Spinner /> : children}
         </AuthContext.Provider>
     );

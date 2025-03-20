@@ -92,7 +92,7 @@ function ContactMessages() {
                                         <td>{contact.reply ? contact.reply : <span className="text-danger">Not Replied</span>}</td>
                                         <td>
                                             <button
-                                                className="btn btn-sm btn-primary"
+                                                className="btn btn-sm btn-success"
                                                 onClick={() => setSelectedContact(contact)}
                                             >
                                                 Reply
@@ -131,7 +131,7 @@ function ContactMessages() {
                             </div>
                             <div className="modal-footer">
                                 <button className="btn btn-secondary" onClick={() => setSelectedContact(null)}>Close</button>
-                                <button className="btn btn-primary" onClick={handleReply}>Send Reply</button>
+                                <button className="btn btn-success" onClick={handleReply}>Send Reply</button>
                             </div>
                         </div>
                     </div>

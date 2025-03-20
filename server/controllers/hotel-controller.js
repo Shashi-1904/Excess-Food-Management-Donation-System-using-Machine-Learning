@@ -58,3 +58,51 @@ exports.getHotelDonations = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
+
+
+// Get hotel notifications
+exports.getHotelNotifications = async (req, res) => {
+    const hotelEmail = req.user.email;
+
+    try {
+        // Find all donations belonging to the hotel
+        const donations = await FoodDonation.find({ email: hotelEmail });
+
+        // Prepare notifications
+        const notifications = donations.flatMap(donation => {
+            const donationId = donation._id.toString();
+            const messages = [];
+
+            // Notification for arriving status with ETA
+            if (donation.status === "arriving" && donation.eta) {
+                messages.push({
+                    donationId,
+                    type: "status",
+                    message: `Volunteer is arriving in ${donation.eta} minutes to pick up the donation named ${donation.foodName}.`,
+                    timestamp: new Date().toISOString()
+                });
+            }
+
+            // Notification for assigned donation
+            if ((donation.status === "assigned" || donation.status === "arriving") && donation.assignedTo) {
+                messages.push({
+                    donationId,
+                    type: "assignment",
+                    message: `Your donation of ${donation.foodName} has been assigned to ${donation.assignedTo}.`,
+                    timestamp: new Date().toISOString()
+                });
+            }
+
+            return messages;
+        });
+
+        return res.status(200).json({
+            success: true,
+            notifications
+        });
+
+    } catch (error) {
+        console.error("Error fetching notifications:", error);
+        return res.status(500).json({ message: "Server Error" });
+    }
+};

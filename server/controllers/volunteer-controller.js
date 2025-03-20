@@ -33,29 +33,44 @@ exports.getAssignedDonations = async (req, res) => {
 
 
 exports.updateDonationStatus = async (req, res) => {
-    const { donationId, status } = req.body;
+    const { donationId, status, minutes } = req.body;
+    const volunteerId = req.user.email;
 
     try {
+        // Find the donation
         const donation = await FoodDonation.findById(donationId);
-
         if (!donation) {
             return res.status(404).json({ message: "Donation not found" });
         }
 
-        if (donation.assignedTo !== req.user.email) {
+        // Ensure the volunteer is assigned to this donation
+        if (donation.assignedTo !== volunteerId) {
             return res.status(403).json({ message: "You are not assigned to this donation" });
         }
 
+        // Update the donation status
         donation.status = status;
+        if (status === "arriving" && minutes) {
+            donation.eta = minutes;  // ✅ Update ETA only for "arriving"
+        } else if (status !== "arriving") {
+            donation.eta = null;     // ✅ Clear ETA for other statuses
+        }
         await donation.save();
 
-        res.status(200).json({ message: "Donation status updated successfully", donation });
+        // If the status is marked as "completed", remove the donation from the volunteer's assigned list
+        if (status === "completed") {
+            await User.findOneAndUpdate(
+                { email: volunteerId },
+                { $pull: { donationsAssigned: donationId } }
+            );
+        }
+
+        return res.status(200).json({ message: "Donation status updated successfully", donation });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Server Error" });
+        console.error("Error updating donation status:", error);
+        return res.status(500).json({ message: "Server Error" });
     }
 };
-
 
 
 exports.getMatchingRequests = async (req, res) => {

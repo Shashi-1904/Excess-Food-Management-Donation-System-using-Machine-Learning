@@ -28,6 +28,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    latitude: {
+        type: Number,
+        required: true
+    },
+    longitude: {
+        type: Number,
+        required: true
+    },
     isAdmin: {
         type: Boolean,
         default: false
@@ -39,7 +47,11 @@ const userSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
-    }
+    },
+    donationsAssigned: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "FoodDonation"
+    }]
 });
 
 // Middleware function for hashing password before saving

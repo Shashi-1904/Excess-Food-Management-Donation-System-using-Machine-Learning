@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal, Button, Toast } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { useAuth } from "../../store/auth";
-import { toast } from "react-toastify";
 
 function DonationTable() {
     const [donations, setDonations] = useState([]);
-    const [volunteerEmails, setVolunteerEmails] = useState([]);
+    const [selectedDonation, setSelectedDonation] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [selectedDonationId, setSelectedDonationId] = useState(null);
     const { authorizationToken, API } = useAuth();
-
 
     // Fetch donations from the backend
     useEffect(() => {
@@ -39,70 +36,23 @@ function DonationTable() {
         fetchDonations();
     }, [authorizationToken]);
 
-    // Fetch volunteer emails
-    const fetchVolunteerEmails = async () => {
-        try {
-            const response = await fetch(`${API}/api/admin/emails`, {
-                headers: {
-                    Authorization: authorizationToken,
-                },
-            });
-            if (response.ok) {
-                const result = await response.json();
-                if (result.emails) {
-                    setVolunteerEmails(result.emails);
-                } else {
-                    console.error("Failed to fetch emails:", result.message || "Unknown error");
-                }
-            } else {
-                console.error("Error in response:", response.status, response.statusText);
-            }
-        } catch (error) {
-            console.error("Error fetching emails:", error);
-        }
-    };
-
-
-    // Handle assign button click
-    const handleAssignClick = (donationId) => {
-        setSelectedDonationId(donationId);
-        fetchVolunteerEmails();
+    // Handle click to show full donation details
+    const handleViewDonation = (donation) => {
+        setSelectedDonation(donation);
         setShowModal(true);
     };
 
-    // Assign donation to volunteer
-    const handleAssignDonation = async (email) => {
-        try {
-            const response = await fetch(`${API}/api/admin/assign-donation`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: authorizationToken,
-                },
-                body: JSON.stringify({
-                    donationId: selectedDonationId,
-                    userEmail: email,
-                }),
-            });
-
-            const result = await response.json();
-            if (response.ok && result.success) {
-                toast.success("Donation successfully assigned!");
-                setShowModal(false);
-                // Refresh donations
-                const updatedDonations = donations.map((donation) =>
-                    donation._id === selectedDonationId
-                        ? { ...donation, status: "assigned", assignedTo: email }
-                        : donation
-                );
-                setDonations(updatedDonations);
-            } else {
-                toast.error(result.message || "Failed to assign donation.");
-            }
-        } catch (error) {
-            console.error("Error assigning donation:", error);
-            toast.error("Error assigning donation.");
-        }
+    // Format date function
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleString("en-US", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+        });
     };
 
     return (
@@ -148,7 +98,6 @@ function DonationTable() {
                                 <th>Quantity</th>
                                 <th>Expiry (hrs)</th>
                                 <th>Status</th>
-                                <th>Assigned To</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -173,13 +122,12 @@ function DonationTable() {
                                         >
                                             {donation.status}
                                         </td>
-                                        <td>{donation.assignedTo || "Not Assigned"}</td>
                                         <td>
                                             <button
                                                 className="btn btn-sm btn-success"
-                                                onClick={() => handleAssignClick(donation._id)}
+                                                onClick={() => handleViewDonation(donation)}
                                             >
-                                                Assign
+                                                View Full Donation
                                             </button>
                                         </td>
                                     </tr>
@@ -196,35 +144,36 @@ function DonationTable() {
                 </div>
             </div>
 
-            {/* Assign Modal */}
+            {/* Full Donation Details Modal */}
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Assign Donation</Modal.Title>
+                    <Modal.Title>Donation Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {volunteerEmails.map((email) => (
-                                <tr key={email}>
-                                    <td>{email}</td>
-                                    <td>
-                                        <button
-                                            className="btn btn-sm btn-primary"
-                                            onClick={() => handleAssignDonation(email)}
-                                        >
-                                            Assign
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    {selectedDonation ? (
+                        <div>
+                            <p><strong>Food Name:</strong> {selectedDonation.foodName}</p>
+                            <p><strong>Food Type:</strong> {selectedDonation.foodType}</p>
+                            <p><strong>Category:</strong> {selectedDonation.category}</p>
+                            <p><strong>Quantity:</strong> {selectedDonation.quantity} kg</p>
+                            <p><strong>Expiry:</strong> {selectedDonation.expiry} hours</p>
+                            <p><strong>Email:</strong> {selectedDonation.email}</p>
+                            <p><strong>Phone:</strong> {selectedDonation.phoneNumber}</p>
+                            <p><strong>Address:</strong> {selectedDonation.address}</p>
+                            <p><strong>Created At:</strong> {formatDate(selectedDonation.createdAt)}</p>
+                            <p><strong>Expires At:</strong> {formatDate(selectedDonation.expiresAt)}</p>
+                            <p>
+                                <strong>Delivered To:</strong>{" "}
+                                {selectedDonation.deliveredTo ? (
+                                    selectedDonation.deliveredTo
+                                ) : (
+                                    "Not Assigned"
+                                )}
+                            </p>
+                        </div>
+                    ) : (
+                        <p>No details available.</p>
+                    )}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowModal(false)}>
@@ -232,8 +181,6 @@ function DonationTable() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
-
         </div>
     );
 }

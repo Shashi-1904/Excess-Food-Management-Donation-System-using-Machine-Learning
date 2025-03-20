@@ -77,14 +77,21 @@ function HotelDonationHistory() {
                                         <small>{donation.foodType} - {donation.category}</small>
                                     </div>
                                     <div className="card-body" style={{ padding: '15px' }}>
-                                        <h5 className="card-title" style={{ marginBottom: '10px' }}>
+                                        {/* <h5 className="card-title" style={{ marginBottom: '10px' }}>
                                             Quantity: {donation.quantity} Kg
-                                        </h5>
-                                        <p><strong>Expiry: </strong>{donation.expiry} Hours</p>
+                                        </h5> */}
+                                        <p><strong>Quantity: </strong>{donation.quantity} Hours</p>
+                                        <p><strong>Expires In: </strong>{donation.expiry} Hours</p>
                                         <p><strong>Contact: </strong>{donation.phoneNumber}</p>
                                         <p><strong>Email: </strong>{donation.email}</p>
                                         <p><strong>Address: </strong>{donation.address}</p>
-                                        <p><strong>Status: </strong>{donation.status}</p>
+                                        <p>
+                                            <strong>Status: </strong>
+                                            {donation.status.charAt(0).toUpperCase() + donation.status.slice(1)}
+                                            {donation.status === "arriving" && donation.eta && (
+                                                <> in {donation.eta} minutes</>
+                                            )}
+                                        </p>
                                     </div>
                                     <div
                                         className="card-footer"
@@ -97,7 +104,16 @@ function HotelDonationHistory() {
                                             padding: '10px',
                                         }}
                                     >
-                                        <p style={{ margin: 0 }}>Created At: {new Date(donation.createdAt).toLocaleString()}</p>
+                                        <p style={{ margin: 0 }}>
+                                            Expires At: {new Date(donation.expiresAt).toLocaleString('en-GB', {
+                                                day: '2-digit',
+                                                month: 'long',
+                                                hour: '2-digit',
+                                                minute: '2-digit',
+                                                hour12: true
+                                            }).replace(',', '')}
+                                        </p>
+
                                     </div>
                                 </div>
                             </div>
