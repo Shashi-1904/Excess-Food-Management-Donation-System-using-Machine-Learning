@@ -15,6 +15,7 @@ const uploadRoutes = require("./router/uploadRoutes");
 const FoodRequestRoutes = require("./router/foodRequest-router");
 const UserRoutes = require("./router/user-router");
 const HotelRoutes = require("./router/hotel-router")
+const donationCron = require("./cron/donationCron");
 
 //allow cors
 const corsOptions = {
@@ -45,6 +46,7 @@ app.use(errorMiddleware);
 
 
 connectDB().then(() => {
+    donationCron();
     app.listen(PORT, (req, res) => {
         console.log(`listening on PORT ${PORT}`)
     });

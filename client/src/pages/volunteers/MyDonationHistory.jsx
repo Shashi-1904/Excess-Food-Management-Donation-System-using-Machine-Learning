@@ -20,7 +20,7 @@ function MyDonationHistory() {
                 if (response.ok && data.donations) {
                     // Filter donations with status 'completed'
                     const completedDonations = data.donations.filter(
-                        (donation) => donation.status === 'completed'
+                        (donation) => donation.status === "completed" || donation.status === "expired"
                     );
                     setDonations(completedDonations);
                 } else {
@@ -101,7 +101,7 @@ function MyDonationHistory() {
                                             padding: '10px',
                                         }}
                                     >
-                                        <p className="mb-0">Donation Completed</p>
+                                        <p className="mb-0">Donation {donation.status}</p>
                                     </div>
                                 </div>
                             </div>

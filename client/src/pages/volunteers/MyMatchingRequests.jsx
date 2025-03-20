@@ -22,11 +22,11 @@ function MyMatchingRequests() {
                 if (response.ok && data.requests) {
                     setMatchingRequests(data.requests);
                 } else {
-                    toast.error(data.message || 'NO matching requests at these moment.');
+                    console.error(data.message || 'NO matching requests at these moment.');
                 }
             } catch (error) {
                 console.error('Error fetching matching requests:', error);
-                toast.error('An error occurred while fetching matching requests.');
+                // toast.error('An error occurred while fetching matching requests.');
             }
         };
 

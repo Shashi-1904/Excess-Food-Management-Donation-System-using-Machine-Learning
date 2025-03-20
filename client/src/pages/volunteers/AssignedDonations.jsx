@@ -28,7 +28,7 @@ function AssignedDonations() {
 
                 if (response.ok) {
                     const filteredDonations = (data.donations || []).filter(
-                        (donation) => donation.status !== "completed"
+                        (donation) => donation.status !== "completed" && donation.status !== "expired"
                     );
                     const filteredRequests = (data.foodRequests || []).filter(
                         (request) => request.status !== "completed"
