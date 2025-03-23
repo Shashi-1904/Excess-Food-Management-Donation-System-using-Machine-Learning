@@ -11,32 +11,68 @@ const hotelLogSchema = new mongoose.Schema({
                 type: Date,
                 required: true
             },
-            day: {
+            dishName: {
                 type: String,
                 required: true
             },
-            eventOrFestival: {
-                type: String,
-                required: true
-            },
-            foodType: {
-                type: String,
-                required: true
-            },
-            foodPreparedKg: {
+            quantityPrepared: {
                 type: Number,
                 required: true
             },
-            customersserved: {
+            dayOfWeek: {
+                type: String,
+                required: true
+            },
+            month: {
+                type: String,
+                required: true
+            },
+            weekend: {
+                type: String,
+                required: true
+            },
+            festivalName: {
+                type: String,
+                required: false  // Optional, in case there's no festival
+            },
+            festivalType: {
+                type: String,
+                required: false  // Optional
+            },
+            daysBeforeAfterFestival: {
+                type: Number,
+                required: false
+            },
+            totalCustomers: {
                 type: Number,
                 required: true
             },
-            foodLeftoverKg: {
+            ordersPerDish: {
                 type: Number,
                 required: true
             },
             weather: {
                 type: String,
+                required: true
+            },
+            specialOffer: {
+                type: String,
+                required: true
+            },
+            quantityWasted: {
+                type: Number,
+                required: true
+            },
+            holiday: {
+                type: String,
+                required: true
+            },
+            event: {
+                type: String,
+                required: false
+            },
+            deliveryOrders: {
+                type: Number,
                 required: true
             }
         }

@@ -1,18 +1,58 @@
+const User = require("../models/user-model");
 const FoodDonation = require("../models/donation-model");
 
-// Fetch all donations that are not assigned and not delivered
+// Function to calculate distance 
+const calculateDistance = (lat1, lon1, lat2, lon2) => {
+    const R = 6371;
+    const toRad = (degree) => (degree * Math.PI) / 180;
+
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+};
+
 exports.getAvailableDonations = async (req, res) => {
     try {
+        const userEmail = req.user.email;
+        const user = await User.findOne({ email: userEmail });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found."
+            });
+        }
+
+        const { latitude: userLat, longitude: userLon } = user;
+
+        // Fetch donations 
         const donations = await FoodDonation.find({
-            assignedTo: null,
+            status: { $in: ["pending", "assigned"] },
             deliveredTo: null
+        });
+
+        // Filter donations 
+        const nearbyDonations = donations.filter(donation => {
+            const distance = calculateDistance(
+                userLat,
+                userLon,
+                donation.latitude,
+                donation.longitude
+            );
+            return distance <= 10;
         });
 
         res.status(200).json({
             success: true,
-            message: "Available donations fetched successfully.",
-            data: donations
+            message: "Nearby donations fetched successfully.",
+            data: nearbyDonations
         });
+
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -22,10 +62,12 @@ exports.getAvailableDonations = async (req, res) => {
     }
 };
 
+
+
 // Update the deliveredTo field to the NGO's email
 exports.requestDonation = async (req, res) => {
-    const volunteerEmail = req.user.email; // Extracted from the token
-    const { donationId } = req.body; // Donation ID passed from the frontend
+    const volunteerEmail = req.user.email;
+    const { donationId } = req.body;
 
     try {
         const donation = await FoodDonation.findById(donationId);

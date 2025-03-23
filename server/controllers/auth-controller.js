@@ -62,7 +62,6 @@ const login = async (req, res) => {
 };
 
 
-
 // user logic to send user data
 const user = async (req, res) => {
     try {

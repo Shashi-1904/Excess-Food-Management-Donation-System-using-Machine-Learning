@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/auth";
 import { toast } from "react-toastify";
-import { GoogleMap, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, Autocomplete } from "@react-google-maps/api";
 
 export default function DonateFood() {
     const [food, setFood] = useState({
@@ -22,6 +22,8 @@ export default function DonateFood() {
     const donateURL = `${API}/api/donor/donateFood`;
     const assignVolunteerURL = `${API}/api/volunteer/assign-volunteer`;
     const navigate = useNavigate();
+    const autocompleteRef = useRef(null);
+    const mapRef = useRef(null);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -54,6 +56,7 @@ export default function DonateFood() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ donationId }),
             });
+
             const res_data = await response.json();
 
             if (response.ok) {
@@ -63,7 +66,6 @@ export default function DonateFood() {
             }
         } catch (error) {
             console.error("Assign volunteer error:", error);
-
         }
     };
 
@@ -79,7 +81,7 @@ export default function DonateFood() {
             const res_data = await response.json();
             if (response.ok) {
                 toast.success("Food donation registered successfully");
-                await assignVolunteer(res_data.donation._id);;
+                await assignVolunteer(res_data.donation._id);
                 navigate("/");
                 window.scrollTo(0, 0);
             } else {
@@ -88,6 +90,29 @@ export default function DonateFood() {
         } catch (error) {
             console.error("Food donation error:", error);
             toast.error("An error occurred while submitting your food donation. Please try again.");
+        }
+    };
+
+    const handlePlaceSelect = () => {
+        if (autocompleteRef.current) {
+            const place = autocompleteRef.current.getPlace();
+
+            if (place.geometry) {
+                setFood((prevState) => ({
+                    ...prevState,
+                    latitude: place.geometry.location.lat(),
+                    longitude: place.geometry.location.lng(),
+                    address: place.formatted_address,
+                }));
+
+                // Move map to new location
+                if (mapRef.current) {
+                    mapRef.current.panTo({
+                        lat: place.geometry.location.lat(),
+                        lng: place.geometry.location.lng(),
+                    });
+                }
+            }
         }
     };
 
@@ -166,11 +191,11 @@ export default function DonateFood() {
                                         <label htmlFor="email">Email</label>
                                         <input
                                             type="email"
-                                            name='email'
-                                            placeholder='Enter your email'
-                                            id='email'
+                                            name="email"
+                                            placeholder="Enter your email"
+                                            id="email"
                                             required
-                                            autoComplete='off'
+                                            autoComplete="off"
                                             value={food.email}
                                             onChange={handleInput}
                                         />
@@ -194,23 +219,36 @@ export default function DonateFood() {
                                         <label htmlFor="address">Address</label>
                                         <input
                                             type="text"
-                                            name='address'
-                                            placeholder='Enter address'
-                                            id='address'
+                                            name="address"
+                                            placeholder="Enter address"
+                                            id="address"
                                             required
-                                            autoComplete='off'
+                                            autoComplete="off"
                                             value={food.address}
                                             onChange={handleInput}
                                         />
                                     </div>
 
                                     <div>
+                                        <h4>Search Location</h4>
+                                        <Autocomplete
+                                            onLoad={(autocomplete) => (autocompleteRef.current = autocomplete)}
+                                            onPlaceChanged={handlePlaceSelect}
+                                        >
+                                            <input
+                                                type="text"
+                                                placeholder="Search location"
+                                                style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+                                            />
+                                        </Autocomplete>
+
                                         <h4>Choose Pickup Location</h4>
                                         <GoogleMap
                                             mapContainerStyle={{ width: "100%", height: "400px" }}
                                             center={{ lat: food.latitude, lng: food.longitude }}
                                             zoom={12}
                                             onClick={handleMapClick}
+                                            onLoad={(map) => (mapRef.current = map)}
                                         >
                                             <MarkerF
                                                 position={{ lat: food.latitude, lng: food.longitude }}
@@ -225,8 +263,6 @@ export default function DonateFood() {
                                                     }
                                                 }}
                                             />
-
-
                                         </GoogleMap>
                                         <p>Selected Location: Latitude: {food.latitude}, Longitude: {food.longitude}</p>
                                     </div>

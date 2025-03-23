@@ -117,6 +117,11 @@ function AssignedDonations() {
         navigate(`/getroute/${pickupLat}/${pickupLng}`);
     };
 
+    const handleGetDeliveryRoute = (pickupLat, pickupLng, deliveredTo) => {
+        navigate(`/getdeliveryroute/${pickupLat}/${pickupLng}/${deliveredTo}`);
+    };
+
+
     return (
         <div className="container-fluid" style={{ display: "flex", minHeight: "100vh", paddingTop: "60px" }}>
             <div className="content" style={{ marginLeft: "200px", width: "calc(100% - 200px)", overflowY: "auto", padding: "20px" }}>
@@ -140,6 +145,9 @@ function AssignedDonations() {
                                         <p><strong>Email:</strong> {donation.email}</p>
                                         <p><strong>Address:</strong> {donation.address}</p>
                                         <p><strong>Status:</strong> {donation.status.charAt(0).toUpperCase() + donation.status.slice(1)}</p>
+                                        {donation.deliveredTo && (
+                                            <p><strong>Requested By:</strong> {donation.deliveredTo}</p>
+                                        )}
 
                                     </div>
                                     <div className="card-footer text-center">
@@ -161,7 +169,10 @@ function AssignedDonations() {
                                                     Mark as Completed
                                                 </button>
                                                 <button className="dropdown-item" onClick={() => handleGetRoute(donation.latitude, donation.longitude)}>
-                                                    Get Route
+                                                    Get Pickup Route
+                                                </button>
+                                                <button className="dropdown-item" onClick={() => handleGetDeliveryRoute(donation.latitude, donation.longitude, donation.deliveredTo)}>
+                                                    Get Delivery Route
                                                 </button>
                                             </div>
                                         )}

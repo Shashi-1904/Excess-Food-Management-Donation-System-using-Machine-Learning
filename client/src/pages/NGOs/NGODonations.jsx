@@ -20,7 +20,7 @@ function NGODonations() {
                 if (response.ok && data.success) {
                     if (data.data.length > 0) {
                         setDonations(data.data);
-                        toast.success(data.message); // Show success only if donations are found
+                        toast.success(data.message);
                     } else {
                         setDonations([]); // Clear donations if none are found
                         toast.info("No available donations found.");

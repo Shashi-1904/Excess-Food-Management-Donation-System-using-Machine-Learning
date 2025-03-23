@@ -5,25 +5,53 @@ const HotelLog = require('../models/hotel-log-schema');
 exports.postHotelLogs = async (req, res) => {
     try {
         const hotelEmail = req.user.email;
-        const { date, day, eventOrFestival, foodType, foodPreparedKg, customersserved, foodLeftoverKg, weather } = req.body;
+
+        const {
+            date,
+            dishName,
+            quantityPrepared,
+            dayOfWeek,
+            month,
+            weekend,
+            festivalName,
+            festivalType,
+            daysBeforeAfterFestival,
+            totalCustomers,
+            ordersPerDish,
+            weather,
+            specialOffer,
+            quantityWasted,
+            holiday,
+            event,
+            deliveryOrders
+        } = req.body;
 
         // Find hotel log by email
         let hotelLog = await HotelLog.findOne({ hotelEmail });
 
-        // Create new log entry
+        // Create new log entry with the additional columns
         const newLogEntry = {
             date,
-            day,
-            eventOrFestival,
-            foodType,
-            foodPreparedKg,
-            customersserved,
-            foodLeftoverKg,
-            weather
+            dishName,
+            quantityPrepared,
+            dayOfWeek,
+            month,
+            weekend,
+            festivalName,
+            festivalType,
+            daysBeforeAfterFestival,
+            totalCustomers,
+            ordersPerDish,
+            weather,
+            specialOffer,
+            quantityWasted,
+            holiday,
+            event,
+            deliveryOrders
         };
 
         if (!hotelLog) {
-            // Create a new hotel log document
+            // Create a new hotel log document if no log exists
             hotelLog = new HotelLog({
                 hotelEmail,
                 dailyLogs: [newLogEntry]
@@ -37,6 +65,7 @@ exports.postHotelLogs = async (req, res) => {
         res.status(201).json({ message: 'Log added successfully' });
 
     } catch (error) {
+        console.error("Error adding hotel log:", error);
         res.status(500).json({ error: error.message });
     }
 };

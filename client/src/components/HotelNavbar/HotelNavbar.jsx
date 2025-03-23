@@ -147,6 +147,11 @@ function HotelNavbar() {
                             </NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink className="nav-link text-white" to="/hotel/add-log">
+                                <FaChartBar className="me-2" /> Add Log Details
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink className="nav-link text-white" to="/hotel/settings">
                                 <FaCog className="me-2" /> Settings
                             </NavLink>

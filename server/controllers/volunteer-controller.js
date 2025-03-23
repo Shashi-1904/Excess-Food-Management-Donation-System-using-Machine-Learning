@@ -150,3 +150,34 @@ exports.updateRequestStatus = async (req, res) => {
         res.status(500).json({ message: "Server Error" });
     }
 };
+
+exports.getUserLocation = async (req, res) => {
+    try {
+        const userEmail = req.body.email;  // Get the user email from the request
+
+        // Find the user by email and select only latitude and longitude fields
+        const user = await User.findOne({ email: userEmail }).select("latitude longitude");
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "User location fetched successfully",
+            data: {
+                latitude: user.latitude,
+                longitude: user.longitude
+            }
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error fetching user location",
+            error: error.message
+        });
+    }
+};

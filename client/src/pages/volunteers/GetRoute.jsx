@@ -12,7 +12,7 @@ const GetRoute = () => {
     const { pickupLat, pickupLng } = useParams();
     const { user } = useAuth();
     const [directions, setDirections] = useState(null);
-    const directionsFetched = useRef(false); // Prevent infinite requests
+    const directionsFetched = useRef(false);
 
     const userLocation = user
         ? { lat: parseFloat(user.latitude), lng: parseFloat(user.longitude) }

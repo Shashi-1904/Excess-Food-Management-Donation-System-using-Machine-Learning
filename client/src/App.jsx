@@ -37,6 +37,7 @@ import UserContactHistory from './pages/UserContactHistory';
 import AddLogDetails from './pages/Hotels/AddLogDetails';
 import NGODonations from './pages/NGOs/NGODonations';
 import GetRoute from './pages/volunteers/GetRoute';
+import GetDeliveryRoute from './pages/volunteers/GetDeliveryRoute';
 import { useAuth } from "./store/auth";
 import { LoadScript } from "@react-google-maps/api";
 
@@ -66,7 +67,7 @@ function Layout() {
 function App() {
   const { apiKey } = useAuth();
   return (
-    <LoadScript googleMapsApiKey={apiKey}>
+    <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
       <BrowserRouter>
         <Layout />
         <Routes>
@@ -97,6 +98,7 @@ function App() {
             <Route path="/volunteer/mysettings" element={<VolunteerSettings />} />
             <Route path="/volunteer/gmap" element={<GoogleMap />} />
             <Route path="/getroute/:pickupLat/:pickupLng" element={<GetRoute />} />
+            <Route path="/getdeliveryroute/:donationLat/:donationLng/:deliveredTo" element={<GetDeliveryRoute />} />
           </Route>
           <Route element={<ProtectedRoute allowedRoles={['hotel']} />}>
             <Route path="/hotel" element={<HotelDashboard />} />
