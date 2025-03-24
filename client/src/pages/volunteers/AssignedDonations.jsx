@@ -8,11 +8,15 @@ function AssignedDonations() {
     const [donations, setDonations] = useState([]);
     const [foodRequests, setFoodRequests] = useState([]);
     const [actionDropdown, setActionDropdown] = useState(null);
-    const [showETAInput, setShowETAInput] = useState(false);     // Popup state
+    const [showETAInput, setShowETAInput] = useState(false);
     // State initialization
-    const [etaMinutes, setEtaMinutes] = useState("");   // Keep it empty initially
+    const [etaMinutes, setEtaMinutes] = useState("");
     // ETA state
     const [selectedDonationId, setSelectedDonationId] = useState(null);
+
+    // New state for delivery location popup
+    const [showLocationPopup, setShowLocationPopup] = useState(false);
+    const [deliveryLocation, setDeliveryLocation] = useState("");
 
     const { authorizationToken, API } = useAuth();
     const navigate = useNavigate();
@@ -33,6 +37,7 @@ function AssignedDonations() {
                     const filteredRequests = (data.foodRequests || []).filter(
                         (request) => request.status !== "completed"
                     );
+
 
                     setDonations(filteredDonations);
                     setFoodRequests(filteredRequests);
@@ -65,21 +70,91 @@ function AssignedDonations() {
             return;
         }
 
-        const minutes = Number(etaMinutes);  // Convert to number before sending
+        const minutes = Number(etaMinutes);
         await handleStatusChange(selectedDonationId, "arriving", minutes);
         setShowETAInput(false);
-        setEtaMinutes("");   // Reset to blank after submission
+        setEtaMinutes("");
+    };
+
+    const handleLocationSubmit = async () => {
+        if (!deliveryLocation.trim()) {
+            toast.error("Please enter a valid delivery location.");
+            return;
+        }
+
+        try {
+            // Send interaction location data first
+            const interactionResponse = await fetch(`${API}/api/interaction/add-interaction`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: authorizationToken,
+                },
+                body: JSON.stringify({ locationId: deliveryLocation })
+            });
+
+            const interactionData = await interactionResponse.json();
+
+            if (!interactionResponse.ok) {
+                toast.error(interactionData.message || "Failed to save interaction.");
+                return;
+            }
+
+            toast.success("Interaction saved successfully.");
+
+            // Now, update the donation status to "completed"
+            const statusPayload = { donationId: selectedDonationId, status: "completed" };
+
+            const statusResponse = await fetch(`${API}/api/volunteer/update-donation-status`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: authorizationToken,
+                },
+                body: JSON.stringify(statusPayload),
+            });
+
+            const statusData = await statusResponse.json();
+
+            if (statusResponse.ok) {
+                toast.success("Donation marked as completed.");
+
+                // Remove the donation from the page only after successful status update
+                setDonations((prevDonations) =>
+                    prevDonations.filter((donation) => donation._id !== selectedDonationId)
+                );
+
+            } else {
+                toast.error(statusData.message || "Failed to update the donation status.");
+            }
+
+            // Close popup and clear the location
+            setShowLocationPopup(false);
+            setDeliveryLocation("");
+
+        } catch (error) {
+            console.error("Error submitting location and updating status:", error);
+            toast.error("An error occurred. Please try again.");
+        }
     };
 
 
     const handleStatusChange = async (donationId, status, minutes = null) => {
         try {
+            // For completed status, show location popup first
+            if (status === "completed") {
+                setSelectedDonationId(donationId);
+                setShowLocationPopup(true);
+                return;  // Wait until location is submitted
+            }
+
             const payload = { donationId, status };
 
             if (status === "arriving" && minutes) {
-                payload.minutes = minutes;   // Include ETA only for arriving status
+                payload.minutes = minutes;
             }
 
+            // Send status update request
             const response = await fetch(`${API}/api/volunteer/update-donation-status`, {
                 method: "PUT",
                 headers: {
@@ -93,14 +168,14 @@ function AssignedDonations() {
 
             if (response.ok) {
                 toast.success(data.message);
+
+                // Update donation status in the list
                 setDonations((prevDonations) =>
-                    status === "completed"
-                        ? prevDonations.filter((donation) => donation._id !== donationId)
-                        : prevDonations.map((donation) =>
-                            donation._id === donationId
-                                ? { ...donation, status, eta: minutes || donation.eta }
-                                : donation
-                        )
+                    prevDonations.map((donation) =>
+                        donation._id === donationId
+                            ? { ...donation, status, eta: minutes || donation.eta }
+                            : donation
+                    )
                 );
             } else {
                 toast.error(data.message || "Failed to update the donation status.");
@@ -112,6 +187,7 @@ function AssignedDonations() {
             setActionDropdown(null);
         }
     };
+
 
     const handleGetRoute = (pickupLat, pickupLng) => {
         navigate(`/getroute/${pickupLat}/${pickupLng}`);
@@ -126,6 +202,7 @@ function AssignedDonations() {
         <div className="container-fluid" style={{ display: "flex", minHeight: "100vh", paddingTop: "60px" }}>
             <div className="content" style={{ marginLeft: "200px", width: "calc(100% - 200px)", overflowY: "auto", padding: "20px" }}>
                 <h1 className="mb-4">Assigned Donations & Requests</h1>
+
 
                 {donations.length === 0 && foodRequests.length === 0 ? (
                     <div className="alert alert-warning">No donations or food requests assigned to you.</div>
@@ -171,9 +248,15 @@ function AssignedDonations() {
                                                 <button className="dropdown-item" onClick={() => handleGetRoute(donation.latitude, donation.longitude)}>
                                                     Get Pickup Route
                                                 </button>
-                                                <button className="dropdown-item" onClick={() => handleGetDeliveryRoute(donation.latitude, donation.longitude, donation.deliveredTo)}>
-                                                    Get Delivery Route
-                                                </button>
+                                                {donation.deliveredTo && (
+                                                    <button
+                                                        className="dropdown-item"
+                                                        onClick={() => handleGetDeliveryRoute(donation.latitude, donation.longitude, donation.deliveredTo)}
+                                                    >
+                                                        Get Delivery Route
+                                                    </button>
+                                                )}
+
                                             </div>
                                         )}
                                     </div>
@@ -210,6 +293,34 @@ function AssignedDonations() {
                     </div>
                 </div>
             )}
+
+            {/* Delivery Location Popup */}
+            {showLocationPopup && (
+                <div className="modal fade show d-block" style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5>Delivery Location</h5>
+                                <button className="btn-close" onClick={() => setShowLocationPopup(false)}></button>
+                            </div>
+                            <div className="modal-body">
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={deliveryLocation}
+                                    onChange={(e) => setDeliveryLocation(e.target.value)}
+                                    placeholder="Enter delivery location"
+                                />
+                            </div>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" onClick={() => setShowLocationPopup(false)}>Cancel</button>
+                                <button className="btn btn-success" onClick={handleLocationSubmit}>Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }

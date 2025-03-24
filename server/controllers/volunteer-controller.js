@@ -181,3 +181,48 @@ exports.getUserLocation = async (req, res) => {
         });
     }
 };
+
+
+
+exports.getVolunteerNotifications = async (req, res) => {
+    const volunteerEmail = req.user.email;  // Get the volunteer's email from the request
+
+    try {
+        // Find the volunteer by email and populate the assigned donations
+        const volunteer = await User.findOne({ email: volunteerEmail })
+            .populate({
+                path: "donationsAssigned",
+                match: { status: "assigned" }  // Only include donations with status "assigned"
+            });
+
+        if (!volunteer) {
+            return res.status(404).json({ message: "Volunteer not found" });
+        }
+
+        // Check if there are assigned donations
+        if (!volunteer.donationsAssigned || volunteer.donationsAssigned.length === 0) {
+            return res.status(200).json({
+                success: true,
+                notifications: [],
+                message: "No new donations assigned."
+            });
+        }
+
+        // Prepare notifications from assigned donations
+        const notifications = volunteer.donationsAssigned.map(donation => ({
+            donationId: donation._id,
+            type: "assignment",
+            message: `New donation ${donation.foodName} assigned to you.`,
+            timestamp: new Date().toISOString()
+        }));
+
+        res.status(200).json({
+            success: true,
+            notifications
+        });
+
+    } catch (error) {
+        console.error("Error fetching volunteer notifications:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};

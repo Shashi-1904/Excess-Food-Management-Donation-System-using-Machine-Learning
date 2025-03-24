@@ -25,13 +25,23 @@ export default function DonateFood() {
     const autocompleteRef = useRef(null);
     const mapRef = useRef(null);
 
-    useEffect(() => {
+
+    // Regular function for token check
+    const checkLoginStatus = () => {
         const token = localStorage.getItem("token");
         if (!token) {
             toast.error("You are not logged in. Please log in first.");
             navigate("/login");
+            return false;
         }
+        return true;
+    };
+
+    useEffect(() => {
+        checkLoginStatus();
     }, []);
+
+
 
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -79,19 +89,28 @@ export default function DonateFood() {
             });
 
             const res_data = await response.json();
+
             if (response.ok) {
                 toast.success("Food donation registered successfully");
                 await assignVolunteer(res_data.donation._id);
                 navigate("/");
                 window.scrollTo(0, 0);
             } else {
-                toast.error(res_data.message || "Failed to register donation");
+                // Display multiple validation errors
+                if (res_data.errors && Array.isArray(res_data.errors)) {
+                    res_data.errors.forEach((err) => {
+                        toast.error(`${err.field}: ${err.message}`);
+                    });
+                } else {
+                    toast.error(res_data.message || "Failed to register donation");
+                }
             }
         } catch (error) {
             console.error("Food donation error:", error);
             toast.error("An error occurred while submitting your food donation. Please try again.");
         }
     };
+
 
     const handlePlaceSelect = () => {
         if (autocompleteRef.current) {

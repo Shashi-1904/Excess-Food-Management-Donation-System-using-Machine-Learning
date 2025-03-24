@@ -12,6 +12,7 @@ function HotelNavbar() {
     const [showPopup, setShowPopup] = useState(false);
     const [hasNewNotification, setHasNewNotification] = useState(false);
 
+
     // Fetch Notifications
     useEffect(() => {
         const fetchNotifications = async () => {

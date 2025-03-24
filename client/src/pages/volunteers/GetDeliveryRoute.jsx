@@ -9,7 +9,7 @@ const containerStyle = {
 };
 
 const GetRoute = () => {
-    const { donationLat, donationLng, deliveredTo } = useParams();  // Donation location from URL params
+    const { donationLat, donationLng, deliveredTo } = useParams();
     const { API } = useAuth();
 
     const [directions, setDirections] = useState(null);
@@ -17,24 +17,23 @@ const GetRoute = () => {
     const [loading, setLoading] = useState(true);
     const directionsFetched = useRef(false);
 
-    // Parse donation location from URL params
+
     const donationLocation = {
         lat: parseFloat(donationLat) || 0,
         lng: parseFloat(donationLng) || 0
     };
 
-    // ✅ Log donation coordinates
-    console.log("Donation Location:", donationLocation);
 
-    // Fetch NGO location with Authorization header
+    // console.log("Donation Location:", donationLocation);
+
     const fetchNgoLocation = async () => {
         console.log("Fetching NGO location...");
 
         try {
             const response = await fetch(`${API}/api/volunteer/volunteer-location`, {
-                method: "POST",   // Use POST to send data in the body
+                method: "POST",
                 headers: {
-                    "Content-Type": "application/json"   // Specify the content type
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ email: deliveredTo })
             });
@@ -45,7 +44,7 @@ const GetRoute = () => {
             }
 
             const data = await response.json();
-            console.log("Fetched NGO location:", data);
+            // console.log("Fetched NGO location:", data);
 
             if (data.success && data.data.latitude && data.data.longitude) {
                 setNgoLocation({
@@ -73,10 +72,10 @@ const GetRoute = () => {
             ngoLocation &&
             !directionsFetched.current
         ) {
-            console.log("Both donation and NGO locations available:", {
-                donationLocation,
-                ngoLocation
-            });
+            // console.log("Both donation and NGO locations available:", {
+            //     donationLocation,
+            //     ngoLocation
+            // });
 
             directionsFetched.current = true;
 
