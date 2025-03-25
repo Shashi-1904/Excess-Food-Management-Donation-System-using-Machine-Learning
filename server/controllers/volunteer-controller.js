@@ -43,21 +43,20 @@ exports.updateDonationStatus = async (req, res) => {
             return res.status(404).json({ message: "Donation not found" });
         }
 
-        // Ensure the volunteer is assigned to this donation
+
         if (donation.assignedTo !== volunteerId) {
             return res.status(403).json({ message: "You are not assigned to this donation" });
         }
 
-        // Update the donation status
         donation.status = status;
         if (status === "arriving" && minutes) {
-            donation.eta = minutes;  // ✅ Update ETA only for "arriving"
+            donation.eta = minutes;
         } else if (status !== "arriving") {
-            donation.eta = null;     // ✅ Clear ETA for other statuses
+            donation.eta = null;
         }
         await donation.save();
 
-        // If the status is marked as "completed", remove the donation from the volunteer's assigned list
+
         if (status === "completed") {
             await User.findOneAndUpdate(
                 { email: volunteerId },
@@ -125,7 +124,7 @@ exports.getMatchingRequests = async (req, res) => {
 
 exports.updateRequestStatus = async (req, res) => {
     const { requestId, status } = req.body;
-    const email = req.user.email; // Get email of the user making the request
+    const email = req.user.email;
 
     try {
         const request = await FoodRequest.findById(requestId);
@@ -137,7 +136,7 @@ exports.updateRequestStatus = async (req, res) => {
         // Update status
         request.status = status;
 
-        // If status is changed to 'assigned', 'picked', or 'completed', update 'fulfilledBy'
+
         if (['assigned', 'Accepted', 'picked', 'In Progress', 'completed'].includes(status)) {
             request.fulfilledBy = email;
         }
@@ -153,7 +152,7 @@ exports.updateRequestStatus = async (req, res) => {
 
 exports.getUserLocation = async (req, res) => {
     try {
-        const userEmail = req.body.email;  // Get the user email from the request
+        const userEmail = req.body.email;
 
         // Find the user by email and select only latitude and longitude fields
         const user = await User.findOne({ email: userEmail }).select("latitude longitude");
@@ -185,14 +184,14 @@ exports.getUserLocation = async (req, res) => {
 
 
 exports.getVolunteerNotifications = async (req, res) => {
-    const volunteerEmail = req.user.email;  // Get the volunteer's email from the request
+    const volunteerEmail = req.user.email;
 
     try {
-        // Find the volunteer by email and populate the assigned donations
+
         const volunteer = await User.findOne({ email: volunteerEmail })
             .populate({
                 path: "donationsAssigned",
-                match: { status: "assigned" }  // Only include donations with status "assigned"
+                match: { status: "assigned" }
             });
 
         if (!volunteer) {
@@ -223,6 +222,34 @@ exports.getVolunteerNotifications = async (req, res) => {
 
     } catch (error) {
         console.error("Error fetching volunteer notifications:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+
+exports.changeUserStatus = async (req, res) => {
+    const email = req.user.email;
+    const { isActive } = req.body;
+
+    try {
+        // Find the user by email
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Update the isActive status
+        user.isActive = isActive;
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: `User status updated successfully. ${email} is now ${isActive ? "Active" : "Inactive"}.`
+        });
+
+    } catch (error) {
+        console.error("Error changing user status:", error);
         res.status(500).json({ message: "Server error" });
     }
 };

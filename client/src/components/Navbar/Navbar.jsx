@@ -85,7 +85,7 @@ export default function Navbar() {
                                                     to="/ngo/donations"
                                                     className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
                                                 >
-                                                    NGO Donations
+                                                    Available Donations
                                                 </NavLink>
                                             </li>
                                         </>

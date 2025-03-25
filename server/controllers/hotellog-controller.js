@@ -67,15 +67,13 @@ exports.sendToFlask = async (req, res) => {
         // Count the total number of interaction documents
         const interactionCount = await Interaction.countDocuments();
 
-        // Only send data if sufficient records are available
         if (interactionCount < 100) {
             return res.status(400).json({ message: "Not enough data to send" });
         }
 
-        // Fetch all interactions from the database
         const interactions = await Interaction.find().lean();
 
-        // Convert the data into CSV format
+
         const csvData = interactions.map(i =>
             `${i.volunteerEmail},${i.locationId},${i.interactionScore},${i.timestamp.toISOString()}`
         ).join("\n");
